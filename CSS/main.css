@@ -1,0 +1,406 @@
+/*************
+
+color pallete:
+Rain kissed sea A8DeDD
+Mermaid 00ACB0
+Gold Commitment DAA520
+Olive 808000
+Genuine Jeans 00214A
+
+**************/
+
+
+
+@font-face{
+	font-family:refdevil;
+	src: url(../fonts/refdevil.ttf);
+}
+
+
+@font-face{
+	font-family:truman;
+	src: url(../fonts/TRUMANS.otf);
+}
+
+#wrapper{
+	margin-top:120px;
+	color: var(--text-color-2);
+	font-family:truman;
+}
+html,body{
+	height:100%;
+	font-family:truman;
+}
+
+
+/**************************
+
+	Head / Nav
+
+**************************/
+
+
+#header{
+	width:100%;
+	background-color:var(--head-bg-color);
+	position:fixed;
+	height:100px;
+	top:0px;
+	left:0px;
+	transition: 0.5s, 0.5s top;
+}
+
+#header.scrolledUp{
+	top:-100px;
+}
+
+#header .topnav{
+	text-align:center;
+	top:0px;
+	vertical-align:bottom;
+	left:50%;
+	margin-left:-180px;
+	position:absolute;
+
+}
+
+#header .topnav a{
+	width:175px;
+	height:100px;
+	background-color:var(--a-bg-color);
+	font-size:50px;
+	color: var(--text-color);
+	text-decoration:none;
+	margin-right:10px;
+	margin-top:0px;
+	display:block;
+	float:left;
+	font-family:refdevil;
+	text-decoration:none;
+}
+
+.topnav{
+	display:inline;
+	height:100px;
+	margin-top:0px;
+}
+
+#navToggle{
+	display:inline;
+}
+#navToggleUpper{
+	display:inline;
+	margin-top:10px;
+
+}
+
+#fullNav{
+	position:fixed;
+	background-color:var(--head-bg-color);
+	display:block;
+	width:250px;
+	height:100%;
+	left:-250px;
+	transition: 0.5s, 0.5s right;
+}
+
+#fullNav.activeFullNav{
+	left:0px;
+}
+
+#fullNav h2{
+	float:left;
+	font-family:refdevil;
+	text-align:center;
+	width:250px;
+	margin-left:0px;
+	color: var(--text-color-2);
+}
+
+#collapseHead{
+	float:right;
+	margin-top:10px;
+	margin-right:5px;
+	font-weight:bold;
+	size:20px;
+	color:var(--text-color);
+	font-family:refdevil;
+	float:right;
+}
+#fullNav div p:first-child{
+	margin-top:33%;
+
+}
+#fullNav div p{
+	width:250px;
+	text-decoration:none;
+	height:30px;
+	font-size:20px;
+	background-color:var(--a-bg-color);
+	display:block;
+	float:left;
+	margin-left:0px;
+	text-align:center;
+	margin-top:5px;
+	margin-bottom:5px;
+	font-family:refdevil;
+}
+#fullNav div p a{
+	text-decoration:none;
+	color:var(--text-color);
+	font-family:refdevil;
+}
+
+#fullNav .error{
+	color:var(--text-color-2);
+	padding-left:20px;
+}
+
+#login{
+	float:left;
+	width:250px;
+	margin-top:50px;
+	margin-bottom:25px;
+	padding-bottom:25px;
+	border-bottom:1px solid var(--text-color-2);
+}
+
+#login input{
+	width:200px;
+	margin-left:20px;
+}
+
+#signUp{
+	margin-left:20px;
+ 	margin-top:20px;
+}
+#signUp input{
+	width:200px;
+}
+#signUp input[type="checkbox"]{
+	width:auto;
+}
+#signUp table td{
+	padding-top:10px;
+}
+#signUp p{
+	color:var(--text-color);
+}
+#signUp span{
+	color:var(--text-color);
+}
+
+
+
+
+
+
+
+#createMeme{
+	margin:20px auto;
+}
+#createMeme table{
+	margin:0px auto;
+	background-color:var(--a-bg-color);
+}
+
+#allMemes{
+	text-align:center;
+	width:100%;
+}
+
+.meme{
+	margin: 20px auto;
+	width:500px;
+	transition:width 1s;
+	display:block;
+	font-family:truman;
+	color:var(--text-color-2);
+}
+.meme.memeOut{
+	width:1000px;
+	color:var(--text-color);
+}
+.meme.memeOut h2, .meme.memeOut h3{
+	color:var(--text-color-2);
+}
+
+.meme h2{
+	padding-top:50px;
+	text-align:left;
+}
+.meme img{
+	border:1px solid black;
+	width:500px;
+	border:5px solid black;
+}
+.memeDataWrapper{
+	transition:width 1s;
+	height:500px;
+	align-items: stretch;
+}
+
+.memeData{
+	margin-top:0px;
+	width:0px;
+	transition:width 1s;
+	height:100%;
+	z-index:-1;
+	overflow-y:scroll;
+	text-overflow:clip;
+	background-color:var(--head-bg-color);
+	font-size:25px;
+	padding:0px;
+}
+.memeOut{
+	width:500px;
+	padding-left:20px;
+}
+.meme a{
+	color:var(--text-color);
+	text-decoration:none;
+}
+.meme a:hover{
+	color:var(--text-color-2);
+}
+.memeControls td{
+	font-size:30px;
+	text-align:center;
+}
+.memeControls{
+	border-top:var(--text-color-2) 1px solid;
+	border-bottom:var(--text-color-2) 1px solid;
+	width:500px;
+	margin-left:-20px;
+}
+
+.meme textarea{
+	margin-top:5px;
+	width:460px;
+	height:100px;
+}
+.meme input{
+	width:460px;
+	background-color:var(--a-bg-color);
+	color:var(--text-color);
+	font-family:truman;
+	font-size: 20px;
+	border:0px;
+	margin-top:5px;
+	margin-bottom:20px;
+}
+
+.meme .break{
+	width:500px;
+	height:0px;
+	margin-left:-20px;
+	margin-top:5px;
+	margin-bottom:5px;
+	border-top:var(--text-color-2) 1px solid;
+}
+
+
+.inactiveTag{
+	background-color:var(--a-bg-color);
+}
+
+
+#filters{
+	text-align:center;
+}
+
+.tag{
+	transition:color 0.5s;
+}
+.tag:hover{
+	background-color:var(--a-bg-color);
+}
+
+.tagControls{
+	width:500px;
+	margin:0px auto;
+	background-color:var(--head-bg-color);
+	border:5px black solid;
+	border-radius:10px;
+	color:white;
+}
+
+.tagControls input{
+	width:100%;
+}
+.tagControls input:hover{
+	background-color:var(--a-bg-color);
+	border-color:var(--a-bg-color);
+}
+
+
+
+/****************************
+
+Single Meme
+
+****************************/
+
+#singleMeme{
+	text-align:center;
+}
+
+#singleMeme h3{
+	margin-top:40px;
+}
+
+#singleMeme #comments{
+	width:500px;
+	border:2px solid black;
+	margin:0px auto;
+	text-align:left;
+	padding-left:20px;
+	border-radius:5px;
+	background-color:var(--a-bg-color);
+}
+#singleMeme #comments a{
+	text-decoration:none;
+	color:var(--text-color);
+	padding-top:20px;
+	display:block;
+}
+#singleMeme #comments a:hover{
+	color:var(--text-color-2);
+}
+#singleMeme #comments p{
+	font-size:20px;
+	color:var(--text-color);
+}
+#singleMeme .break{
+	height:0px;
+	border:1px solid black;
+	margin-left:-20px;
+}
+#simmilar{
+	width:100%;
+	display:block;
+	height:300px;
+}
+#simmilar img{
+	float:left;
+	display:inline;
+	width:100%;
+	border:5px solid black;
+}
+#simmilar .related{
+	width:16.5%;
+	float:left;
+}
+
+#mainMeme{
+	border:5px solid black;
+}
+
+.break{
+	border:1px solid var(--text-color-2);
+	height:0px;
+	width:100%;
+	margin-right:-20px;
+	margin-bottom:20px;
+	margin-top:20px;
+}
