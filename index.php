@@ -4,19 +4,22 @@
 
 
 <!--
-Test commiting
+Finished since last push
+Fixed registration
+
 
 TO DO NEXT
-Register
 
 BIG STUFF I NEED TO DO BEFORE BETA RELEASE
 Register
+-validate form
+Liked Memes
 Report copy/copywright
 -admin
-Liked pages
-My memes
 User page
+My memes
 search
+Meme editor
 
 LITTLE STUFF I NEED TO DO BEFORE BATA RELEASE
 Fix filter
@@ -26,7 +29,6 @@ about us/report bugs
 like from post
 
 STUFF I NEED TO DO FOR FINAL RELEASE
-Meme editor
 Cart
 My cookies
 Top dozen (By tag as well)
@@ -41,7 +43,7 @@ Unable to log in by pressing enter
 
 <html ng-app="money4memes">
 	<head>
-		<title>Changes happening</title>
+		<title>The Memery</title>
 	</head>
 	<body ng-controller="memectrl">
 		<?php include "PHP/head.php" ?>
@@ -64,7 +66,7 @@ Unable to log in by pressing enter
 				<input type="button" ng-click="refreshPage()" value="Refrsh with new settings"/>
 			</div>
 			<div id="allMemes">
-				<div ng-init="getMoreMemes()"></div>
+				<div ng-init="getMoreMemes('')"></div>
 			</div>
 
 		</div>

@@ -22,8 +22,8 @@ else{
 
 <link type="text/css" rel="stylesheet" href="CSS/main.css" />
 <link type="text/css" rel="stylesheet" href="CSS/color1.css" />
-<script src="js/angular.js"> </script>
-<script src="js/memeapp.js"> </script>
+<script src="JS/angular.js"> </script>
+<script src="JS/memeapp.js"> </script>
 
 <div id="header" ng-class="{'scrolledUp':scrolledUp}">
 	<div id="fullNav" ng-class="{activeFullNav:activatedFullNav}">
