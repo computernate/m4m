@@ -41,7 +41,7 @@ Unable to log in by pressing enter
 
 <html ng-app="money4memes">
 	<head>
-		<title>Changes happening</title>
+		<title>The Memery</title>
 	</head>
 	<body ng-controller="memectrl">
 		<?php include "PHP/head.php" ?>

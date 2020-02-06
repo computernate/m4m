@@ -190,7 +190,9 @@ html,body{
 	color:var(--text-color);
 }
 
-
+#signUp .error{
+	color:var(--text-color-2);
+}
 
 
 

@@ -1,18 +1,18 @@
 var memeApp = angular.module( "money4memes", [] );
 
 memeApp.controller( "memectrl" ,  function($scope, $window, $http, $compile){
-	
-	
+
+
 	//Make the head go up when scrolled update, and take care of hasScrolled variable
 	//It is not very elegant, but I could not figure out angular scrolling so I had to use vanilla
-	
+
 	var lastPagey=0;
 	$scope.hasScrolled=false;
 	$scope.scrolledUp=false;
 	$window.onscroll=function(){
-		
+
 		var topdis=document.body.scrollTop;
-		
+
 		if(!$scope.hasScrolled){
 			if(lastPagey<topdis){
 				$scope.hasScrolled=true;
@@ -23,33 +23,33 @@ memeApp.controller( "memectrl" ,  function($scope, $window, $http, $compile){
 				$scope.$apply();
 			}
 		}
-		
+
 		else if(lastPagey>topdis){
 			$scope.hasScrolled=false;
 			$scope.scrolledUp=false;
 			$scope.$apply();
 		}
 		lastPagey=topdis;
-		
+
 		if(window.location.href.indexOf("index") <= -1){
 			return;
 		}
 		/**
-		
+
 		Something to do: Fix the scrolling!!!!
-		
+
 		**/
-		
+
 		var offset=document.body.scrollTop+700;
 		var height = document.getElementById('wrapper').offsetHeight ;
-		
+
 		if(offset >= height){
 			$scope.getMoreMemes();
 		}
-		
+
 	}
-	
-	
+
+
 	//Log the user in
 	$scope.logIn = function( username , pass ){
 		$http.get( "PHP/logIn.php?name=" + username  + "&password=" + pass + "" ).then( function( data ){
@@ -61,7 +61,7 @@ memeApp.controller( "memectrl" ,  function($scope, $window, $http, $compile){
 			}
 		});
 	}
-	
+
 	$scope.logOut = function(){
 		$http.get("PHP/logOut.php").then(function(data){
 			if( data.data == "true" ){
@@ -72,12 +72,11 @@ memeApp.controller( "memectrl" ,  function($scope, $window, $http, $compile){
 			}
 		});
 	}
-	
-	
+
+
 	/**
-	
 	Get More Memes
-	Calls PHP/getMemes.php and uses the data to create a string of html that 
+	Calls PHP/getMemes.php and uses the data to create a string of html that
 	appends to the end of #allMemes displaying the memes.
 	Data returned by getMemes should be in the format id, hasShirt, title, fileType, pointerID, description, likes, tags
 	**/
@@ -93,12 +92,12 @@ memeApp.controller( "memectrl" ,  function($scope, $window, $http, $compile){
 		$http.get("PHP/getMemes.php?pag="+pagination+"&sort="+$scope.sortMethod+"&filter="+filter).then(function(data){
 			if(data.data=="false"){
 				memestring="<p>An error has occured. Please <a ng-click='getMoreMemes()'>click here</a> to try again</p>";
-			} 
+			}
 			else{
 				dataStrings = data.data.split(";");
 				for(var a=0;a<dataStrings.length-1;a++){
 					var memeData=dataStrings[a].split(":");
-					
+
 					if($scope.activeTagFilters.length>0){
 						var blockedTag = false;
 						var splitTags = memeData[7].split(",");
@@ -111,7 +110,7 @@ memeApp.controller( "memectrl" ,  function($scope, $window, $http, $compile){
 							memestring+="<div style='visibility:hidden;height:0px;'>";
 						}
 					}
-					
+
 					memestring+="<table class='meme' id='"+memeData[0]+"'";
 					if(memeData[1]=="true"){
 						//memestring+=" class='hasShirt' ";
@@ -164,46 +163,51 @@ memeApp.controller( "memectrl" ,  function($scope, $window, $http, $compile){
 			pagination++;
 		});
 	}
-	
-	
+
+/**
+Refreshes index, called when asked for new tags
+**/
 	$scope.refreshPage=function(){
 		//angular.element( document.querySelector( '#allMemes' ) ).innerHTML="";
 		document.getElementById("allMemes").innerHTML = "";
 		pagination = 0;
 		$scope.getMoreMemes();
 	}
-	
+
 	/**
 	expandMeme
 	takes in an element ID, and appends to it a box of info such as the creaor, Tshirt link if applicable, likes, comments, etc.
 	*/
-	
+
 	$scope.expandMeme = function(id,user){
 		document.getElementById(id).classList.add("memeOut");
 		document.getElementById(id+"expanded").classList.add("memeOut");
 		document.getElementById(id+"expandedwrapper").classList.add("memeOut");
-		
-		
+
+
 		if(!document.getElementById(id).classList.contains("hasBeenOpened")){
 			$http.get("PHP/getUserData.php?reason=memeUser&id="+user).then(function(data){
 				//var userData=data.data.split(",");
-				
+
 				var userString = data.data;
 				angular.element( document.querySelector( '#userInfo' + id ) ).append(userString);
 				document.getElementById(id).classList.add("hasBeenOpened");
-				
+
 			});
 		}
-		
+
 		$scope.getComments(id);
-		
+
 	}
+	/**
+	Closes a meme after it is unhovered
+	**/
 	$scope.closeMeme = function(id){
 		document.getElementById(id).classList.remove("memeOut");
 		document.getElementById(id+"expanded").classList.remove("memeOut");
 	}
-	
-	
+
+
 	$scope.submitComment=function(id){
 		var content=document.getElementById("comment"+id).value;
 		$http.get("PHP/submitComment.php?id="+id+"&content="+content).then(function(data){
@@ -216,34 +220,34 @@ memeApp.controller( "memectrl" ,  function($scope, $window, $http, $compile){
 			}
 		});
 	}
-	
+
 	$scope.getComments=function(id){
 		$http.get("PHP/getComments.php?id="+id).then(function(data){
 			var finalString="";
 			if(data.data=="false"){
 				finalString="";
-			} 
+			}
 			else{
 				var dataStrings = data.data.split(";");
 				for(var a=0;a<dataStrings.length-1;a++){
 					var commentData=dataStrings[a].split(":");
-					
+
 					finalString+="<a href='viewUser.php?id="+commentData[1]+"' >"+commentData[3]+"</a>";
 					finalString+="<p>"+commentData[0]+"</p>";
 					finalString+="<div class='break'></div>";
-					
+
 				}
 			}
 			document.getElementById('commentsFor' + id).innerHTML=finalString;
 		});
 	}
-	
+
 	$scope.addLike=function(id){
 		$http.get("PHP/like.php?id="+id).then(function(data){
 			document.getElementById("likes"+id).innerHTML=data.data;
 		});
 	}
-	
+
 	$scope.activeTags=[];
 	$scope.tags=[];
 	$scope.getTags=function(){
@@ -253,12 +257,12 @@ memeApp.controller( "memectrl" ,  function($scope, $window, $http, $compile){
 			$scope.activeTagFilters=$scope.tags.slice();
 		});
 	}
-	
+
 	$scope.addTag=function(){
 		if($scope.activeTags.indexOf($scope.actingTag)==-1)
 			$scope.activeTags.push($scope.actingTag);
 	}
-	
+
 	$scope.deleteTag=function(tag){
 		$scope.activeTags.splice($scope.activeTags.indexOf(tag));
 	}
@@ -269,8 +273,8 @@ memeApp.controller( "memectrl" ,  function($scope, $window, $http, $compile){
 		}
 		return returnValue;
 	}
-	
-	
+
+
 	$scope.activeTagFilters=[];
 	$scope.toggleTag=function(tag){
 		console.log(tag);
@@ -284,16 +288,16 @@ memeApp.controller( "memectrl" ,  function($scope, $window, $http, $compile){
 			$scope.activeTagFilters.splice($scope.activeTagFilters.indexOf(tag),1);
 		}
 	}
-	
+
 	$scope.singleMeme=function(id){
-		
+
 	}
-	
+
 	$scope.checkName = function( ){
-		var statement =  $scope.signUpName ;
+		var statement =  $scope.signupName ;
 		$http.get( "PHP/checkName.php?sql=" + statement
 		).then( function( data ){
-			
+
 			if( data.data == "false" ){
 				$scope.nameExists = true;
 				$scope.signUp.name.$setValidity( "unique" , true );
@@ -301,11 +305,10 @@ memeApp.controller( "memectrl" ,  function($scope, $window, $http, $compile){
 			else{
 				$scope.nameExists = false;
 				$scope.signUp.name.$setValidity( "unique" , false );
-				console.log(data.data);
 			}
+			console.log(data.data);
 		});
-		document.getElementById( "key" ).value=$scope.getUniqueKey( );
+		//document.getElementById( "key" ).value=$scope.getUniqueKey( );
 	}
-	
-});
 
+});
