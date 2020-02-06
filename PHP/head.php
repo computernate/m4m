@@ -19,7 +19,6 @@ else{
 
 ?>
 
-
 <link type="text/css" rel="stylesheet" href="CSS/main.css" />
 <link type="text/css" rel="stylesheet" href="CSS/color1.css" />
 <script src="JS/angular.js"> </script>
@@ -46,4 +45,12 @@ else{
 		<a href="index.php">Good Memes</a>
 		<a href="index.php?sort=new">New Memes</a>
 	</div>
+<<<<<<< HEAD
+=======
+	<div>
+		<form name="search">
+			<input type="text" name="search" />
+		</form>
+	</div>
+>>>>>>> 0d571bc5be2f54496a0a56a6c891c1feaef4677d
 </div>

@@ -9,21 +9,34 @@ Fixed registration
 
 
 TO DO NEXT
+<<<<<<< HEAD
 
 BIG STUFF I NEED TO DO BEFORE BETA RELEASE
 Register
 -validate form
 Liked Memes
+=======
+Search
+head notifications
+
+
+BIG STUFF I NEED TO DO BEFORE BETA RELEASE
+
+>>>>>>> 0d571bc5be2f54496a0a56a6c891c1feaef4677d
 Report copy/copywright
 -admin
 User page
+<<<<<<< HEAD
 My memes
 search
 Meme editor
-
-LITTLE STUFF I NEED TO DO BEFORE BATA RELEASE
-Fix filter
+=======
 -user image
+Unable to log in by pressing enter
+>>>>>>> 0d571bc5be2f54496a0a56a6c891c1feaef4677d
+
+LITTLE STUFF I NEED TO DO BEFORE BETA RELEASE
+Fix filter
 log out
 about us/report bugs
 like from post
@@ -31,12 +44,16 @@ like from post
 STUFF I NEED TO DO FOR FINAL RELEASE
 Cart
 My cookies
-Top dozen (By tag as well)
 Sign in with google/fb
+Link bank account
+Top dozen (By tag as well)
 
-BUGS
-Unable to log in by pressing enter
-
+Phase 2
+Business tools
+-Wordpress pages
+-Shopify pages
+-Top 12 cookie sheets
+-DEV API
 
 -->
 

@@ -99,6 +99,19 @@ memeApp.controller( "memectrl" ,  function($scope, $window, $http, $compile){
 				for(var a=0;a<dataStrings.length-1;a++){
 					var memeData=dataStrings[a].split(":");
 
+					if($scope.activeTagFilters.length>0){
+						var blockedTag = false;
+						var splitTags = memeData[7].split(",");
+						for(var b=0;b<splitTags.length-1;b++){
+							if($scope.activeTagFilters.indexOf(splitTags[b])==-1){
+								blockedTag=true;
+							}
+						}
+						if(blockedTag){
+							memestring+="<div style='visibility:hidden;height:0px;'>";
+						}
+					}
+
 					memestring+="<table class='meme' id='"+memeData[0]+"'";
 					if(memeData[1]=="true"){
 						//memestring+=" class='hasShirt' ";
@@ -152,7 +165,9 @@ memeApp.controller( "memectrl" ,  function($scope, $window, $http, $compile){
 		});
 	}
 
-
+/**
+Refreshes index, called when asked for new tags
+**/
 	$scope.refreshPage=function(){
 		//angular.element( document.querySelector( '#allMemes' ) ).innerHTML="";
 		document.getElementById("allMemes").innerHTML = "";
@@ -185,6 +200,9 @@ memeApp.controller( "memectrl" ,  function($scope, $window, $http, $compile){
 		$scope.getComments(id);
 
 	}
+	/**
+	Closes a meme after it is unhovered
+	**/
 	$scope.closeMeme = function(id){
 		document.getElementById(id).classList.remove("memeOut");
 		document.getElementById(id+"expanded").classList.remove("memeOut");
@@ -277,7 +295,7 @@ memeApp.controller( "memectrl" ,  function($scope, $window, $http, $compile){
 	}
 
 	$scope.checkName = function( ){
-		var statement =  $scope.signUpName ;
+		var statement =  $scope.signupName ;
 		$http.get( "PHP/checkName.php?sql=" + statement
 		).then( function( data ){
 
@@ -288,10 +306,9 @@ memeApp.controller( "memectrl" ,  function($scope, $window, $http, $compile){
 			else{
 				$scope.nameExists = false;
 				$scope.signUp.name.$setValidity( "unique" , false );
-				console.log(data.data);
 			}
 		});
-		document.getElementById( "key" ).value=$scope.getUniqueKey( );
+		//document.getElementById( "key" ).value=$scope.getUniqueKey( );
 	}
 
 });
