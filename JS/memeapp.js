@@ -306,7 +306,6 @@ Refreshes index, called when asked for new tags
 				$scope.nameExists = false;
 				$scope.signUp.name.$setValidity( "unique" , false );
 			}
-			console.log(data.data);
 		});
 		//document.getElementById( "key" ).value=$scope.getUniqueKey( );
 	}
