@@ -17,7 +17,13 @@ else{
 	echo "<span ng-init='loggedIn=false'></span>";
 }
 
+if(isset($_GET["message"])){
+	echo '<div id="topMessage"><h2>'.$_GET["message"].'</h2></div>';
+}
+
 ?>
+
+
 
 <link type="text/css" rel="stylesheet" href="CSS/main.css" />
 <link type="text/css" rel="stylesheet" href="CSS/color1.css" />
@@ -27,8 +33,8 @@ else{
 <div id="header" ng-class="{'scrolledUp':scrolledUp}">
 	<div id="fullNav" ng-class="{activeFullNav:activatedFullNav}">
 	<div id="navToggleUpper">
-	<img src="Images/navToggle.jpg" alt="Navigation" ng-click="activatedFullNav=!activatedFullNav">
-</div>
+		<img src="Images/navToggle.jpg" alt="Navigation" ng-click="activatedFullNav=!activatedFullNav">
+	</div>
 		<?php
 			if(!$loggedIn){
 				include "loginView.php";
@@ -45,12 +51,9 @@ else{
 		<a href="index.php">Good Memes</a>
 		<a href="index.php?sort=new">New Memes</a>
 	</div>
-<<<<<<< HEAD
-=======
 	<div>
-		<form name="search">
+		<!--<form name="search">
 			<input type="text" name="search" />
-		</form>
+		</form>--->
 	</div>
->>>>>>> 0d571bc5be2f54496a0a56a6c891c1feaef4677d
 </div>

@@ -5,41 +5,30 @@
 
 <!--
 Finished since last push
-Fixed registration
-
+Fixed meme uploading
+Added top box
+FIxed registration issues
 
 TO DO NEXT
-<<<<<<< HEAD
-
-BIG STUFF I NEED TO DO BEFORE BETA RELEASE
-Register
--validate form
-Liked Memes
-=======
 Search
-head notifications
-
 
 BIG STUFF I NEED TO DO BEFORE BETA RELEASE
 
->>>>>>> 0d571bc5be2f54496a0a56a6c891c1feaef4677d
+Liked Memes
 Report copy/copywright
 -admin
 User page
-<<<<<<< HEAD
-My memes
-search
-Meme editor
-=======
 -user image
-Unable to log in by pressing enter
->>>>>>> 0d571bc5be2f54496a0a56a6c891c1feaef4677d
+My memes
+Meme editor
 
 LITTLE STUFF I NEED TO DO BEFORE BETA RELEASE
 Fix filter
-log out
 about us/report bugs
 like from post
+Unable to log in by pressing enter
+Better meme names
+Tips when submiting memes
 
 STUFF I NEED TO DO FOR FINAL RELEASE
 Cart

@@ -122,7 +122,7 @@ memeApp.controller( "memectrl" ,  function($scope, $window, $http, $compile){
 						memestring+="</tr><tr ng-mouseleave='closeMeme(\""+memeData[0]+"\")' ng-mouseenter='expandMeme(\""+memeData[0]+"\",\""+memeData[4]+"\")'>";
 						memestring+="<td>";
 						memestring+="<a href='memePage.php?meme="+memeData[0]+"' >";
-						memestring+=	"<img src='memes/"+memeData[0]+"."+memeData[3]+"' alt='"+memeData[2]+"' />";
+						memestring+=	"<img src='Memes/"+memeData[0]+"."+memeData[3]+"' alt='"+memeData[2]+"' />";
 						memestring+="</a>";
 						memestring+="</td><td class='memeDataWrapper' id='"+memeData[0]+"expandedwrapper'>";
 							memestring+="<div class='memeData' id='"+memeData[0]+"expanded'>";

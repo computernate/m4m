@@ -40,14 +40,45 @@ html,body{
 **************************/
 
 
+#topMessage{
+	margin:0px;
+	left:0px;
+	top:0px;
+	position:fixed;
+	text-align:center;
+	width:100%;
+	height:100px;
+	background-color: var(--a-bg-color);
+	color:var(--text-color);
+	animation:1s ease-out 5s slideTop;
+  animation-fill-mode: forwards;
+	z-index:1;
+}
+#topMessage h2{
+	width:100%;
+	height:100px;
+	text-align:center;
+	vertical-align: middle;
+}
+
+@keyframes slideTop{
+	0%{
+		margin-top:0px;
+	}
+	100%{
+		margin-top:-100px;
+	}
+}
+
 #header{
 	width:100%;
 	background-color:var(--head-bg-color);
 	position:fixed;
 	height:100px;
-	top:0px;
 	left:0px;
+	top:0px;
 	transition: 0.5s, 0.5s top;
+	margin-top:0px;
 }
 
 #header.scrolledUp{

@@ -9,18 +9,13 @@
 	<body ng-controller="memectrl">
 		<?php include "PHP/head.php" ?>
 		<div id="wrapper">
-		<?php
-			if($_GET['failure']){
-				echo $_GET['failure'];
-			}
-		?>
 		<form action="PHP/submitMeme.php" method="post" enctype="multipart/form-data" id="createMeme">
 			<table>
 				<tr>
 					<td>Select image to upload:</td>
 					<td><input type="file" name="fileToUpload" id="fileToUpload"></td>
 				</tr>
-				
+
 				<tr>
 					<td>Title:</td>
 					<td><input type="text" name="title" />
@@ -38,7 +33,7 @@
 							</datalist>
 						<button type='button' ng-click='addTag()' value='Add Tag'>Add Tag</button>
 					</td>
-					
+
 					<td>
 						<input type='hidden' ng-value="stringify(activeTags)" name='atags' />
 						<p ng-repeat = "tag in activeTags">
@@ -52,7 +47,7 @@
 				</tr>
 			</table>
 		</form>
-		
+
 		</div>
 	</body>
 </html>
