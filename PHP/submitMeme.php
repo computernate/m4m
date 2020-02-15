@@ -75,12 +75,12 @@ $sql = "INSERT INTO memes VALUES ('$url', '$title', '$userID', 0, 0, 0,0,'$tags'
 
 if ($conn->query($sql) === TRUE && $uploadOk==1){
 	echo 'true';
-	//header("Location:../index.php");
+	header("Location:../index.php");
 }
 else{
 	$errorMessage+= "<br>" . $conn->error.$uploadOk;
   echo 'false';
-	//header("Location:../newMeme.php?message=$errorMessage");
+	header("Location:../newMeme.php?message=$errorMessage");
 }
 
 ?>

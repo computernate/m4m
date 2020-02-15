@@ -27,6 +27,8 @@ if(isset($_GET["message"])){
 
 <link type="text/css" rel="stylesheet" href="CSS/main.css" />
 <link type="text/css" rel="stylesheet" href="CSS/color1.css" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
 <script src="JS/angular.js"> </script>
 <script src="JS/memeapp.js"> </script>
 
@@ -50,10 +52,15 @@ if(isset($_GET["message"])){
 	<div class="topnav" id="top" >
 		<a href="index.php">Good Memes</a>
 		<a href="index.php?sort=new">New Memes</a>
-	</div>
-	<div>
-		<!--<form name="search">
-			<input type="text" name="search" />
-		</form>--->
+		<form name="search" method="get" action="search.php">
+			<div class="searchBox">
+					<input class="searchInput" type="text" name="search" placeholder="Search">
+					<button class="searchButton" href="#">
+							<i class="material-icons">
+									search
+							</i>
+					</button>
+			</div>
+		</form>
 	</div>
 </div>

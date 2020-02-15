@@ -5,44 +5,36 @@
 
 <!--
 Finished since last push
-Fixed meme uploading
-Added top box
-FIxed registration issues
+Report copy/copywright - 15
+Liked pages
 
 TO DO NEXT
-Search
+User page - 19
 
-BIG STUFF I NEED TO DO BEFORE BETA RELEASE
-
-Liked Memes
-Report copy/copywright
--admin
-User page
+BIG STUFF I NEED TO DO BEFORE FEB 29th
 -user image
-My memes
-Meme editor
+My memes - 22
+Meme editor -29
 
 LITTLE STUFF I NEED TO DO BEFORE BETA RELEASE
-Fix filter
-about us/report bugs
-like from post
+Show tags
+about us/report bugs - 29
+like actions from post
 Unable to log in by pressing enter
 Better meme names
 Tips when submiting memes
+nav tell where page is
+Another table that sorts by score
+Terms and conditions -29
 
 STUFF I NEED TO DO FOR FINAL RELEASE
+MOBILE FRIENDLY
 Cart
 My cookies
 Sign in with google/fb
 Link bank account
 Top dozen (By tag as well)
 
-Phase 2
-Business tools
--Wordpress pages
--Shopify pages
--Top 12 cookie sheets
--DEV API
 
 -->
 
@@ -72,7 +64,7 @@ Business tools
 				<input type="button" ng-click="refreshPage()" value="Refrsh with new settings"/>
 			</div>
 			<div id="allMemes">
-				<div ng-init="getMoreMemes('')"></div>
+				<div ng-init="getMoreMemes('');pagination=0;"></div>
 			</div>
 
 		</div>

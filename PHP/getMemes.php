@@ -4,10 +4,54 @@ include 'connect.php';
 
 $page = $_GET["pag"];
 $sortMethod = ($_GET['sort']=='new')? 'id' : 'score';
-$filter = ($_GET["filter"]=="none")?"":"LIKE '".$_GET["filter"]."'";
+$query="";
+if(isset($_GET["search"])){
+	$srch = $_GET["search"];
+	$query = "SELECT id, hasShirt, title, fileType, pointerID, description, likes, tags FROM memes WHERE MATCH(description) AGAINST('$srch') LIMIT 25;";
+}
+else if(isset($_GET["filter"])){
+	$filter = $_GET["filter"];
+	$query = "SELECT id, hasShirt, title, fileType, pointerID, description, likes, tags FROM memes MATCH(filter) AGAINST('$filter') LIMIT 25 ORDER BY '$sortMethod' OFFSET ".( 25 * $page );
+}
+else if(isset($_GET["likedBy"])){
 
+	$likingUser = $_GET["likedBy"];
+	$query = "SELECT memeid FROM likes WHERE userid='$likingUser'";
 
-$query = "SELECT id, hasShirt, title, fileType, pointerID, description, likes, tags FROM memes ORDER BY '$sortMethod' DESC $filter LIMIT 25 OFFSET ".( 25 * $page );
+	$result = $conn->query($query);
+	$returnString = "";
+	if($result->num_rows > 0){
+		while($row = mysqli_fetch_array($result)){
+			$increment = 0;
+			$memeid = $row["memeid"];
+			$likedQuery = "SELECT id, hasShirt, title, fileType, pointerID, description, likes, tags FROM memes WHERE id = '$memeid'";
+			$likedResult = $conn->query($likedQuery);
+			if($likedResult->num_rows > 0) {
+				while($likerow=mysqli_fetch_array($likedResult)){
+					$increment++;
+					for($a = 0;$a<=7;$a++){
+						$returnString.=$likerow[$a];
+						if($a!==7){
+							$returnString.=":";
+						}
+						else{
+							$returnString.=";";
+						}
+					}
+				}
+			}
+			else echo " falseLike ";
+		}
+		echo $returnString;
+	}
+	else{
+		echo "false";
+	}
+	exit();
+}
+else{
+	$query = "SELECT id, hasShirt, title, fileType, pointerID, description, likes, tags FROM memes ORDER BY '$sortMethod' LIMIT 25 OFFSET ".( 25 * $page );
+}
 
 $result = $conn->query($query);
 

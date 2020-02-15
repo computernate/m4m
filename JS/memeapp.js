@@ -81,16 +81,18 @@ memeApp.controller( "memectrl" ,  function($scope, $window, $http, $compile){
 	appends to the end of #allMemes displaying the memes.
 	Data returned by getMemes should be in the format id, hasShirt, title, fileType, pointerID, description, likes, tags
 	**/
-	var pagination=0;
-	$scope.getMoreMemes=function(likedUser){
+	$scope.pagination=0;
+	$scope.getMoreMemes=function(filters){
 		var memestring="";
-		var filter = "none";
+		var filter = "";
 		if( $scope.activeTags.length !== 0 ){
+			filter='&filter='
 			for(var a=0;a<$scope.activeTags.length;a++){
-				filter+="(?=.*"+$scope.activeTags[a]+")";
+				filter+=$scope.activeTags[a]+" ";
 			}
 		}
-		$http.get("PHP/getMemes.php?pag="+pagination+"&sort="+$scope.sortMethod+"&filter="+filter+"&likes="+likedUser).then(function(data){
+		$http.get("PHP/getMemes.php?pag="+$scope.pagination+"&sort="+$scope.sortMethod+filter+filters).then(function(data){
+			console.log(data.data);
 			if(data.data=="false"){
 				memestring="<p>An error has occured. Please <a ng-click='getMoreMemes(\"\")'>click here</a> to try again</p>";
 			}
@@ -136,10 +138,10 @@ memeApp.controller( "memectrl" ,  function($scope, $window, $http, $compile){
 								memestring+=				"<a href='' ng-click='addLike(\""+memeData[0]+"\")'>Like</a>";
 								memestring+=			"</td>";
 								memestring+=			"<td>";
-								memestring+=				"<a href='PHP/report.php?id="+memeData[0]+"'>Report</a>";
+								memestring+=				"<a href='PHP/getCookie.php?id="+memeData[0]+"'>Buy!</a>";
 								memestring+=			"</td>";
 								memestring+=			"<td>";
-								memestring+=				"<a href='PHP/reportCopy.php?id="+memeData[0]+"'>Copy</a>";
+								memestring+=				"<a href='reportCopy.php?copyid="+memeData[0]+"&copytype="+memeData[3]+"'>Copy</a>";
 								memestring+=			"</td>";
 								memestring+=		"</tr>";
 								memestring+=	"</table>";
@@ -161,7 +163,7 @@ memeApp.controller( "memectrl" ,  function($scope, $window, $http, $compile){
 			}
 			var compiledHtml = $compile(memestring)($scope);
 			angular.element( document.querySelector( '#allMemes' ) ).append(compiledHtml);
-			pagination++;
+			$scope.pagination++;
 		});
 	}
 
@@ -309,6 +311,12 @@ Refreshes index, called when asked for new tags
 			}
 		});
 		//document.getElementById( "key" ).value=$scope.getUniqueKey( );
+	}
+
+	$scope.copyurl="";
+//I can probably just remove this once the image editor works, this is only temporary
+	$scope.getCopyMeme=function(){
+		$scope.copyurl="Memes/"+$scope.copyMeme;
 	}
 
 });

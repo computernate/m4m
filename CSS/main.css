@@ -33,6 +33,8 @@ html,body{
 }
 
 
+
+
 /**************************
 
 	Head / Nav
@@ -122,7 +124,6 @@ html,body{
 #navToggleUpper{
 	display:inline;
 	margin-top:10px;
-
 }
 
 #fullNav{
@@ -225,8 +226,72 @@ html,body{
 	color:var(--text-color-2);
 }
 
+.searchBox {
+    position: fixed;
+		right:20px;
+		margin-top:20px;
+    /*transform:  translate(-50%,50%);*/
+    background: #2f3640;
+    height: 40px;
+    border-radius: 40px;
+    padding: 10px;
+
+}
+
+.searchBox:hover > .searchInput {
+    width: 240px;
+    padding: 0 6px;
+}
+
+.searchBox:hover > .searchButton {
+  background: white;
+  color : #2f3640;
+}
+
+.searchButton {
+    color: white;
+    float: left;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #2f3640;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.4s;
+}
+
+.searchInput {
+    border:none;
+    background: none;
+    outline:none;
+    float:right;
+    padding: 0;
+    color: white;
+    font-size: 16px;
+    transition: 0.4s;
+    line-height: 40px;
+    width: 0px;
+
+}
+
+@media screen and (max-width: 620px) {
+.searchBox:hover > .searchInput {
+    width: 150px;
+    padding: 0 6px;
+}
+}
+
+.material-icons{
+	background-image:image("../Images/search-icon.png");
+}
 
 
+/***********************
+
+Create Meme
+
+************************/
 
 
 #createMeme{
@@ -366,6 +431,9 @@ html,body{
 	border-color:var(--a-bg-color);
 }
 
+#searchQuery h2, h4{
+	text-align:center;
+}
 
 
 /****************************
@@ -436,4 +504,35 @@ Single Meme
 	margin-right:-20px;
 	margin-bottom:20px;
 	margin-top:20px;
+}
+
+/*************************
+	Report Copy
+*************************/
+
+#reportCopy{
+	margin-left: auto;
+	margin-right:auto;
+	background-color:var(--a-bg-color);
+	color:var(--text-color);
+}
+#reportCopy h2{
+	text-align:center;
+}
+#reportCopy p{
+	text-align:center;
+}
+#reportCopy img{
+	height:500px;
+	margin:5px;
+}
+#reportCopy input{
+	width:100%;
+}
+#reportCopy input[type="submit"]{
+	height:100px;
+	font-size:30px;
+}
+#reportCopy input[type="submit"]:hover{
+	background-color:var(--bg-color-2);
 }
