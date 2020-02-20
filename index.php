@@ -7,32 +7,33 @@
 Finished since last push
 Report copy/copywright - 15
 Liked pages
+User page - 19
+-user image
 
 TO DO NEXT
-User page - 19
 
 BIG STUFF I NEED TO DO BEFORE FEB 29th
--user image
-My memes - 22
 Meme editor -29
 
-LITTLE STUFF I NEED TO DO BEFORE BETA RELEASE
+LITTLE STUFF I NEED TO DO
 Show tags
-about us/report bugs - 29
+Save tags in a cookie
 like actions from post
-Unable to log in by pressing enter
 Better meme names
-Tips when submiting memes
 nav tell where page is
 Another table that sorts by score
-Terms and conditions -29
+search by user
+Email validation broken
 
-STUFF I NEED TO DO FOR FINAL RELEASE
-MOBILE FRIENDLY
+STUFF I NEED TO DO BEFORE BETA RELEASE (May 1st)
+Terms and conditions
+about us/report bugs
+Better design overall
+MOBILE FRIENDLY!!!!!!!!
 Cart
-My cookies
 Sign in with google/fb
-Link bank account
+Share to FB/Instagram
+Link bank account / paypal?
 Top dozen (By tag as well)
 
 

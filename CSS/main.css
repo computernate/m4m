@@ -147,6 +147,7 @@ html,body{
 	width:250px;
 	margin-left:0px;
 	color: var(--text-color-2);
+	margin-top:0px;
 }
 
 #collapseHead{
@@ -158,10 +159,6 @@ html,body{
 	color:var(--text-color);
 	font-family:refdevil;
 	float:right;
-}
-#fullNav div p:first-child{
-	margin-top:33%;
-
 }
 #fullNav div p{
 	width:250px;
@@ -535,4 +532,70 @@ Single Meme
 }
 #reportCopy input[type="submit"]:hover{
 	background-color:var(--bg-color-2);
+}
+
+/*******************************************
+
+User Image
+
+******************************************/
+
+
+.userimagewrapper{
+	padding-left:50px;
+	width:100%;
+	position:absolute;
+	margin-left:auto;
+	margin-right:auto;
+}
+#userImageFile{
+	visibility:hidden;
+}
+#changeImageText{
+	border-radius:100px;
+	top:0;
+	bottom:0;
+	left:50px;
+	right:0;
+	position:absolute;
+	height:150px;
+	width:150px;
+	background-color:black;
+	color:white;
+	border:2px solid black;
+	vertical-align: center;
+	opacity:0;
+	transition:opacity, .5s;
+}
+#changeImageText:hover{
+	opacity:50%;
+}
+#changeImageText h4{
+	text-align:center;
+	vertical-align:middle;
+	margin-top:65px;
+}
+.userimgside{
+	position:absolute;
+	right:auto;
+	left:auto;
+	width:150px;
+	height:150px;
+	border:2px solid black;
+	border-radius:100px;
+}
+#submitUserImage label{
+	display:block;
+	padding:auto;
+	height:150px;
+}
+
+.userimgpage{
+	width:250px;
+	height:250px;
+	border:2px solid black;
+	border-radius:150px;
+}
+#userpage{
+	text-align:center;
 }

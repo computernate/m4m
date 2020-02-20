@@ -12,8 +12,6 @@ $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 $target_file = $target_dir . $url . '.' . $imageFileType;
 $errorMessage="";
 
-echo 'I"m this far';
-
 if(isset($_POST["submit"])) {
     $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
     if($check !== false) {
@@ -78,7 +76,7 @@ if ($conn->query($sql) === TRUE && $uploadOk==1){
 	header("Location:../index.php");
 }
 else{
-	$errorMessage+= "<br>" . $conn->error.$uploadOk;
+	$errorMessage.= "<br>" . $conn->error.$uploadOk;
   echo 'false';
 	header("Location:../newMeme.php?message=$errorMessage");
 }

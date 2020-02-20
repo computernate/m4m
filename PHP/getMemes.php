@@ -13,7 +13,11 @@ else if(isset($_GET["filter"])){
 	$filter = $_GET["filter"];
 	$query = "SELECT id, hasShirt, title, fileType, pointerID, description, likes, tags FROM memes MATCH(filter) AGAINST('$filter') LIMIT 25 ORDER BY '$sortMethod' OFFSET ".( 25 * $page );
 }
-else if(isset($_GET["likedBy"])){
+else if(isset($_GET["madeBy"])){
+	$madeby = $_GET["madeBy"];
+	$query = "SELECT id, hasShirt, title, fileType, pointerID, description, likes, tags FROM memes WHERE pointerID = '$madeby'";
+}
+else if(isset($_GET["likedBy"])||isset($_GET["madeBy"])){
 
 	$likingUser = $_GET["likedBy"];
 	$query = "SELECT memeid FROM likes WHERE userid='$likingUser'";

@@ -62,6 +62,11 @@ memeApp.controller( "memectrl" ,  function($scope, $window, $http, $compile){
 		});
 	}
 
+
+
+	/**
+	Logs the user out
+	**/
 	$scope.logOut = function(){
 		$http.get("PHP/logOut.php").then(function(data){
 			if( data.data == "true" ){
@@ -74,8 +79,8 @@ memeApp.controller( "memectrl" ,  function($scope, $window, $http, $compile){
 	}
 
 
-	/**
 
+	/**
 	Get More Memes
 	Calls PHP/getMemes.php and uses the data to create a string of html that
 	appends to the end of #allMemes displaying the memes.
@@ -92,7 +97,6 @@ memeApp.controller( "memectrl" ,  function($scope, $window, $http, $compile){
 			}
 		}
 		$http.get("PHP/getMemes.php?pag="+$scope.pagination+"&sort="+$scope.sortMethod+filter+filters).then(function(data){
-			console.log(data.data);
 			if(data.data=="false"){
 				memestring="<p>An error has occured. Please <a ng-click='getMoreMemes(\"\")'>click here</a> to try again</p>";
 			}
@@ -167,6 +171,8 @@ memeApp.controller( "memectrl" ,  function($scope, $window, $http, $compile){
 		});
 	}
 
+
+
 /**
 Refreshes index, called when asked for new tags
 **/
@@ -177,11 +183,12 @@ Refreshes index, called when asked for new tags
 		$scope.getMoreMemes('');
 	}
 
+
+
 	/**
 	expandMeme
 	takes in an element ID, and appends to it a box of info such as the creaor, Tshirt link if applicable, likes, comments, etc.
 	*/
-
 	$scope.expandMeme = function(id,user){
 		document.getElementById(id).classList.add("memeOut");
 		document.getElementById(id+"expanded").classList.add("memeOut");
@@ -202,6 +209,9 @@ Refreshes index, called when asked for new tags
 		$scope.getComments(id);
 
 	}
+
+
+
 	/**
 	Closes a meme after it is unhovered
 	**/

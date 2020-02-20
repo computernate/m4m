@@ -1,10 +1,10 @@
-<form id="login" method="post" action="logIn.php">
+<form id="login" method="post" action="PHP/logIn.php">
 	<table>
 		<tr>
 			<td><input name="name" placeholder="Username or Email" id="name" ng-model="loginName"/></td>
 		</tr>
 		<tr>
-			<td><input name="pass" id="pass" placeholder = "Password" type="password" ng-model="loginPass"/></td>
+			<td><input name="password" id="pass" placeholder = "Password" type="password" ng-model="loginPass"/></td>
 		</tr>
 		<tr ng-show="loginError" class="Error">
 			<td>
@@ -13,7 +13,7 @@
 		</tr>
 		<tr>
 			<td rowspan="2">
-				<input type="button" id="submitLogin" ng-click='logIn(loginName,loginPass)' value="Log In" />
+				<input type="submit" id="submitLogin" value="Log In" />
 			</td>
 		</tr>
 	</table>
@@ -52,7 +52,7 @@
 				<td><p>Email</p></td>
 			</tr>
 			<tr>
-				<td><input name="email" id="email" placeholder = "We won't sell it to scammers. Probably." type="email" required/></td>
+				<td><input name="email" id="email" placeholder = "We won't sell it to scammers. Probably." type="email" required /></td>
 			</tr>
 			<tr ng-show="signUp.email.$invalid && signUp.email.$touched">
 				<td class="error">
@@ -63,7 +63,7 @@
 				<td><input name="getPromo" id="getPromo" type="checkbox"/><span>I would like notifications when people like my memes or buy my cookies</span></td>
 			</tr>
 				<td rowspan="2">
-					<input type="submit" id="submitSignup" value="SIGN UP" ng-disabled="(!signUp.name.$valid || !signUp.pass.$valid || !signUp.email.$valid)" />
+					<input type="submit" id="submitSignup" value="SIGN UP" ng-disabled="(!signUp.name.$valid || !signUp.pass.$valid || signUp.email.$invalid)" />
 				</td>
 	</table>
 </form>

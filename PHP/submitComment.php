@@ -18,7 +18,7 @@ if($content==""||$content==" "){
 $userID=$_SESSION["ID"];
 $userName=$_SESSION["user"];
 
-$sql = "INSERT INTO comments VALUES ('$content', '$userID', '$id', '$userName',NULL);";
+$sql = "INSERT INTO comments VALUES ('$content', '$userID', '$id', '$userName', NULL);";
 
 if ($conn->query($sql) === TRUE){
 	echo 'true';

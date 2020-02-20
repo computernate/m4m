@@ -14,7 +14,7 @@ $result = $conn->query($query);
 if($result->num_rows > 0) {
 	$returnString="";
 	while($row=mysqli_fetch_array($result)){
-		$returnString.='<p>By: <a href="showUser.php?user=$id">'.$row['name'].'</a></p>';
+		$returnString.='<p>By: <a href="userPage.php?uid='.$id.'">'.$row['name'].'</a></p>';
 	}
 	echo $returnString;
 }

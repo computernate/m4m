@@ -39,3 +39,8 @@ function toggleNav(){
 	}
 	nav=!nav;
 }
+
+document.getElementById("userImageFile").onchange = function() {
+	console.log("Change");
+    document.getElementById("submitUserImage").submit();
+};
