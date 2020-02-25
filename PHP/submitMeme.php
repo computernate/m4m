@@ -3,14 +3,22 @@
 include 'connect.php';
 session_start();
 
-$url=date("y-m-d")."-".date("h-i-s").rand();
+$url=str_replace(" ", "_",mysqli_real_escape_string($conn,strip_tags( trim($_POST["title"]))));
+
+$errorMessage="";
+$checkql="SELECT id FROM memes WHERE id='$url'";
+$result = $conn->query($checkql);
+if($result->num_rows > 0) {
+  $url = $url.rand();
+  echo $url;
+}
+echo "Got it";
 
 $target_dir = "../Memes/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 $target_file = $target_dir . $url . '.' . $imageFileType;
-$errorMessage="";
 
 if(isset($_POST["submit"])) {
     $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
@@ -66,8 +74,8 @@ for($i=0;$i<count($splitTags)-1;$i++){
 	$conn->query($tagsql);
 }
 echo 'other stuff done';
-//id, title, pointer, likes, age, score, hasshirt, tags, description, fileType
-$sql = "INSERT INTO memes VALUES ('$url', '$title', '$userID', 0, 0, 0,0,'$tags', '$text', '$imageFileType', 0 )";
+$date=date('Y-m-d H:i:s');
+$sql = "INSERT INTO memes VALUES ('$url', '$title', '$userID', 0, '$tags', '$text', '$imageFileType', 0, $date )";
 //( id VARCHAR(31) PRIMARY KEY, title varchar(511), pointerID varchar (31), likes int(15), age int(255), score int (127),
 	//hasShirt tinyint, tags varchar (511), description varchar (255), fileType varchar (8), isPrivate tinyint);
 

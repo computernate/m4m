@@ -5,35 +5,38 @@
 
 <!--
 Finished since last push
-Report copy/copywright - 15
-Liked pages
-User page - 19
--user image
+nav tell where page is
+Better meme names
+Show tags
 
-TO DO NEXT
+TO DO NEXT by today
+
+TO DO NEXT by saturday
+Another table that sorts by score
+sort by date broken
+Make tags work
 
 BIG STUFF I NEED TO DO BEFORE FEB 29th
 Meme editor -29
+Report Content
 
 LITTLE STUFF I NEED TO DO
-Show tags
 Save tags in a cookie
 like actions from post
-Better meme names
-nav tell where page is
-Another table that sorts by score
 search by user
 Email validation broken
 
 STUFF I NEED TO DO BEFORE BETA RELEASE (May 1st)
-Terms and conditions
-about us/report bugs
 Better design overall
 MOBILE FRIENDLY!!!!!!!!
 Cart
+Link bank account / paypal?
 Sign in with google/fb
 Share to FB/Instagram
-Link bank account / paypal?
+Terms and conditions
+about us/report bugs
+
+
 Top dozen (By tag as well)
 
 
@@ -50,10 +53,10 @@ Top dozen (By tag as well)
 
 		<?php
 			if(!array_key_exists('sort',$_GET)||$_GET['sort']=='new'){
-				echo '<span ng-init = "sortMethod=new;"></span>';
+				echo '<span ng-init = "sortMethod=\'new\';"></span>';
 			}
 			else{
-				echo '<span ng-init = "sortMethod=good;"></span>';
+				echo '<span ng-init = "sortMethod=\'good\';"></span>';
 			}
 		?>
 			<div class="tagControls">

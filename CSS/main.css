@@ -1,15 +1,3 @@
-/*************
-
-color pallete:
-Rain kissed sea A8DeDD
-Mermaid 00ACB0
-Gold Commitment DAA520
-Olive 808000
-Genuine Jeans 00214A
-
-**************/
-
-
 
 @font-face{
 	font-family:refdevil;
@@ -41,7 +29,7 @@ html,body{
 
 **************************/
 
-
+/*Drop Down Message*/
 #topMessage{
 	margin:0px;
 	left:0px;
@@ -50,7 +38,7 @@ html,body{
 	text-align:center;
 	width:100%;
 	height:100px;
-	background-color: var(--a-bg-color);
+	background-color: var(--top-message-bg);
 	color:var(--text-color);
 	animation:1s ease-out 5s slideTop;
   animation-fill-mode: forwards;
@@ -62,7 +50,6 @@ html,body{
 	text-align:center;
 	vertical-align: middle;
 }
-
 @keyframes slideTop{
 	0%{
 		margin-top:0px;
@@ -72,6 +59,7 @@ html,body{
 	}
 }
 
+/*Whole header*/
 #header{
 	width:100%;
 	background-color:var(--head-bg-color);
@@ -82,11 +70,9 @@ html,body{
 	transition: 0.5s, 0.5s top;
 	margin-top:0px;
 }
-
 #header.scrolledUp{
 	top:-100px;
 }
-
 #header .topnav{
 	text-align:center;
 	top:0px;
@@ -96,7 +82,6 @@ html,body{
 	position:absolute;
 
 }
-
 #header .topnav a{
 	width:175px;
 	height:100px;
@@ -111,7 +96,6 @@ html,body{
 	font-family:refdevil;
 	text-decoration:none;
 }
-
 .topnav{
 	display:inline;
 	height:100px;
@@ -126,6 +110,7 @@ html,body{
 	margin-top:10px;
 }
 
+/*Pull out menu*/
 #fullNav{
 	position:fixed;
 	background-color:var(--head-bg-color);
@@ -135,11 +120,9 @@ html,body{
 	left:-250px;
 	transition: 0.5s, 0.5s right;
 }
-
 #fullNav.activeFullNav{
 	left:0px;
 }
-
 #fullNav h2{
 	float:left;
 	font-family:refdevil;
@@ -149,7 +132,6 @@ html,body{
 	color: var(--text-color-2);
 	margin-top:0px;
 }
-
 #collapseHead{
 	float:right;
 	margin-top:10px;
@@ -179,12 +161,12 @@ html,body{
 	color:var(--text-color);
 	font-family:refdevil;
 }
-
 #fullNav .error{
 	color:var(--text-color-2);
 	padding-left:20px;
 }
 
+/*Login info*/
 #login{
 	float:left;
 	width:250px;
@@ -193,12 +175,10 @@ html,body{
 	padding-bottom:25px;
 	border-bottom:1px solid var(--text-color-2);
 }
-
 #login input{
 	width:200px;
 	margin-left:20px;
 }
-
 #signUp{
 	margin-left:20px;
  	margin-top:20px;
@@ -223,6 +203,7 @@ html,body{
 	color:var(--text-color-2);
 }
 
+/*Search Box*/
 .searchBox {
     position: fixed;
 		right:20px;
@@ -232,19 +213,15 @@ html,body{
     height: 40px;
     border-radius: 40px;
     padding: 10px;
-
 }
-
 .searchBox:hover > .searchInput {
     width: 240px;
     padding: 0 6px;
 }
-
 .searchBox:hover > .searchButton {
   background: white;
   color : #2f3640;
 }
-
 .searchButton {
     color: white;
     float: left;
@@ -271,14 +248,12 @@ html,body{
     width: 0px;
 
 }
-
 @media screen and (max-width: 620px) {
-.searchBox:hover > .searchInput {
-    width: 150px;
-    padding: 0 6px;
+	.searchBox:hover > .searchInput {
+	    width: 150px;
+	    padding: 0 6px;
+	}
 }
-}
-
 .material-icons{
 	background-image:image("../Images/search-icon.png");
 }
@@ -296,45 +271,51 @@ Create Meme
 }
 #createMeme table{
 	margin:0px auto;
-	background-color:var(--a-bg-color);
+	background-color:var(--create-bg-color);
 }
+
+/****************************
+
+Memes on the Meme Feed
+
+***************************/
 
 #allMemes{
 	text-align:center;
 	width:100%;
 }
-
 .meme{
 	margin: 20px auto;
 	width:500px;
 	transition:width 1s;
 	display:block;
 	font-family:truman;
-	color:var(--text-color-2);
+	color:var(--meme-text-color);
 }
-.meme.memeOut{
-	width:1000px;
-	color:var(--text-color);
-}
-.meme.memeOut h2, .meme.memeOut h3{
-	color:var(--text-color-2);
-}
-
 .meme h2{
 	padding-top:50px;
 	text-align:left;
+	color:var(--meme-text-color-2);
 }
 .meme img{
 	border:1px solid black;
 	width:500px;
 	border:5px solid black;
 }
+
+.meme.memeOut{
+	width:1000px;
+	color:var(--meme-text-color);
+}
+.meme.memeOut h2, .meme.memeOut h3{
+	color:var(--meme-text-color-2);
+}
+
 .memeDataWrapper{
 	transition:width 1s;
 	height:500px;
 	align-items: stretch;
 }
-
 .memeData{
 	margin-top:0px;
 	width:0px;
@@ -343,7 +324,7 @@ Create Meme
 	z-index:-1;
 	overflow-y:scroll;
 	text-overflow:clip;
-	background-color:var(--head-bg-color);
+	background-color:var(--meme-bg-color);
 	font-size:25px;
 	padding:0px;
 }
@@ -352,19 +333,19 @@ Create Meme
 	padding-left:20px;
 }
 .meme a{
-	color:var(--text-color);
+	color:var(--meme-text-color);
 	text-decoration:none;
 }
 .meme a:hover{
-	color:var(--text-color-2);
+	color:var(--meme-text-color-2);
 }
 .memeControls td{
 	font-size:30px;
 	text-align:center;
 }
 .memeControls{
-	border-top:var(--text-color-2) 1px solid;
-	border-bottom:var(--text-color-2) 1px solid;
+	border-top:var(--meme-text-color-2) 1px solid;
+	border-bottom:var(--meme-text-color-2) 1px solid;
 	width:500px;
 	margin-left:-20px;
 }
@@ -376,8 +357,8 @@ Create Meme
 }
 .meme input{
 	width:460px;
-	background-color:var(--a-bg-color);
-	color:var(--text-color);
+	background-color:var(--meme-bg-color);
+	color:var(--meme-text-color);
 	font-family:truman;
 	font-size: 20px;
 	border:0px;
@@ -391,41 +372,36 @@ Create Meme
 	margin-left:-20px;
 	margin-top:5px;
 	margin-bottom:5px;
-	border-top:var(--text-color-2) 1px solid;
+	border-top:var(--meme-text-color-2) 1px solid;
 }
 
 
 .inactiveTag{
-	background-color:var(--a-bg-color);
+	background-color:var(--tag-inactive-color);
 }
-
-
 #filters{
 	text-align:center;
 }
-
 .tag{
 	transition:color 0.5s;
 }
 .tag:hover{
-	background-color:var(--a-bg-color);
+	background-color:var(--tag-inactive-color);
 }
-
 .tagControls{
 	width:500px;
 	margin:0px auto;
-	background-color:var(--head-bg-color);
+	background-color:var(--tag-bg-color);
 	border:5px black solid;
 	border-radius:10px;
 	color:white;
 }
-
 .tagControls input{
 	width:100%;
 }
 .tagControls input:hover{
-	background-color:var(--a-bg-color);
-	border-color:var(--a-bg-color);
+	background-color:var(--tag-inactive-color);
+	border-color:var(--tag-inactive-color);
 }
 
 #searchQuery h2, h4{
@@ -442,11 +418,9 @@ Single Meme
 #singleMeme{
 	text-align:center;
 }
-
 #singleMeme h3{
 	margin-top:40px;
 }
-
 #singleMeme #comments{
 	width:500px;
 	border:2px solid black;
@@ -454,20 +428,20 @@ Single Meme
 	text-align:left;
 	padding-left:20px;
 	border-radius:5px;
-	background-color:var(--a-bg-color);
+	background-color:var(--meme-bg-color);
 }
 #singleMeme #comments a{
 	text-decoration:none;
-	color:var(--text-color);
+	color:var(--meme-text-color);
 	padding-top:20px;
 	display:block;
 }
 #singleMeme #comments a:hover{
-	color:var(--text-color-2);
+	color:var(--meme-text-color-2);
 }
 #singleMeme #comments p{
 	font-size:20px;
-	color:var(--text-color);
+	color:var(--meme-text-color);
 }
 #singleMeme .break{
 	height:0px;
@@ -495,7 +469,7 @@ Single Meme
 }
 
 .break{
-	border:1px solid var(--text-color-2);
+	border:1px solid var(--meme-text-color-2);
 	height:0px;
 	width:100%;
 	margin-right:-20px;
@@ -504,14 +478,16 @@ Single Meme
 }
 
 /*************************
+
 	Report Copy
+
 *************************/
 
 #reportCopy{
 	margin-left: auto;
 	margin-right:auto;
-	background-color:var(--a-bg-color);
-	color:var(--text-color);
+	background-color:var(--copy-bg-color);
+	color:var(--copy-text-color);
 }
 #reportCopy h2{
 	text-align:center;
@@ -531,7 +507,7 @@ Single Meme
 	font-size:30px;
 }
 #reportCopy input[type="submit"]:hover{
-	background-color:var(--bg-color-2);
+	background-color:var(--copy-bg-color-2);
 }
 
 /*******************************************

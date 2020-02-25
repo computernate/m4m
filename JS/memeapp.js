@@ -91,12 +91,13 @@ memeApp.controller( "memectrl" ,  function($scope, $window, $http, $compile){
 		var memestring="";
 		var filter = "";
 		if( $scope.activeTags.length !== 0 ){
-			filter='&filter='
+			filter+="&filter=";
 			for(var a=0;a<$scope.activeTags.length;a++){
 				filter+=$scope.activeTags[a]+" ";
 			}
 		}
 		$http.get("PHP/getMemes.php?pag="+$scope.pagination+"&sort="+$scope.sortMethod+filter+filters).then(function(data){
+			console.log(data.data);
 			if(data.data=="false"){
 				memestring="<p>An error has occured. Please <a ng-click='getMoreMemes(\"\")'>click here</a> to try again</p>";
 			}
@@ -105,37 +106,30 @@ memeApp.controller( "memectrl" ,  function($scope, $window, $http, $compile){
 				for(var a=0;a<dataStrings.length-1;a++){
 					var memeData=dataStrings[a].split(":");
 
-					if($scope.activeTagFilters.length>0){
-						var blockedTag = false;
-						var splitTags = memeData[7].split(",");
-						for(var b=0;b<splitTags.length-1;b++){
-							if($scope.activeTagFilters.indexOf(splitTags[b])==-1){
-								blockedTag=true;
-							}
-						}
-						if(blockedTag){
-							memestring+="<div style='visibility:hidden;height:0px;'>";
-						}
-					}
-
 					memestring+="<table class='meme' id='"+memeData[0]+"'";
-					if(memeData[1]=="true"){
-						//memestring+=" class='hasShirt' ";
-					}
 						memestring+=">";
 						memestring+="<tr>";
-						memestring+="<td colspan='2'><h2>"+memeData[2]+"</h2><h3 id='likes"+memeData[0]+"'>"+memeData[6]+"</h3></td>";
-						memestring+="</tr><tr ng-mouseleave='closeMeme(\""+memeData[0]+"\")' ng-mouseenter='expandMeme(\""+memeData[0]+"\",\""+memeData[4]+"\")'>";
+						memestring+="<td colspan='2'><h2>"+memeData[1]+"</h2><h3 id='likes"+memeData[0]+"'>"+memeData[5]+"</h3></td>";
+						memestring+="</tr><tr ng-mouseleave='closeMeme(\""+memeData[0]+"\")' ng-mouseenter='expandMeme(\""+memeData[0]+"\",\""+memeData[3]+"\")'>";
 						memestring+="<td>";
 						memestring+="<a href='memePage.php?meme="+memeData[0]+"' >";
-						memestring+=	"<img src='Memes/"+memeData[0]+"."+memeData[3]+"' alt='"+memeData[2]+"' />";
+						memestring+=	"<img src='Memes/"+memeData[0]+"."+memeData[2]+"' alt='"+memeData[1]+"' />";
 						memestring+="</a>";
 						memestring+="</td><td class='memeDataWrapper' id='"+memeData[0]+"expandedwrapper'>";
 							memestring+="<div class='memeData' id='"+memeData[0]+"expanded'>";
-							memestring+="<p>"+memeData[5];
+							memestring+="<p>"+memeData[4];
 							memestring+="</p>";
 							memestring+=	"<div id='userInfo"+memeData[0]+"'>";
 							memestring+=	"</div>";
+							memestring+=	"<p>";
+							var tags = memeData[6].split(",");
+							if(tags.length>0){
+								for(var b=0;b<tags.length-2;b++){
+									memestring+="<span class='memeTag'>"+tags[b]+", </span>";
+								}
+								memestring+="<span class='memeTag'>"+tags[tags.length-2]+"</span>";
+							}
+							memestring+="</p>";
 							if($scope.loggedIn){
 								memestring+=	"<table class='memecontrols'>";
 								memestring+=			"<td>";
@@ -145,7 +139,7 @@ memeApp.controller( "memectrl" ,  function($scope, $window, $http, $compile){
 								memestring+=				"<a href='PHP/getCookie.php?id="+memeData[0]+"'>Buy!</a>";
 								memestring+=			"</td>";
 								memestring+=			"<td>";
-								memestring+=				"<a href='reportCopy.php?copyid="+memeData[0]+"&copytype="+memeData[3]+"'>Copy</a>";
+								memestring+=				"<a href='reportCopy.php?copyid="+memeData[0]+"&copytype="+memeData[2]+"'>Copy</a>";
 								memestring+=			"</td>";
 								memestring+=		"</tr>";
 								memestring+=	"</table>";
@@ -161,8 +155,6 @@ memeApp.controller( "memectrl" ,  function($scope, $window, $http, $compile){
 							memestring+="</div>";
 						memestring+="</td></tr>";
 					memestring+="</table>";
-						if(blockedTag)
-							memestring+="</div>";
 				}
 			}
 			var compiledHtml = $compile(memestring)($scope);
@@ -245,7 +237,7 @@ Refreshes index, called when asked for new tags
 				for(var a=0;a<dataStrings.length-1;a++){
 					var commentData=dataStrings[a].split(":");
 
-					finalString+="<a href='viewUser.php?id="+commentData[1]+"' >"+commentData[3]+"</a>";
+					finalString+="<a href='userPage.php?id="+commentData[1]+"' >"+commentData[3]+"</a>";
 					finalString+="<p>"+commentData[0]+"</p>";
 					finalString+="<div class='break'></div>";
 

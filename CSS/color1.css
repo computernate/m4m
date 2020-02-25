@@ -1,7 +1,30 @@
 :root{
+
+	/*general*/
+	--text-color:#FFFFFF;//White
+	--text-color-2:#d6651e;//Reddish
+
+	/*Nav*/
+	--top-message-bg:#7395AE;
+
 	--head-bg-color:#557A95;
 	--a-bg-color:#7395AE;
-	--text-color:#FFFFFF;
-	/*--text-color-2:#B1A296;*/
-	--text-color-2:#d6651e;
+	--head-nav-bg-color-2:#5595FF;
+
+	/*Create Meme*/
+	--create-bg-color:#7395AE;
+
+	/*Meme Feed*/
+	--meme-bg-color:#557A95;
+	--meme-text-color:#FFFFFF;
+	--meme-text-color-2:#D6651E;
+
+	/*Tags*/
+	--tag-bg-color:#557A95;
+	--tag-inactive-color:#7395AE;
+
+	/*Report copy*/
+	--copy-bg-color:#7395AE;
+	--copy-bg-color-2:#5595FF;
+	--copy-text-color:#FFFFFF;
 }

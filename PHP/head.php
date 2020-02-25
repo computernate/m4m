@@ -50,8 +50,14 @@ if(isset($_GET["message"])){
 		<img src="Images/navToggle.jpg" alt="Navigation" ng-click="activatedFullNav=!activatedFullNav">
 	</div>
 	<div class="topnav" id="top" >
-		<a href="index.php">Good Memes</a>
-		<a href="index.php?sort=new">New Memes</a>
+		<a href="index.php" style='<?php
+			if(!isset($_GET["sort"])&&strpos($_SERVER['REQUEST_URI'],"index.php")!=false){
+				echo "background-color:var(--head-nav-bg-color-2);";
+			} ?>'>Good Memes</a>
+		<a href="index.php?sort=new" style='<?php
+			if(isset($_GET["sort"])&&strpos($_SERVER['REQUEST_URI'],"index.php")!=false){
+				echo "background-color:var(--head-nav-bg-color-2);";
+			} ?>'>New Memes</a>
 		<form name="search" method="get" action="search.php">
 			<div class="searchBox">
 					<input class="searchInput" type="text" name="search" placeholder="Search">

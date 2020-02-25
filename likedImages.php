@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <html ng-app="money4memes">
 	<head>
 		<title>The Memery</title>
