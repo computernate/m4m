@@ -13,6 +13,11 @@
 
 	/*Create Meme*/
 	--create-bg-color:#7395AE;
+	--create-input-bg:#557A95;
+	--create-input-disabled:#666;
+	--create-input-bg-hover:#5595FF;
+	--create-input-text:#FFF;
+	--create-label-text:#FFF;
 
 	/*Meme Feed*/
 	--meme-bg-color:#557A95;

@@ -36,10 +36,10 @@ else {
 		$_SESSION["ID"]=$row["id"];
 		setcookie("username",$username,time()+(60*60*24*7));
 		setcookie("password",$password,time()+(60*60*24*7));
-		header("Location:../index.php?message=Welcome!");
+		header("Location: ../index.php?message=Welcome!");
 	}
 	else {
-		header("Location:../index.php?message=Error logging in. Please try again");
+		header("Location: ../index.php?message=Error logging in. Please try again");
 	 }
  }
 ?>

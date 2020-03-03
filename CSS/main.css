@@ -69,6 +69,7 @@ html,body{
 	top:0px;
 	transition: 0.5s, 0.5s top;
 	margin-top:0px;
+	z-index:1;
 }
 #header.scrolledUp{
 	top:-100px;
@@ -266,12 +267,123 @@ Create Meme
 ************************/
 
 
+.label{
+	color:var(--create-label-text);
+	width:250px;
+	margin-right:10px;
+	float:left;
+	font-size:35px;
+}
+.option{
+	margin-left:20px;
+	margin-bottom:10px;
+	margin-top:10px;
+	display:block;
+		color:var(--create-label-text);
+}
+
+.option input{
+	border:1px solid var(--create-input-text);
+	padding:10px;
+	background-color:var(--create-input-bg);
+	color:var(--create-input-text);
+}
+.option input:hover{
+	background-color:var(--create-input-bg-hover);
+}
+
+#submitMeme{
+	width:100%;
+	text-align:center;
+	border:1px solid var(--create-input-text);
+	padding:10px;
+	background-color:var(--create-input-bg);
+	color:var(--create-input-text);
+	font-size:35px;
+}
+#submitMeme:hover{
+	background-color:var(--create-input-bg-hover);
+}
+#submitMeme[disabled="disabled"]{
+	background-color:var(--create-input-disabled);
+}
+#borderToggle.borderDisabled{
+	background-color:var(--create-bg-color);
+}
+.tagOption{
+	font-size:35px;
+}
+.option input[type='checkbox']{
+	width:40px;
+	height:40px;
+	border:1px solid var(--create-input-text);
+	background-color:var(--create-input-bg);
+}
+#uploadingMeme{
+	visibility:hidden;
+}
+#pulledImage{
+	width:400px;
+	float:right;
+	margin-right:20px;
+	margin-bottom:40px;
+}
+.option textarea{
+	width:400px;
+	height:100px;
+}
+.memeOptions{
+	margin-top:50px;
+}
 #createMeme{
 	margin:20px auto;
 }
-#createMeme table{
+#createMeme{
+	width:750px;
+}
+#createMeme{
 	margin:0px auto;
 	background-color:var(--create-bg-color);
+}
+canvas{
+	border:2px solid black;
+}
+.canvas-container{
+	margin:20px auto 20px auto;
+}
+
+#creatorControls{
+	margin:20px;
+	margin-bottom:0px;
+}
+
+#creatorControls input, .textControls input, #creatorControls select, #creatorControls label{
+	border:1px solid var(--create-input-text);
+	padding:5px;
+	background-color:var(--create-input-bg);
+	color:var(--create-input-text);
+}
+#creatorControls input:hover, .textControls input:hover, #creatorControls select:hover, #creatorControls label:hover{
+background-color:var(--create-input-bg-hover);
+}
+
+#textControls1.disabled input, #textControls2.disabled input{
+	background-color:var(--create-input-disabled);
+}
+
+#fileForCreator{
+	visibility:hidden;
+	width:0px;
+	height:0px;
+}
+
+#textControls1, #textControls2{
+	margin-right:5px;
+	margin-left:5px;
+	display:inline;
+}
+#textControls1 input, #textControls2 input{
+	margin:0px;
 }
 
 /****************************

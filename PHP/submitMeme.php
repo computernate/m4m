@@ -3,69 +3,31 @@
 include 'connect.php';
 session_start();
 
-$url=str_replace(" ", "_",mysqli_real_escape_string($conn,strip_tags( trim($_POST["title"]))));
+$url=str_replace(" ", "_",mysqli_real_escape_string($conn,strip_tags( trim($_POST["memeTitle"]))));
 
 $errorMessage="";
 $checkql="SELECT id FROM memes WHERE id='$url'";
 $result = $conn->query($checkql);
 if($result->num_rows > 0) {
   $url = $url.rand();
-  echo $url;
 }
-echo "Got it";
+$url = "../Memes/".$url.".png";
+echo $url;
 
-$target_dir = "../Memes/";
-$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-$uploadOk = 1;
-$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-$target_file = $target_dir . $url . '.' . $imageFileType;
+$img = $_POST['uploadingMeme'];
+$img = str_replace('data:image/png;base64,', '', $img);
+$img = str_replace(' ', '+', $img);
+$data = base64_decode($img);
 
-if(isset($_POST["submit"])) {
-    $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-    if($check !== false) {
-        $uploadOk = 1;
-        echo 'Image size okay';
-    } else {
-        $errorMessage= "File is not an image.";
-        $uploadOk = 0;
-      	//header("Location:../newMeme.php?message=$errorMessage");
-        echo 'File is not an image';
-    }
-
-	if ($_FILES["fileToUpload"]["size"] > 1500000) {
-    $errorMessage= "Sorry, your file is too Dank. Please try a smaller sized meme.";
-    $uploadOk = 0;
-    echo 'file too large';
-  	//header("Location:../newMeme.php?message=$errorMessage");
-}
-
-
-if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-&& $imageFileType != "gif" ) {
-    $errorMessage= "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-    $uploadOk = 0;
-    echo 'file type okay';
-  //	header("Location:../newMeme.php?message=$errorMessage");
-}
-
-
-if ($uploadOk == 0) {
-    $errorMessage= "Sorry, your file was not uploaded.";
+if(file_put_contents($url, $data)){
+    echo 'moved';
+  } else {
+    $errorMessage= "Sorry, there was an error uploading your file.";
     echo 'not uploaded';
-  	//header("Location:../newMeme.php?message=$errorMessage");
-	}
-	else {
-		if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-      echo 'moved';
-		} else {
-			$errorMessage= "Sorry, there was an error uploading your file.";
-      echo 'not uploaded';
-		}
-	}
-}
+  }
 
-$title=mysqli_real_escape_string ($conn,strip_tags( trim($_POST["title"])));
-$text=mysqli_real_escape_string ($conn,strip_tags( trim($_POST["text"])));
+$title=mysqli_real_escape_string ($conn,strip_tags( trim($_POST["memeTitle"])));
+$text=mysqli_real_escape_string ($conn,strip_tags( trim($_POST["memeText"])));
 $userID=$_SESSION["ID"];
 $tags = $_POST['atags'];
 $splitTags=explode(",",$tags);
@@ -75,9 +37,10 @@ for($i=0;$i<count($splitTags)-1;$i++){
 }
 echo 'other stuff done';
 $date=date('Y-m-d H:i:s');
-$sql = "INSERT INTO memes VALUES ('$url', '$title', '$userID', 0, '$tags', '$text', '$imageFileType', 0, $date )";
-//( id VARCHAR(31) PRIMARY KEY, title varchar(511), pointerID varchar (31), likes int(15), age int(255), score int (127),
-	//hasShirt tinyint, tags varchar (511), description varchar (255), fileType varchar (8), isPrivate tinyint);
+$isPrivate = (isset($_GET["isPrivate"]))?0:1;
+$sql = "INSERT INTO memes VALUES ('$url', '$title', '$userID', 0, '$tags', '$text', '$isPrivate', $date )";
+//id VARCHAR(31) PRIMARY KEY, title varchar(255), pointerID varchar (31), likes int(15),
+//tags varchar (511), description varchar (511), isPrivate tinyint, age DATETIME(255))
 
 if ($conn->query($sql) === TRUE && $uploadOk==1){
 	echo 'true';
@@ -88,5 +51,5 @@ else{
   echo 'false';
 	header("Location:../newMeme.php?message=$errorMessage");
 }
-
+*/
 ?>

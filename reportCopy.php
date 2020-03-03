@@ -10,7 +10,7 @@
 		<?php include "PHP/head.php" ?>
 		<div id="wrapper">
       <?php
-        if(!isset($_GET['copyid'])||!isset($_GET['copytype'])){
+        if(!isset($_GET['copyid'])){
           echo '<h2>Sorry, we couldn\'t find the meme you asked for. Please try again!</h2>';
         }
         else{
@@ -32,7 +32,7 @@
           </tr>
           <tr>
             <td>
-              <p><img src = "Memes/<?php echo $_GET["copyid"].".".$_GET['copytype'] ?>" /></p>
+              <p><img src = "Memes/<?php echo $_GET["copyid"].".png"; ?>" /></p>
             </td>
             <td>
               <p><input type = 'text' ng-model = 'copyMeme' placeholder = "Meme Id" name = 'copyMeme' /></p>

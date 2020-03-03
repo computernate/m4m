@@ -8,8 +8,7 @@ Finished since last push
 nav tell where page is
 Better meme names
 Show tags
-
-TO DO NEXT by today
+Meme editor
 
 TO DO NEXT by saturday
 Another table that sorts by score
@@ -17,8 +16,8 @@ sort by date broken
 Make tags work
 
 BIG STUFF I NEED TO DO BEFORE FEB 29th
-Meme editor -29
 Report Content
+Delete Meme
 
 LITTLE STUFF I NEED TO DO
 Save tags in a cookie
@@ -26,19 +25,16 @@ like actions from post
 search by user
 Email validation broken
 
-STUFF I NEED TO DO BEFORE BETA RELEASE (May 1st)
-Better design overall
-MOBILE FRIENDLY!!!!!!!!
-Cart
-Link bank account / paypal?
-Sign in with google/fb
-Share to FB/Instagram
-Terms and conditions
-about us/report bugs
-
-
-Top dozen (By tag as well)
-
+STUFF I NEED TO DO BEFORE BETA RELEASE (April 1st)
+Cart -3/6
+Link bank account / paypal / Venmo -3/10
+Notifications -3/11
+Share to FB/Instagram 3/12
+Sign in with google/fb -3/14
+Better design overall -3/21
+MOBILE FRIENDLY!!!!!!!! -3/28
+Terms and conditions  -3/31
+about us/report bugs -3/31
 
 -->
 

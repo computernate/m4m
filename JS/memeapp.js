@@ -2,6 +2,9 @@ var memeApp = angular.module( "money4memes", [] );
 
 memeApp.controller( "memectrl" ,  function($scope, $window, $http, $compile){
 
+	$scope.logValue = function(){
+		console.log($scope.imageBlob);
+	}
 
 	//Make the head go up when scrolled update, and take care of hasScrolled variable
 	//It is not very elegant, but I could not figure out angular scrolling so I had to use vanilla
@@ -97,32 +100,31 @@ memeApp.controller( "memectrl" ,  function($scope, $window, $http, $compile){
 			}
 		}
 		$http.get("PHP/getMemes.php?pag="+$scope.pagination+"&sort="+$scope.sortMethod+filter+filters).then(function(data){
-			console.log(data.data);
 			if(data.data=="false"){
 				memestring="<p>An error has occured. Please <a ng-click='getMoreMemes(\"\")'>click here</a> to try again</p>";
 			}
 			else{
 				dataStrings = data.data.split(";");
 				for(var a=0;a<dataStrings.length-1;a++){
+					console.log(dataStrings[a]);
 					var memeData=dataStrings[a].split(":");
-
 					memestring+="<table class='meme' id='"+memeData[0]+"'";
 						memestring+=">";
 						memestring+="<tr>";
-						memestring+="<td colspan='2'><h2>"+memeData[1]+"</h2><h3 id='likes"+memeData[0]+"'>"+memeData[5]+"</h3></td>";
-						memestring+="</tr><tr ng-mouseleave='closeMeme(\""+memeData[0]+"\")' ng-mouseenter='expandMeme(\""+memeData[0]+"\",\""+memeData[3]+"\")'>";
+						memestring+="<td colspan='2'><h2>"+memeData[1]+"</h2><h3 id='likes"+memeData[0]+"'>"+memeData[4]+"</h3></td>";
+						memestring+="</tr><tr ng-mouseleave='closeMeme(\""+memeData[0]+"\")' ng-mouseenter='expandMeme(\""+memeData[0]+"\",\""+memeData[2]+"\")'>";
 						memestring+="<td>";
 						memestring+="<a href='memePage.php?meme="+memeData[0]+"' >";
-						memestring+=	"<img src='Memes/"+memeData[0]+"."+memeData[2]+"' alt='"+memeData[1]+"' />";
+						memestring+=	"<img src='Memes/"+memeData[0]+".png' alt='"+memeData[1]+"' />";
 						memestring+="</a>";
 						memestring+="</td><td class='memeDataWrapper' id='"+memeData[0]+"expandedwrapper'>";
 							memestring+="<div class='memeData' id='"+memeData[0]+"expanded'>";
-							memestring+="<p>"+memeData[4];
+							memestring+="<p>"+memeData[3];
 							memestring+="</p>";
 							memestring+=	"<div id='userInfo"+memeData[0]+"'>";
 							memestring+=	"</div>";
 							memestring+=	"<p>";
-							var tags = memeData[6].split(",");
+							var tags = memeData[5].split(",");
 							if(tags.length>0){
 								for(var b=0;b<tags.length-2;b++){
 									memestring+="<span class='memeTag'>"+tags[b]+", </span>";
@@ -139,7 +141,7 @@ memeApp.controller( "memectrl" ,  function($scope, $window, $http, $compile){
 								memestring+=				"<a href='PHP/getCookie.php?id="+memeData[0]+"'>Buy!</a>";
 								memestring+=			"</td>";
 								memestring+=			"<td>";
-								memestring+=				"<a href='reportCopy.php?copyid="+memeData[0]+"&copytype="+memeData[2]+"'>Copy</a>";
+								memestring+=				"<a href='reportCopy.php?copyid="+memeData[0]+"'>Copy</a>";
 								memestring+=			"</td>";
 								memestring+=		"</tr>";
 								memestring+=	"</table>";
@@ -157,6 +159,7 @@ memeApp.controller( "memectrl" ,  function($scope, $window, $http, $compile){
 					memestring+="</table>";
 				}
 			}
+			console.log(memestring);
 			var compiledHtml = $compile(memestring)($scope);
 			angular.element( document.querySelector( '#allMemes' ) ).append(compiledHtml);
 			$scope.pagination++;
@@ -319,6 +322,11 @@ Refreshes index, called when asked for new tags
 //I can probably just remove this once the image editor works, this is only temporary
 	$scope.getCopyMeme=function(){
 		$scope.copyurl="Memes/"+$scope.copyMeme;
+	}
+
+	$scope.submitMeme=function(){
+		var src = canvas.toDataURL("image/png",1);
+		document.getElementById("uploadingMeme").value=src;
 	}
 
 });
