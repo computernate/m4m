@@ -5,36 +5,31 @@
 
 <!--
 Finished since last push
-nav tell where page is
-Better meme names
-Show tags
-Meme editor
-
-TO DO NEXT by saturday
+sort by date works
 Another table that sorts by score
-sort by date broken
-Make tags work
-
-BIG STUFF I NEED TO DO BEFORE FEB 29th
-Report Content
-Delete Meme
+Cart
 
 LITTLE STUFF I NEED TO DO
-Save tags in a cookie
 like actions from post
 search by user
 Email validation broken
+Score
+Make tags work
+Save tags in a cookie
 
-STUFF I NEED TO DO BEFORE BETA RELEASE (April 1st)
-Cart -3/6
+UX and cart (April 1st)
 Link bank account / paypal / Venmo -3/10
-Notifications -3/11
 Share to FB/Instagram 3/12
 Sign in with google/fb -3/14
 Better design overall -3/21
 MOBILE FRIENDLY!!!!!!!! -3/28
 Terms and conditions  -3/31
 about us/report bugs -3/31
+
+ADMIN THINGS (May 1st)
+Notifications
+Report Content
+Delete Meme
 
 -->
 
@@ -48,7 +43,7 @@ about us/report bugs -3/31
 		<div id="wrapper">
 
 		<?php
-			if(!array_key_exists('sort',$_GET)||$_GET['sort']=='new'){
+			if(isset($_GET["sort"])&&$_GET['sort']=='new'){
 				echo '<span ng-init = "sortMethod=\'new\';"></span>';
 			}
 			else{
@@ -63,6 +58,12 @@ about us/report bugs -3/31
 				</p>
 				<input type="button" ng-click="refreshPage()" value="Refrsh with new settings"/>
 			</div>
+			<form action="https://the-memery-cookies.myshopify.com/cart/add" target="_blank" method="post" id="form1"/>';
+			<input type="hidden" name="id" value="32528941777028" />
+			<input type="hidden" name="quantity" value="1" />
+			<input type="hidden" name="properties[memeid]" value="1" />
+			<a href="" ng-click="buyMeme('Underwater_homework')">Buy!</a>
+		</form>
 			<div id="allMemes">
 				<div ng-init="getMoreMemes('');pagination=0;"></div>
 			</div>

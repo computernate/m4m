@@ -22,7 +22,7 @@ if($result->num_rows > 0) {
 	setcookie("password",$password,time()+(60*60*24*7));
 	//setcookie("ID",$row["id"],time()+(60*60*24*7));
 
-	echo "true";
+	header("Location: ../index.php?message=Welcome!");
 }
 else {
 	$sql='SELECT * FROM users WHERE email="'.$username.'" AND password="'.$password.'"';

@@ -3,16 +3,16 @@
 include 'connect.php';
 
 $page = $_GET["pag"];
-$sortMethod = ($_GET['sort']=='new')? 'age\' DESC' : 'id';
+$sortMethod = ($_GET['sort']=='new')? 'age' : 'score';
 
 $query="";
 if(isset($_GET["search"])){
 	$srch = $_GET["search"];
-	$query = "SELECT id, hasShirt, title, pointerID, description, likes, tags FROM memes WHERE MATCH(description) AGAINST('$srch') LIMIT 25;";
+	$query = "SELECT id, title, pointerID, description, likes, tags, age FROM memes WHERE MATCH(description) AGAINST('$srch') LIMIT 25;";
 }
 /*else if(isset($_GET["filter"])){
 	$filter = $_GET["filter"];
-	$query = "SELECT id, title,  pointerID, description, likes, tags, age FROM memes MATCH(filter) AGAINST('$filter') LIMIT 25 ORDER BY '$sortMethod' OFFSET ".( 25 * $page );
+	$query = "SELECT id, title, pointerID, description, likes, tags, age FROM memes MATCH(filter) AGAINST('$filter') LIMIT 25 ORDER BY '$sortMethod' OFFSET ".( 25 * $page );
 }*/
 else if(isset($_GET["madeBy"])){
 	$madeby = $_GET["madeBy"];
@@ -54,12 +54,7 @@ else if(isset($_GET["likedBy"])||isset($_GET["madeBy"])){
 	exit();
 }
 else{
-	if($_GET["sort"]=='new'){
-		$query = "SELECT id, title, pointerID, description, likes, tags, age FROM memes ORDER BY 'age' DESC LIMIT 25 OFFSET ".( 25 * $page );
-	}
-	else{
-		//$query = "SELECT id, title, pointerID, description, likes, tags, age FROM memes ORDER BY 'age' DESC LIMIT 25 OFFSET ".( 25 * $page );
-	}
+	$query = "SELECT id, title, pointerID, description, likes, tags, age FROM memes ORDER BY $sortMethod DESC LIMIT 25 OFFSET ".( 25 * $page );
 }
 
 $result = $conn->query($query);

@@ -30,6 +30,7 @@ if(isset($_GET["message"])){
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
 <script src="JS/angular.js"> </script>
+<script src="JS/jquery-3.4.1.js"> </script>
 <script src="JS/memeapp.js"> </script>
 
 <div id="header" ng-class="{'scrolledUp':scrolledUp}">

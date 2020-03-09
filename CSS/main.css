@@ -386,6 +386,10 @@ background-color:var(--create-input-bg-hover);
 	margin:0px;
 }
 
+#cartForm{
+	visibility:hidden;
+}
+
 /****************************
 
 Memes on the Meme Feed
@@ -518,6 +522,16 @@ Memes on the Meme Feed
 
 #searchQuery h2, h4{
 	text-align:center;
+}
+.buyMemeButton{
+	background-color:var(--meme-bg-color);
+	color:var(--meme-text-color);
+	text-decoration:none;
+	border:0px;
+}
+.buyMemeButton:hover{
+font-family:truman;
+font-size: 20px;
 }
 
 

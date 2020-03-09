@@ -49,7 +49,11 @@
 			>
 			<a href='likedImages.php?likedBy=<?php echo $_SESSION["ID"];?>'>Liked Memes</a>
 	</p>
+		<p><a href='' ng-click='submitToCart()' >Cart</a></p>
 
 	<p><a href='' ng-click='logOut()' >Log Out</a></p>
 
+	<form method="post" action="https://the-memery-cookies.myshopify.com/cart" id="cartForm" />
+		<input type="text" id="cartFormData" name="cartFormData" />
+	</form>
 </div>

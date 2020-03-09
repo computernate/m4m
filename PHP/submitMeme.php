@@ -11,15 +11,15 @@ $result = $conn->query($checkql);
 if($result->num_rows > 0) {
   $url = $url.rand();
 }
-$url = "../Memes/".$url.".png";
-echo $url;
+$newurl = "../Memes/".$url.".png";
+echo $newurl;
 
 $img = $_POST['uploadingMeme'];
 $img = str_replace('data:image/png;base64,', '', $img);
 $img = str_replace(' ', '+', $img);
 $data = base64_decode($img);
 
-if(file_put_contents($url, $data)){
+if(file_put_contents($newurl, $data)){
     echo 'moved';
   } else {
     $errorMessage= "Sorry, there was an error uploading your file.";
@@ -38,18 +38,19 @@ for($i=0;$i<count($splitTags)-1;$i++){
 echo 'other stuff done';
 $date=date('Y-m-d H:i:s');
 $isPrivate = (isset($_GET["isPrivate"]))?0:1;
-$sql = "INSERT INTO memes VALUES ('$url', '$title', '$userID', 0, '$tags', '$text', '$isPrivate', $date )";
+$sql = "INSERT INTO memes VALUES ('$url', '$title', '$userID', 0, '$tags', '$text', '$isPrivate', '$date', 0 )";
 //id VARCHAR(31) PRIMARY KEY, title varchar(255), pointerID varchar (31), likes int(15),
 //tags varchar (511), description varchar (511), isPrivate tinyint, age DATETIME(255))
 
-if ($conn->query($sql) === TRUE && $uploadOk==1){
+if ($conn->query($sql) === TRUE){
 	echo 'true';
-	header("Location:../index.php");
+	header("Location: ../index.php");
 }
 else{
 	$errorMessage.= "<br>" . $conn->error.$uploadOk;
   echo 'false';
-	header("Location:../newMeme.php?message=$errorMessage");
+  echo $errorMessage;
+	//header("Location: ../newMeme.php?message=$errorMessage");
 }
-*/
+
 ?>

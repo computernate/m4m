@@ -99,6 +99,7 @@ memeApp.controller( "memectrl" ,  function($scope, $window, $http, $compile){
 				filter+=$scope.activeTags[a]+" ";
 			}
 		}
+		console.log("PHP/getMemes.php?pag="+$scope.pagination+"&sort="+$scope.sortMethod+filter+filters);
 		$http.get("PHP/getMemes.php?pag="+$scope.pagination+"&sort="+$scope.sortMethod+filter+filters).then(function(data){
 			if(data.data=="false"){
 				memestring="<p>An error has occured. Please <a ng-click='getMoreMemes(\"\")'>click here</a> to try again</p>";
@@ -106,7 +107,6 @@ memeApp.controller( "memectrl" ,  function($scope, $window, $http, $compile){
 			else{
 				dataStrings = data.data.split(";");
 				for(var a=0;a<dataStrings.length-1;a++){
-					console.log(dataStrings[a]);
 					var memeData=dataStrings[a].split(":");
 					memestring+="<table class='meme' id='"+memeData[0]+"'";
 						memestring+=">";
@@ -138,7 +138,12 @@ memeApp.controller( "memectrl" ,  function($scope, $window, $http, $compile){
 								memestring+=				"<a href='' ng-click='addLike(\""+memeData[0]+"\")'>Like</a>";
 								memestring+=			"</td>";
 								memestring+=			"<td>";
-								memestring+=				"<a href='PHP/getCookie.php?id="+memeData[0]+"'>Buy!</a>";
+								memestring+=				'<form action="https://the-memery-cookies.myshopify.com/cart/add" target="_blank" method="post" id="form'+memeData[0]+'">';
+								memestring+=					'<input type="hidden" name="id" value="32528941777028" />';
+								memestring+=					'<input type="hidden" name="quantity" value="1" />';
+								memestring+=					'<input type="hidden" name="properties[memeid]" value="'+memeData[0]+'" />';
+								memestring+=					'<a href="" ng-click="buyMeme(\''+memeData[0]+'\')">Buy!</a>';
+								memestring+=				'</form>'
 								memestring+=			"</td>";
 								memestring+=			"<td>";
 								memestring+=				"<a href='reportCopy.php?copyid="+memeData[0]+"'>Copy</a>";
@@ -159,7 +164,6 @@ memeApp.controller( "memectrl" ,  function($scope, $window, $http, $compile){
 					memestring+="</table>";
 				}
 			}
-			console.log(memestring);
 			var compiledHtml = $compile(memestring)($scope);
 			angular.element( document.querySelector( '#allMemes' ) ).append(compiledHtml);
 			$scope.pagination++;
@@ -327,6 +331,11 @@ Refreshes index, called when asked for new tags
 	$scope.submitMeme=function(){
 		var src = canvas.toDataURL("image/png",1);
 		document.getElementById("uploadingMeme").value=src;
+	}
+
+	$scope.buyMeme=function(memeid){
+		console.log(document.getElementById("form"+memeid));
+		document.getElementById("form"+memeid).submit();
 	}
 
 });
