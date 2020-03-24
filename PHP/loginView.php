@@ -24,7 +24,7 @@
 				<td><p>Username</p></td>
 			</tr>
 			<tr>
-				<td><input name="name" placeholder="Must be unique" id="namePass" ng-model="signupName" ng-blur="checkName();"/></td>
+				<td><input name="name" placeholder="Must be unique" id="namePass" ng-model="signupName" ng-blur="checkName();" /></td>
 			</tr>
 			<tr ng-hide="nameExists">
 				<td class="error">Sorry, that name is taken.</td>

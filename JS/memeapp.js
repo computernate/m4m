@@ -93,11 +93,13 @@ memeApp.controller( "memectrl" ,  function($scope, $window, $http, $compile){
 	$scope.getMoreMemes=function(filters){
 		var memestring="";
 		var filter = "";
-		if( $scope.activeTags.length !== 0 ){
+		console.log($scope.activeTagFilters);
+		if( $scope.activeTagFilters.length !== 0 ){
 			filter+="&filter=";
-			for(var a=0;a<$scope.activeTags.length;a++){
-				filter+=$scope.activeTags[a]+" ";
+			for(var a=0;a<$scope.activeTagFilters.length;a++){
+				filter+=$scope.activeTagFilters[a]+"|";
 			}
+			filter=filter.substring(0,filter.length-1);
 		}
 		console.log("PHP/getMemes.php?pag="+$scope.pagination+"&sort="+$scope.sortMethod+filter+filters);
 		$http.get("PHP/getMemes.php?pag="+$scope.pagination+"&sort="+$scope.sortMethod+filter+filters).then(function(data){
@@ -111,7 +113,7 @@ memeApp.controller( "memectrl" ,  function($scope, $window, $http, $compile){
 					memestring+="<table class='meme' id='"+memeData[0]+"'";
 						memestring+=">";
 						memestring+="<tr>";
-						memestring+="<td colspan='2'><h2>"+memeData[1]+"</h2><h3 id='likes"+memeData[0]+"'>"+memeData[4]+"</h3></td>";
+						memestring+="<td colspan='2'><h2>"+memeData[1]+"</h2><h3 class='likes' id='likes"+memeData[0]+"'>"+memeData[4]+"</h3></td>";
 						memestring+="</tr><tr ng-mouseleave='closeMeme(\""+memeData[0]+"\")' ng-mouseenter='expandMeme(\""+memeData[0]+"\",\""+memeData[2]+"\")'>";
 						memestring+="<td>";
 						memestring+="<a href='memePage.php?meme="+memeData[0]+"' >";
@@ -137,13 +139,23 @@ memeApp.controller( "memectrl" ,  function($scope, $window, $http, $compile){
 								memestring+=			"<td>";
 								memestring+=				"<a href='' ng-click='addLike(\""+memeData[0]+"\")'>Like</a>";
 								memestring+=			"</td>";
-								memestring+=			"<td>";
-								memestring+=				'<form action="https://the-memery-cookies.myshopify.com/cart/add" target="_blank" method="post" id="form'+memeData[0]+'">';
+								memestring+=			"<td class='buyFormTd'>";
+								memestring+=				'<form class="buyForm" action="https://the-memery-cookies.myshopify.com/cart/add" target="_blank" method="post" id="form'+memeData[0]+'">';
 								memestring+=					'<input type="hidden" name="id" value="32528941777028" />';
 								memestring+=					'<input type="hidden" name="quantity" value="1" />';
 								memestring+=					'<input type="hidden" name="properties[memeid]" value="'+memeData[0]+'" />';
 								memestring+=					'<a href="" ng-click="buyMeme(\''+memeData[0]+'\')">Buy!</a>';
 								memestring+=				'</form>'
+								memestring+=			"</td>";
+								memestring+=			"<td>";
+								memestring+=				"<a href='reportCopy.php?copyid="+memeData[0]+"'>Report</a>";
+								memestring+=			"</td>";
+								memestring+=		"</tr>";
+								memestring+=			"<td>";
+								memestring+=				'<div class="fb-share-button" data-href="https://www.the-memery.com/memePage.php?meme='+memeData[0]+'"  data-layout="button_count">  </div>';
+								memestring+=			"</td>";
+								memestring+=			"<td>";
+								memestring+=				"<a href='reportCopy.php?copyid="+memeData[0]+"'>Copy</a>";
 								memestring+=			"</td>";
 								memestring+=			"<td>";
 								memestring+=				"<a href='reportCopy.php?copyid="+memeData[0]+"'>Copy</a>";
@@ -160,7 +172,8 @@ memeApp.controller( "memectrl" ,  function($scope, $window, $http, $compile){
 							memestring+=	"<div id='commentsFor"+memeData[0]+"'>";
 							memestring+=	"</div>";
 							memestring+="</div>";
-						memestring+="</td></tr>";
+						memestring+="</td>";
+						memestring+="<td><div class='pullout'><p> > </p></div></td></tr>";
 					memestring+="</table>";
 				}
 			}
@@ -178,7 +191,7 @@ Refreshes index, called when asked for new tags
 	$scope.refreshPage=function(){
 		//angular.element( document.querySelector( '#allMemes' ) ).innerHTML="";
 		document.getElementById("allMemes").innerHTML = "";
-		pagination = 0;
+		$scope.pagination = 0;
 		$scope.getMoreMemes('');
 	}
 
@@ -266,7 +279,7 @@ Refreshes index, called when asked for new tags
 		$http.get('PHP/getTags.php').then(function(data){
 			$scope.tags=data.data.split(",");
 			$scope.tags.pop();
-			$scope.activeTagFilters=$scope.tags.slice();
+			$scope.tags.pop();
 		});
 	}
 
@@ -278,6 +291,7 @@ Refreshes index, called when asked for new tags
 	$scope.deleteTag=function(tag){
 		$scope.activeTags.splice($scope.activeTags.indexOf(tag));
 	}
+
 	$scope.stringify=function(array){
 		var returnValue="";
 		for(var a=0;a<array.length;a++){
@@ -289,7 +303,6 @@ Refreshes index, called when asked for new tags
 
 	$scope.activeTagFilters=[];
 	$scope.toggleTag=function(tag){
-		console.log(tag);
 		var tagElement = angular.element(document.querySelector("#"+tag));
 		if($scope.activeTagFilters.indexOf(tag)==-1){
 			//tagElement.("inactiveTag");
@@ -338,4 +351,65 @@ Refreshes index, called when asked for new tags
 		document.getElementById("form"+memeid).submit();
 	}
 
+	$scope.earningsSelected=false;
+	$scope.earningsMethodText="Select an earnings method";
+	$scope.changeEarningsText = function(newText){
+		$scope.earningsSelected=true;
+		switch(newText){
+			case "paypal":
+				$scope.earningsMethodText="Please enter your email address, phone number, or name associated with your paypal account.";
+			break;
+			case "venmo":
+				$scope.earningsMethodText="Please enter your venmo, followed by a space, then the last 4 digits of your cell phone number";
+			break;
+			case "googlePay":
+				$scope.earningsMethodText="Please enter the email address associated with the account.";
+			break;
+		}
+		$scope.earningsID="";
+	}
+
+});
+
+memeApp.directive("validatePayment",function(){
+	return{
+		require:'ngModel',
+		link:function(scope, element, attr, mCtrl) {
+      function myValidation(value) {
+				var radios = document.getElementsByName('earningsMethod');
+				var radioValue="";
+				for (var i = 0, length = radios.length; i < length; i++) {
+				  if (radios[i].checked) {
+						radioValue=radios[i].value;
+					}
+				}
+				console.log(radioValue);
+				switch(radioValue){
+					case "paypal":
+						mCtrl.$setValidity("earnings",true);
+						return value;
+					case "venmo":
+						var wholevenmo=value.split(" ");
+						if(wholevenmo.length!=2){
+							mCtrl.$setValidity("earnings",false);
+							return value;
+						}
+						var venmonum=wholevenmo[1];
+						if(venmonum.length==4&&!isNaN(venmonum)){
+								mCtrl.$setValidity("earnings",true);
+								return value;
+						}
+						else{
+							mCtrl.$setValidity("earnings",false);
+							return value;
+						}
+					case "googlePay":
+						var re = /\S+@\S+\.\S+/;
+						mCtrl.$setValidity("earnings", re.test(value));
+						return value;
+				}
+      }
+			mCtrl.$parsers.push(myValidation);
+		}
+	};
 });

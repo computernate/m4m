@@ -10,10 +10,10 @@ if(isset($_GET["search"])){
 	$srch = $_GET["search"];
 	$query = "SELECT id, title, pointerID, description, likes, tags, age FROM memes WHERE MATCH(description) AGAINST('$srch') LIMIT 25;";
 }
-/*else if(isset($_GET["filter"])){
+else if(isset($_GET["filter"])){
 	$filter = $_GET["filter"];
-	$query = "SELECT id, title, pointerID, description, likes, tags, age FROM memes MATCH(filter) AGAINST('$filter') LIMIT 25 ORDER BY '$sortMethod' OFFSET ".( 25 * $page );
-}*/
+	$query = "SELECT id, title, pointerID, description, likes, tags, age FROM memes WHERE tags REGEXP '$filter' ORDER BY $sortMethod DESC LIMIT 25 OFFSET ".( 25 * $page );
+}
 else if(isset($_GET["madeBy"])){
 	$madeby = $_GET["madeBy"];
 	$query = "SELECT id, title, pointerID, description, likes, tags, age FROM memes WHERE pointerID = '$madeby'";

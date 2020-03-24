@@ -143,6 +143,10 @@ html,body{
 	font-family:refdevil;
 	float:right;
 }
+#earnings{
+	text-align:center;
+	color:var(--text-color-2);
+}
 #fullNav div p{
 	width:250px;
 	text-decoration:none;
@@ -202,6 +206,14 @@ html,body{
 
 #signUp .error{
 	color:var(--text-color-2);
+}
+a.money{
+	color:var(--text-color-2);
+	text-decoration:none;
+}
+a.money:hover{
+	color:white;
+	text-decoration:underline;
 }
 
 /*Search Box*/
@@ -396,6 +408,26 @@ Memes on the Meme Feed
 
 ***************************/
 
+#intro{
+		width:500px;
+		margin:0px auto;
+		background-color:var(--tag-bg-color);
+		border:5px black solid;
+		border-radius:10px;
+		color:white;
+		margin-bottom:20px;
+		padding-top:20px;
+		padding-bottom:20px;
+		font-size:20px;
+}
+#intro p, #intro h1{
+	margin:10px;
+	text-align:center;
+}
+#intro span{
+	text-decoration:underline;
+}
+
 #allMemes{
 	text-align:center;
 	width:100%;
@@ -465,7 +497,9 @@ Memes on the Meme Feed
 	width:500px;
 	margin-left:-20px;
 }
-
+.likes{
+	color:var(--meme-text-color-2);
+}
 .meme textarea{
 	margin-top:5px;
 	width:460px;
@@ -499,7 +533,7 @@ Memes on the Meme Feed
 	text-align:center;
 }
 .tag{
-	transition:color 0.5s;
+	transition:background-color 0.5s;
 }
 .tag:hover{
 	background-color:var(--tag-inactive-color);
@@ -514,14 +548,22 @@ Memes on the Meme Feed
 }
 .tagControls input{
 	width:100%;
-}
-.tagControls input:hover{
+	color:white;
 	background-color:var(--tag-inactive-color);
 	border-color:var(--tag-inactive-color);
+}
+.tagControls input:hover{
+	background-color:var(--tag-bg-color);
 }
 
 #searchQuery h2, h4{
 	text-align:center;
+}
+.buyForm{
+	margin-top:auto;
+	margin-bottom:auto;
+	background-color:var(--pull-out-bg);
+	padding:5px;
 }
 .buyMemeButton{
 	background-color:var(--meme-bg-color);
@@ -533,7 +575,17 @@ Memes on the Meme Feed
 font-family:truman;
 font-size: 20px;
 }
-
+.pullout p{
+	font-family:ariel;
+	width:50px;
+	height:50px;
+	background-color:var(--pull-out-bg);
+	display:inline;
+	color:white;
+	padding:10px;
+	font-size:25px;
+	vertical-align:center;
+}
 
 /****************************
 
@@ -700,4 +752,49 @@ User Image
 }
 #userpage{
 	text-align:center;
+}
+
+/****************************
+
+change earnings
+
+***************************/
+
+#changeEarnings{
+	width:500px;
+	background-color:var(--create-bg-color);
+	margin:0px auto;
+	padding:10px;
+	border-radius:10px;
+}
+#changeEarnings label{
+	color:var(--text-color);
+	margin-top:10px;
+}
+#changeEarnings p{
+	text-align:center;
+	color:var(--text-color);
+}
+#changeEarnings p input[type="radio"]{
+	margin-left:15px;
+}
+#changeEarnings input[type="text"]{
+	width:100%;
+	margin-bottom:20px;
+	font-size:35px;
+}
+#changeEarnings input[type="submit"]{
+	width:100%;
+	text-align:center;
+	border:1px solid var(--create-input-text);
+	padding:10px;
+	background-color:var(--create-input-bg);
+	color:var(--create-input-text);
+	font-size:35px;
+}
+#changeEarnings input[type="submit"]:hover{
+	background-color:var(--create-input-bg-hover);
+}
+#changeEarnings input[disabled="disabled"]{
+	background-color:var(--create-input-disabled);
 }

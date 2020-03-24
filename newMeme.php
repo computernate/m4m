@@ -22,9 +22,9 @@
 					<select id="font-family"></select>
 
 					<span id="textControls1" class='disabled'>
-						<input type="button" onclick="growFont()" value="+" id='growText' />
+				<input type="button" onclick="shrinkFont()" value="-"  id='shrinkText' />
 						<input id="textColor" type='button' value = '0' />
-						<input type="button" onclick="shrinkFont()" value="-"  id='shrinkText' />
+							<input type="button" onclick="growFont()" value="+" id='growText' />
 					</span>
 
 					<span id="textControls2" class='disabled'>
@@ -69,13 +69,8 @@
 
 					<div class="option">
 						<span class="label">Private:</span>
-						<input type="checkbox" name="isPrivate"/>
+						<input type="checkbox" name="isPrivate" />
 					</div>
-					<br />
-					<!--<div class="option">
-						<input type="button" onclick = 'pullImage()' value="Pull Image" id="pullImageButton" />
-						<img src="" id="pulledImage" />
-					</div>-->
 					<br />
 					<input type='hidden' id="uploadingMeme" name="uploadingMeme" ng-model="imageBlob" />
 				<input type="submit" value="Post meme!" name="submit" id="submitMeme" ng-disabled="(!makeMeme.$valid)" />

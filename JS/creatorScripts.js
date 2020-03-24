@@ -85,7 +85,7 @@ function addTextbox(){
     fontSize: 40,
     fill:"#FFFFFF",
     stroke:"#000000",
-    strokeWidth:3,
+    strokeWidth:4,
     paintFirst:'stroke'
   });
   canvas.add(textbox).setActiveObject(textbox);
@@ -120,7 +120,7 @@ function shrinkFont(){
 function toggleBorder(){
   if(canvas.getActiveObject()==null)return;
   var swidth = canvas.getActiveObject().get("strokeWidth");
-  canvas.getActiveObject().set("strokeWidth",(swidth>0)?0:3);
+  canvas.getActiveObject().set("strokeWidth",(swidth>0)?0:4);
   (swidth>0)?document.getElementById('borderToggle').classList.add("borderDisabled"):document.getElementById('borderToggle').classList.remove("borderDisabled");
   canvas.renderAll();
 }

@@ -12,7 +12,7 @@ $id = $name;
 if($name&&$password&&$email&&$promo){
 
 	$sql = "INSERT INTO users VALUES ('$id', '$name', '$password',  '$email','0','0','0','0','')";
-
+//id varchar(31) PRIMARY KEY, name varchar(255), password varchar (255), email varchar (255), popularMemes int (31), earnings double (15,2), admin int(2), bankingID varchar (255), fileType varchar (8));
 	if ($conn->query($sql) === TRUE) {
 		echo "New record created successfully";
 	} else {

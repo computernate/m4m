@@ -2,37 +2,31 @@
 	session_start();
 ?>
 
-
 <!--
 Finished since last push
-sort by date works
-Another table that sorts by score
-Cart
+Make tags work
+Minor design changes
 
 LITTLE STUFF I NEED TO DO
-like actions from post
+Delete Meme
 search by user
 Email validation broken
-Score
-Make tags work
+like actions from post
 Save tags in a cookie
 
 UX and cart (April 1st)
-Link bank account / paypal / Venmo -3/10
 Share to FB/Instagram 3/12
-Sign in with google/fb -3/14
-Better design overall -3/21
-MOBILE FRIENDLY!!!!!!!! -3/28
+Better design overall -3/18
+MOBILE FRIENDLY!!!!!!!! -3/27
 Terms and conditions  -3/31
 about us/report bugs -3/31
 
 ADMIN THINGS (May 1st)
-Notifications
+Cookies bought
+Meme shipped
 Report Content
-Delete Meme
 
 -->
-
 
 <html ng-app="money4memes">
 	<head>
@@ -40,8 +34,27 @@ Delete Meme
 	</head>
 	<body ng-controller="memectrl">
 		<?php include "PHP/head.php" ?>
+		<div id="fb-root"></div>
+		<script>(function(d, s, id) {
+	var js, fjs = d.getElementsByTagName(s)[0];
+	if (d.getElementById(id)) return;
+	js = d.createElement(s); js.id = id;
+	js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+	fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 		<div id="wrapper">
 
+		<?php
+			if(!isset($_SESSION["user"])){
+		 ?>
+
+		 <div id="intro">
+			 <h1>Welcome to the Memery!</h1>
+			 <p><span>Buy cookies</span> with memes on them, and get it shipped to you right away! They make <span>perfect gifts</span>, or a great way to take a party to the next level!</p>
+			 <p>Or, create a meme and <span>get paid</span> when people buy your cookie! <span>Click the M</span> to sign up!</p>
+		 </div>
+
+	 <?php } ?>
 		<?php
 			if(isset($_GET["sort"])&&$_GET['sort']=='new'){
 				echo '<span ng-init = "sortMethod=\'new\';"></span>';
@@ -52,18 +65,13 @@ Delete Meme
 		?>
 			<div class="tagControls">
 				<p id="filters" ng-init = "getTags()">
-					<span ng-repeat = "tag in tags" [id]='{{tag}}' ng-class='{inactiveTag : activeTagFilters.indexOf(tag)==-1}' ng-click='toggleTag(tag)' class = 'tag'>
+					<span ng-repeat = "tag in tags" [id]='{{tag}}' ng-class='{inactiveTag : activeTagFilters.indexOf(tag)!==-1}' ng-click='toggleTag(tag)' class = 'tag'>
 						{{tag}}
 					</span>
 				</p>
-				<input type="button" ng-click="refreshPage()" value="Refrsh with new settings"/>
+
+				<input type="button" ng-click="refreshPage()" value="See memes with highlighted tags"/>
 			</div>
-			<form action="https://the-memery-cookies.myshopify.com/cart/add" target="_blank" method="post" id="form1"/>';
-			<input type="hidden" name="id" value="32528941777028" />
-			<input type="hidden" name="quantity" value="1" />
-			<input type="hidden" name="properties[memeid]" value="1" />
-			<a href="" ng-click="buyMeme('Underwater_homework')">Buy!</a>
-		</form>
 			<div id="allMemes">
 				<div ng-init="getMoreMemes('');pagination=0;"></div>
 			</div>

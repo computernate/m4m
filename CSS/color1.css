@@ -1,20 +1,21 @@
 :root{
 
 	/*general*/
-	--text-color:#FFFFFF;//White
-	--text-color-2:#d6651e;//Reddish
+	--text-color:#FFFFFF;
+	--text-color-2:#d6651e;
+	--error-color:red;
 
 	/*Nav*/
 	--top-message-bg:#5595FF;
 
 	--head-bg-color:#557A95;
-	--a-bg-color:#7395AE;
 	--head-nav-bg-color-2:#5595FF;
 
 	/*Create Meme*/
 	--create-bg-color:#7395AE;
 	--create-input-bg:#557A95;
 	--create-input-disabled:#666;
+	--a-bg-color:#7395AE;
 	--create-input-bg-hover:#5595FF;
 	--create-input-text:#FFF;
 	--create-label-text:#FFF;
@@ -23,6 +24,7 @@
 	--meme-bg-color:#557A95;
 	--meme-text-color:#FFFFFF;
 	--meme-text-color-2:#D6651E;
+	--pull-out-bg:#DA9100;
 
 	/*Tags*/
 	--tag-bg-color:#557A95;
