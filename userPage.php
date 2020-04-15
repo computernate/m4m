@@ -24,14 +24,11 @@
 
         <div id="userpage">
 					<p>
-          	<img class='userimgpage' src='userImages/<?php echo $userData['id'].".".$userData["filetype"]; ?>' alt='<?php echo $userData['name']; ?>'/>
+          	<img class='userimgpage' src='userImages/<?php echo $userData['id'].".".$userData["fileType"]; ?>' alt='<?php echo $userData['name']; ?>'/>
 					</p>
-          <h2>
+          <h1>
             <?php echo $userData['name']; ?>
-          </h2>
-          <h3>
-            <?php echo $userData['popularMemes']; ?> Popular Memes
-          </h3>
+          </h1>
 
           <div id="allMemes">
             <div ng-init="getMoreMemes('');sortMethod='new';"></div>

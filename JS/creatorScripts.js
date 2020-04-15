@@ -22,6 +22,11 @@ var bPick;
 
 function initializeCanvas(){
 
+  if(window.innerWidth<=750){
+    document.getElementById("memeCreator").width="324";
+      document.getElementById("memeCreator").height="250";
+  }
+
   canvas = new fabric.Canvas('memeCreator', {preserveObjectStacking:true});
   tPick = new CP(document.querySelector('#textColor'));
 

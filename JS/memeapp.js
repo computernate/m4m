@@ -93,7 +93,6 @@ memeApp.controller( "memectrl" ,  function($scope, $window, $http, $compile){
 	$scope.getMoreMemes=function(filters){
 		var memestring="";
 		var filter = "";
-		console.log($scope.activeTagFilters);
 		if( $scope.activeTagFilters.length !== 0 ){
 			filter+="&filter=";
 			for(var a=0;a<$scope.activeTagFilters.length;a++){
@@ -101,7 +100,6 @@ memeApp.controller( "memectrl" ,  function($scope, $window, $http, $compile){
 			}
 			filter=filter.substring(0,filter.length-1);
 		}
-		console.log("PHP/getMemes.php?pag="+$scope.pagination+"&sort="+$scope.sortMethod+filter+filters);
 		$http.get("PHP/getMemes.php?pag="+$scope.pagination+"&sort="+$scope.sortMethod+filter+filters).then(function(data){
 			if(data.data=="false"){
 				memestring="<p>An error has occured. Please <a ng-click='getMoreMemes(\"\")'>click here</a> to try again</p>";
@@ -110,71 +108,27 @@ memeApp.controller( "memectrl" ,  function($scope, $window, $http, $compile){
 				dataStrings = data.data.split(";");
 				for(var a=0;a<dataStrings.length-1;a++){
 					var memeData=dataStrings[a].split(":");
-					memestring+="<table class='meme' id='"+memeData[0]+"'";
-						memestring+=">";
+					memestring+="<table class='meme genericBlock' id='"+memeData[0]+"'>";
 						memestring+="<tr>";
-						memestring+="<td colspan='2'><h2>"+memeData[1]+"</h2><h3 class='likes' id='likes"+memeData[0]+"'>"+memeData[4]+"</h3></td>";
-						memestring+="</tr><tr ng-mouseleave='closeMeme(\""+memeData[0]+"\")' ng-mouseenter='expandMeme(\""+memeData[0]+"\",\""+memeData[2]+"\")'>";
+						memestring+="<td><h2>"+memeData[1]+"</h2><h3 class='likes' id='likes"+memeData[0]+"'>Cookies sold: "+memeData[4]+"</h3></td>";
+						memestring+="</tr><tr>";
 						memestring+="<td>";
-						memestring+="<a href='memePage.php?meme="+memeData[0]+"' >";
+						memestring+="<a href='cookie.php?meme="+memeData[0]+"' >";
 						memestring+=	"<img src='Memes/"+memeData[0]+".png' alt='"+memeData[1]+"' />";
 						memestring+="</a>";
-						memestring+="</td><td class='memeDataWrapper' id='"+memeData[0]+"expandedwrapper'>";
-							memestring+="<div class='memeData' id='"+memeData[0]+"expanded'>";
-							memestring+="<p>"+memeData[3];
-							memestring+="</p>";
-							memestring+=	"<div id='userInfo"+memeData[0]+"'>";
-							memestring+=	"</div>";
-							memestring+=	"<p>";
-							var tags = memeData[5].split(",");
-							if(tags.length>0){
-								for(var b=0;b<tags.length-2;b++){
-									memestring+="<span class='memeTag'>"+tags[b]+", </span>";
-								}
-								memestring+="<span class='memeTag'>"+tags[tags.length-2]+"</span>";
-							}
-							memestring+="</p>";
-							if($scope.loggedIn){
-								memestring+=	"<table class='memecontrols'>";
-								memestring+=			"<td>";
-								memestring+=				"<a href='' ng-click='addLike(\""+memeData[0]+"\")'>Like</a>";
-								memestring+=			"</td>";
-								memestring+=			"<td class='buyFormTd'>";
-								memestring+=				'<form class="buyForm" action="https://the-memery-cookies.myshopify.com/cart/add" target="_blank" method="post" id="form'+memeData[0]+'">';
-								memestring+=					'<input type="hidden" name="id" value="32528941777028" />';
-								memestring+=					'<input type="hidden" name="quantity" value="1" />';
-								memestring+=					'<input type="hidden" name="properties[memeid]" value="'+memeData[0]+'" />';
-								memestring+=					'<a href="" ng-click="buyMeme(\''+memeData[0]+'\')">Buy!</a>';
-								memestring+=				'</form>'
-								memestring+=			"</td>";
-								memestring+=			"<td>";
-								memestring+=				"<a href='reportCopy.php?copyid="+memeData[0]+"'>Report</a>";
-								memestring+=			"</td>";
-								memestring+=		"</tr>";
-								memestring+=			"<td>";
-								memestring+=				'<div class="fb-share-button" data-href="https://www.the-memery.com/memePage.php?meme='+memeData[0]+'"  data-layout="button_count">  </div>';
-								memestring+=			"</td>";
-								memestring+=			"<td>";
-								memestring+=				"<a href='reportCopy.php?copyid="+memeData[0]+"'>Copy</a>";
-								memestring+=			"</td>";
-								memestring+=			"<td>";
-								memestring+=				"<a href='reportCopy.php?copyid="+memeData[0]+"'>Copy</a>";
-								memestring+=			"</td>";
-								memestring+=		"</tr>";
-								memestring+=	"</table>";
-								memestring+=	"<div id='nameFor"+memeData[0]+"'>";
-								memestring+=	"</div>";
-								memestring+=	"<textarea class='comment' id='comment"+memeData[0]+"'>";
-								memestring+=	"</textarea>";
-								memestring+=	"<input type='button' ng-click='submitComment(\""+memeData[0]+"\")' value= 'Submit Comment' id='subbut"+memeData[0]+"' />";
-							}
-							memestring+=		"<div class='break'></div>";
-							memestring+=	"<div id='commentsFor"+memeData[0]+"'>";
-							memestring+=	"</div>";
-							memestring+="</div>";
-						memestring+="</td>";
-						memestring+="<td><div class='pullout'><p> > </p></div></td></tr>";
+						memestring+="</td></tr>";
+						memestring+="<tr><td><p>";
+						memestring+="	<a class='memeDetails' href = 'cookie.php?meme="+memeData[0]+"'>More Info</a>";
+						memestring+='		<a href="" class="memeDetails buy" ng-click="buyMeme(\''+memeData[0]+'\')" class="buy" >COOKIE</a>';
+						memestring+="</span>";
+						memestring+="	<a href='reportCopy.php?copyid=<?php echo $id; ?>'>Report</a>";
+						memestring+="</p></td></tr>";
 					memestring+="</table>";
+					memestring+="	<form class='buyForm' action='https://the-memery-cookies.myshopify.com/cart/add' target='_blank' method='post' id='form"+memeData[0]+"''>";
+					memestring+="		<input type='hidden' name='id' value='32528941777028' />";
+					memestring+='		<input type="hidden" name="quantity" value="1" />';
+					memestring+='		<input type="hidden" name="properties[cookieid]" value="'+memeData[0]+'" />';
+					memestring+="	</form>";
 				}
 			}
 			var compiledHtml = $compile(memestring)($scope);
@@ -347,6 +301,7 @@ Refreshes index, called when asked for new tags
 	}
 
 	$scope.buyMeme=function(memeid){
+		console.log(memeid);
 		console.log(document.getElementById("form"+memeid));
 		document.getElementById("form"+memeid).submit();
 	}

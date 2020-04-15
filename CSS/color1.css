@@ -2,36 +2,39 @@
 
 	/*general*/
 	--text-color:#FFFFFF;
-	--text-color-2:#d6651e;
+	/*--text-color-2:#d6651e;*/
+	--text-color-2:#ffe6b3;
+	--text-color-placeholder:#226d77;
 	--error-color:red;
 
 	/*Nav*/
 	--top-message-bg:#5595FF;
-
-	--head-bg-color:#557A95;
+	--jar-bg-color:#DA9100;
+	--head-bg-color:#36B1C0;/*#557A95;*/
 	--head-nav-bg-color-2:#5595FF;
+	--nav-input-bg-color:#5595FF;
 
 	/*Create Meme*/
-	--create-bg-color:#7395AE;
-	--create-input-bg:#557A95;
+	--create-bg-color:#226d77;
+	--create-input-bg:#36B1C0;
 	--create-input-disabled:#666;
-	--a-bg-color:#7395AE;
+	--a-bg-color:#226d77;/*#226d77;*/
 	--create-input-bg-hover:#5595FF;
 	--create-input-text:#FFF;
 	--create-label-text:#FFF;
 
 	/*Meme Feed*/
-	--meme-bg-color:#557A95;
+	--meme-bg-color:#36B1C0;
 	--meme-text-color:#FFFFFF;
-	--meme-text-color-2:#D6651E;
+	--meme-text-color-2:#ffe6b3;/*#D6651E;*/
 	--pull-out-bg:#DA9100;
 
 	/*Tags*/
-	--tag-bg-color:#557A95;
-	--tag-inactive-color:#7395AE;
+	--tag-bg-color:#36B1C0;
+	--tag-inactive-color:#226d77;
 
 	/*Report copy*/
-	--copy-bg-color:#7395AE;
+	--copy-bg-color:#226d77;
 	--copy-bg-color-2:#5595FF;
 	--copy-text-color:#FFFFFF;
 }

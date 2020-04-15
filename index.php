@@ -2,32 +2,6 @@
 	session_start();
 ?>
 
-<!--
-Finished since last push
-Make tags work
-Minor design changes
-
-LITTLE STUFF I NEED TO DO
-Delete Meme
-search by user
-Email validation broken
-like actions from post
-Save tags in a cookie
-
-UX and cart (April 1st)
-Share to FB/Instagram 3/12
-Better design overall -3/18
-MOBILE FRIENDLY!!!!!!!! -3/27
-Terms and conditions  -3/31
-about us/report bugs -3/31
-
-ADMIN THINGS (May 1st)
-Cookies bought
-Meme shipped
-Report Content
-
--->
-
 <html ng-app="money4memes">
 	<head>
 		<title>The Memery</title>
@@ -44,17 +18,24 @@ Report Content
 }(document, 'script', 'facebook-jssdk'));</script>
 		<div id="wrapper">
 
-		<?php
-			if(!isset($_SESSION["user"])){
-		 ?>
 
-		 <div id="intro">
-			 <h1>Welcome to the Memery!</h1>
-			 <p><span>Buy cookies</span> with memes on them, and get it shipped to you right away! They make <span>perfect gifts</span>, or a great way to take a party to the next level!</p>
-			 <p>Or, create a meme and <span>get paid</span> when people buy your cookie! <span>Click the M</span> to sign up!</p>
+		 <div id="intro" class='genericBlock'>
+			 <h1>Welcome to Merchies Cookies!</h1>
+			 <p>Merchandising is hard. Here at Merchies Cookies, we've tried to create the perfect merchandising experience for you by fixing the 3 hardest parts:</p>
+			 <ol>
+				<li>
+					<span class='color2'>NO INVESTMENT:</span> At Merchies, we take care of everything so there is <span>zero investment</span>. We only print cookies when the order is placed, send the cookies directly to the customer,
+					 and send you	your hard earned revenue. </li>
+				<li>
+					<span class='color2'>EASY:</span> All you do is upload a picture! Then you can post the link wherever you want, and receive your revenue. We take care of hosting, printing, and shipping.
+					Its so easy to use, <span>you'll make money on accident!</span></li>
+				<li>
+					<span class='color2'>UNIQUE:</span> If you wanted a T shirt of a mug, you can go anywhere. But nowhere else will bring you fresh, home-baked, <span>high-quality cookies</span>.
+				</li>
+			 </ol>
+			 <p>Click the M in the corner to create an account and get started, or see our most popular cookies below!</p>
 		 </div>
 
-	 <?php } ?>
 		<?php
 			if(isset($_GET["sort"])&&$_GET['sort']=='new'){
 				echo '<span ng-init = "sortMethod=\'new\';"></span>';
@@ -70,7 +51,7 @@ Report Content
 					</span>
 				</p>
 
-				<input type="button" ng-click="refreshPage()" value="See memes with highlighted tags"/>
+				<input type="button" ng-click="refreshPage()" value="See cookies with highlighted tags"/>
 			</div>
 			<div id="allMemes">
 				<div ng-init="getMoreMemes('');pagination=0;"></div>

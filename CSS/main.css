@@ -10,6 +10,11 @@
 	src: url(../fonts/TRUMANS.otf);
 }
 
+@font-face{
+	font-family:empire;
+	src: url(../fonts/empire.ttf);
+}
+
 #wrapper{
 	margin-top:120px;
 	color: var(--text-color-2);
@@ -42,7 +47,7 @@ html,body{
 	color:var(--text-color);
 	animation:1s ease-out 5s slideTop;
   animation-fill-mode: forwards;
-	z-index:1;
+	z-index:2;
 }
 #topMessage h2{
 	width:100%;
@@ -79,7 +84,7 @@ html,body{
 	top:0px;
 	vertical-align:bottom;
 	left:50%;
-	margin-left:-180px;
+	margin-left:-270px;
 	position:absolute;
 
 }
@@ -87,14 +92,14 @@ html,body{
 	width:175px;
 	height:100px;
 	background-color:var(--a-bg-color);
-	font-size:50px;
+	font-size:40px;
 	color: var(--text-color);
 	text-decoration:none;
 	margin-right:10px;
 	margin-top:0px;
 	display:block;
 	float:left;
-	font-family:refdevil;
+	font-family:empire;
 	text-decoration:none;
 }
 .topnav{
@@ -102,7 +107,16 @@ html,body{
 	height:100px;
 	margin-top:0px;
 }
-
+#header .topnav a.cookieJar{
+	background-color:var(--jar-bg-color);
+}
+.mobileNav{
+	visibility:hidden;
+	height:0px !important;
+}
+#fullNav div #mobileJar{
+	background-color:var(--jar-bg-color);
+}
 #navToggle{
 	display:inline;
 }
@@ -147,12 +161,14 @@ html,body{
 	text-align:center;
 	color:var(--text-color-2);
 }
-#fullNav div p{
+#fullNav div p, #TandC{
 	width:250px;
 	text-decoration:none;
 	height:30px;
 	font-size:20px;
+	padding-top:5px;
 	background-color:var(--a-bg-color);
+	color:var(--text-color);
 	display:block;
 	float:left;
 	margin-left:0px;
@@ -170,7 +186,9 @@ html,body{
 	color:var(--text-color-2);
 	padding-left:20px;
 }
-
+#mobileTop{
+	visibility:hidden;
+}
 /*Login info*/
 #login{
 	float:left;
@@ -203,9 +221,90 @@ html,body{
 #signUp span{
 	color:var(--text-color);
 }
-
+#signUp input, #login input{
+	border:1px solid var(--text-color);
+	padding:5px;
+	background-color:var(--a-bg-color);
+	color:var(--text-color);
+}
+#signup ::placeholder, #login ::placeholder{
+	color:var(--head-bg-color);
+}
+#signUp input[type='submit']:hover, #login input[type='submit']:hover{
+	background-color:var(--head-bg-color);
+}
+#signUp input[disabled="disabled"]{
+	background-color:var(--create-input-disabled);
+}
 #signUp .error{
-	color:var(--text-color-2);
+	color:var(--error-color);
+}
+/* Customize the label (the container) */
+.checkmarkContainer {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.checkmarkContainer input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color:var(--a-bg-color);
+}
+
+/* On mouse-over, add a grey background color */
+.checkmarkContainer:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.checkmarkContainer input:checked ~ .checkmark {
+  background-color: var(--head-nav-bg-color-2);
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.checkmarkContainer input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.checkmarkContainer .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 a.money{
 	color:var(--text-color-2);
@@ -271,6 +370,14 @@ a.money:hover{
 	background-image:image("../Images/search-icon.png");
 }
 
+#TandC{
+	position:absolute;
+	display:block;
+	margin-top:auto;
+	margin-bottom:0px;
+	bottom:0px;
+}
+
 
 /***********************
 
@@ -286,21 +393,40 @@ Create Meme
 	float:left;
 	font-size:35px;
 }
-.option{
-	margin-left:20px;
+#makeMeme span{
+		color:var(--text-color);
+		font-size:35px;
+		margin-left:20px;
+}
+#makeMeme{
+margin-left:0px;
 	margin-bottom:10px;
 	margin-top:10px;
 	display:block;
-		color:var(--create-label-text);
+	color:var(--create-label-text);
+}
+#makeMeme{
+	width:100%;
+}
+#makeMeme table{
+	width:100%;
+}
+#makeMeme textArea{
+	width:90%;
+	height:100px;
+}
+.earningsError{
+	color:var(--error-color);
+	margin-top:20px;
 }
 
-.option input{
+#makeMeme input{
 	border:1px solid var(--create-input-text);
 	padding:10px;
 	background-color:var(--create-input-bg);
 	color:var(--create-input-text);
 }
-.option input:hover{
+#makeMeme input:hover{
 	background-color:var(--create-input-bg-hover);
 }
 
@@ -327,6 +453,10 @@ Create Meme
 }
 .option input[type='checkbox']{
 	width:40px;
+	border:1px solid var(--create-input-text);
+	padding:5px;
+	background-color:var(--create-input-bg);
+	color:var(--create-input-text);
 	height:40px;
 	border:1px solid var(--create-input-text);
 	background-color:var(--create-input-bg);
@@ -369,13 +499,13 @@ canvas{
 	margin-bottom:0px;
 }
 
-#creatorControls input, .textControls input, #creatorControls select, #creatorControls label{
+#creatorControls input, .textControls input, #creatorControls select, #creatorControls label, button, #search{
 	border:1px solid var(--create-input-text);
 	padding:5px;
 	background-color:var(--create-input-bg);
 	color:var(--create-input-text);
 }
-#creatorControls input:hover, .textControls input:hover, #creatorControls select:hover, #creatorControls label:hover{
+#creatorControls input:hover, .textControls input:hover, #creatorControls select:hover, #creatorControls label:hover, button:hover{
 background-color:var(--create-input-bg-hover);
 }
 
@@ -402,6 +532,10 @@ background-color:var(--create-input-bg-hover);
 	visibility:hidden;
 }
 
+::placeholder{
+	color:var(--text-color-placeholder);
+}
+
 /****************************
 
 Memes on the Meme Feed
@@ -416,9 +550,9 @@ Memes on the Meme Feed
 		border-radius:10px;
 		color:white;
 		margin-bottom:20px;
-		padding-top:20px;
 		padding-bottom:20px;
 		font-size:20px;
+		font-family:empire;
 }
 #intro p, #intro h1{
 	margin:10px;
@@ -432,33 +566,43 @@ Memes on the Meme Feed
 	text-align:center;
 	width:100%;
 }
-.meme{
+.meme.genericBlock{
 	margin: 20px auto;
-	width:500px;
-	transition:width 1s;
 	display:block;
 	font-family:truman;
 	color:var(--meme-text-color);
+	margin-top:30px;
+	text-align:center;
 }
 .meme h2{
-	padding-top:50px;
-	text-align:left;
+	text-align:center;
+	font-size:45px;
 	color:var(--meme-text-color-2);
+}
+.meme a{
+	font-size:30px;
+}
+.meme h3{
+	text-align:center;
+	font-size:30px;
+}
+.meme img{
+	margin:0px auto;
 }
 .meme img{
 	border:1px solid black;
-	width:500px;
+	width:80%;
 	border:5px solid black;
 }
 
-.meme.memeOut{
-	width:1000px;
-	color:var(--meme-text-color);
-}
 .meme.memeOut h2, .meme.memeOut h3{
 	color:var(--meme-text-color-2);
 }
-
+.memeDetails{
+	width:33%;
+	display:block;
+	float:left;
+}
 .memeDataWrapper{
 	transition:width 1s;
 	height:500px;
@@ -476,13 +620,10 @@ Memes on the Meme Feed
 	font-size:25px;
 	padding:0px;
 }
-.memeOut{
-	width:500px;
-	padding-left:20px;
-}
 .meme a{
 	color:var(--meme-text-color);
 	text-decoration:none;
+	padding:5px;
 }
 .meme a:hover{
 	color:var(--meme-text-color-2);
@@ -524,7 +665,15 @@ Memes on the Meme Feed
 	margin-bottom:5px;
 	border-top:var(--meme-text-color-2) 1px solid;
 }
-
+.meme tbody{
+	display:block;
+}
+.meme tr{
+	display:block;
+}
+.meme td{
+	display:block;
+}
 
 .inactiveTag{
 	background-color:var(--tag-inactive-color);
@@ -534,6 +683,7 @@ Memes on the Meme Feed
 }
 .tag{
 	transition:background-color 0.5s;
+	padding:5px;
 }
 .tag:hover{
 	background-color:var(--tag-inactive-color);
@@ -559,14 +709,18 @@ Memes on the Meme Feed
 #searchQuery h2, h4{
 	text-align:center;
 }
-.buyFormTd{
-
-}
 .buyForm{
+	/*background-color:var(--pull-out-bg);*/
+	height:100%;
+	display:inline;
+	margin-bottom:0px;
+}
+.buy{
+	background-color:var(--jar-bg-color);
+	border:1px solid white;
+	border-radius:3px;
+	display:block;
 	margin-top:auto;
-	margin-bottom:auto;
-	background-color:var(--pull-out-bg);
-	padding:5px;
 }
 .buyMemeButton{
 	background-color:var(--meme-bg-color);
@@ -582,7 +736,7 @@ font-size: 20px;
 	font-family:ariel;
 	width:50px;
 	height:50px;
-	background-color:var(--pull-out-bg);
+	background-color:var(--jar-bg-color);
 	display:inline;
 	color:white;
 	padding:10px;
@@ -596,38 +750,76 @@ Single Meme
 
 ****************************/
 
+
+.genericBlock{
+	background-color:var(--meme-bg-color);
+	width:600px;
+	color:var(--text-color);
+	border:3px solid black;
+	border-radius:10px;
+	margin:0px auto;
+}
+
+
+.genericBlock .cookiePicture{
+	width:90%;
+}
+
+.color2{
+	color:var(--text-color-2);
+}
+
 #singleMeme{
 	text-align:center;
 }
 #singleMeme h3{
 	margin-top:40px;
 }
-#singleMeme #comments{
-	width:500px;
-	border:2px solid black;
-	margin:0px auto;
-	text-align:left;
-	padding-left:20px;
-	border-radius:5px;
-	background-color:var(--meme-bg-color);
-}
+
 #singleMeme #comments a{
 	text-decoration:none;
 	color:var(--meme-text-color);
 	padding-top:20px;
 	display:block;
+	text-align:left;
+	padding:20px;
+	font-size:30px;
 }
 #singleMeme #comments a:hover{
 	color:var(--meme-text-color-2);
 }
 #singleMeme #comments p{
-	font-size:20px;
 	color:var(--meme-text-color);
+	text-align:left;
+	font-size:25px;
+	padding-left:20px;
+}
+#comments input{
+	border:1px solid var(--create-input-text);
+	padding:5px;
+	background-color:var(--create-input-bg);
+	color:var(--create-input-text);
+	display:block;
+	margin:10px auto;
+	font-size:30px;
+}
+#comments input:hover{
+background-color:var(--create-input-bg-hover);
+}
+
+#comments input.disabled{
+	background-color:var(--create-input-disabled);
+}
+.commentBreak{
+	border:1px solid white;
 }
 #singleMeme .break{
 	height:0px;
 	border:1px solid black;
 	margin-left:-20px;
+}
+#comments{
+	margin-bottom:30px;
 }
 #simmilar{
 	width:100%;
@@ -649,6 +841,22 @@ Single Meme
 	border:5px solid black;
 }
 
+#singleMeme h1{
+	font-size:50px;
+}
+#singleMeme h2{
+	font-size:45px;
+}
+#singleMeme h3{
+	font-size:40px;
+}
+h2 a{
+	color:var(--text-color-2);
+	text-decoration:none;
+}
+h2 a:hover{
+	text-decoration:underline;
+}
 .break{
 	border:1px solid var(--meme-text-color-2);
 	height:0px;
@@ -656,6 +864,29 @@ Single Meme
 	margin-right:-20px;
 	margin-bottom:20px;
 	margin-top:20px;
+}
+
+.memeActions{
+	width:100%;
+}
+.memeActions td{
+	text-align:center;
+	padding:15px;
+	width:33%;
+}
+.memeActions a{
+	color:var(--text-color);
+	text-decoration:none;
+	font-size:35px;
+	font-weight:bold;
+	padding:10px;
+}
+.memeActions a:hover{
+	text-decoration:underline;
+}
+#comments textarea{
+	width:80%;
+	height:100px;
 }
 
 /*************************
@@ -764,11 +995,7 @@ change earnings
 ***************************/
 
 #changeEarnings{
-	width:500px;
-	background-color:var(--create-bg-color);
-	margin:0px auto;
 	padding:10px;
-	border-radius:10px;
 }
 #changeEarnings label{
 	color:var(--text-color);
@@ -777,6 +1004,10 @@ change earnings
 #changeEarnings p{
 	text-align:center;
 	color:var(--text-color);
+}
+#changeEarnings p span{
+	text-decoration:underline;
+	color:var(--text-color-2);
 }
 #changeEarnings p input[type="radio"]{
 	margin-left:15px;
@@ -800,4 +1031,106 @@ change earnings
 }
 #changeEarnings input[disabled="disabled"]{
 	background-color:var(--create-input-disabled);
+}
+
+@media (max-width: 750px){
+	.genericBlock{
+		width:100%;
+	}
+	#singleMeme h1{
+		font-size:50px;
+	}
+	#singleMeme h2, .meme h2{
+		font-size:40px;
+	}
+	#singleMeme h3, .meme a{
+		font-size:40px;
+	}
+	.memeActions a{
+		font-size:200%;
+	}
+	#createMeme{
+		width:100%;
+	}
+	#makeMeme span{
+		font-size:25px;
+	}
+	#userImageWrapper{
+		padding-left:0px;
+	}
+	#intro{
+		width:100%;
+	}
+	#fullNav{
+		width:100%;
+	}
+	#navToggleUpper, #navToggle{
+		display:block;
+		width:100%;
+		text-align:center;
+	}
+	#navToggleUpper img{
+		display:inline;
+	}
+	#fullNav{
+		width:100%;
+		left:-100%;
+		overflow-y:scroll;
+	}
+	#fullNav p, #TandC{
+		width:100%;
+		font-size:35px;
+	}
+	#TandC{
+		position:relative;
+		margin-bottom:0px;
+	}
+	#fullNav div p{
+		width:100%;
+		font-size:35px;
+	}
+	#fullNav h3, #fullNav h2{
+		width:100%;
+		font-size:35px;
+	}
+	#fullNav form{
+		padding-top:20px;
+		width:100%;
+	}
+	#fullNav table{
+		width:100%;
+	}
+	#fullNav form input{
+		width:85%;
+		height:40px;
+		margin-left:0px;
+	}
+	#signUp{
+		margin-left:0px;
+	}
+	#header .topnav{
+		visibility:hidden;
+		height:0px;
+	}
+	.userimagewrapper{
+		padding-left:calc(50% - 76px);
+		width:100%;
+	}
+	#changeImageText{
+		left:calc(34% - 55px);
+	}
+	.meme a{
+		font-size:100%;
+	}
+	.mobileNav{
+		visibility:visible;
+		height:30px !important;
+	}
+	#changeEarnings{
+		padding:0px;
+	}
+	#changeEarnings p{
+		margin:10px;
+		font-size:35px;
+	}
 }

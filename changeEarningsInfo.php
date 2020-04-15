@@ -9,7 +9,7 @@
 	<body ng-controller="memectrl">
 		<?php include "PHP/head.php" ?>
 		<div id="wrapper">
-      <form action="PHP/changeEarnings.php" method="post" id="changeEarnings" name="changeEarnings" novalidate>
+      <form action="PHP/changeEarnings.php" method="post" id="changeEarnings" class="genericBlock" name="changeEarnings" novalidate>
 				<p>
 					<label for="paypal" ng-click='changeEarningsText("paypal")'>
 	        	<input type="radio" id="paypal" value="paypal" name="earningsMethod" />
@@ -24,8 +24,10 @@
 	          Google Pay
 					</label>
 				</p>
-				<p>You will receive $0.75 for each of your cookies sold. That can add up very fast if you advertise well for it!</p>
-				<p>Payments for each month begin going out on the 15th of the next month.</p>
+				<br />
+				<p>You will receive <span>$1.00</span> for each of your <span>large</span> and <span>party</span> cookies sold, and <span>$0.50</span> for each normal. That can add up very fast if you advertise well for it!</p>
+				<p>Payments for each month begin going out on the <span>15th</span> of the following month.</p>
+			<br />
         <p ng-bind="earningsMethodText"></p>
 				<input ng-show="earningsSelected" type="text" name="earningsID" id="earningsID" ng-model="earningsID" required validate-payment/>
 				<input type="submit" ng-show="earningsSelected" ng-disabled="(!changeEarnings.earningsID.$valid)" />

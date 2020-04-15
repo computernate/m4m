@@ -63,7 +63,7 @@ $sql = "UPDATE users SET fileType='$imageFileType' WHERE id = '$id';";
 if ($conn->query($sql) === TRUE && $uploadOk==1){
 	echo 'true';
   $_SESSION['filetype']=$imageFileType;
-header("Location:../index.php?message=Profile Picture Successfully changed. Let's be honest though, you don't look that much better");
+  header("Location:../index.php?message=Profile Picture Successfully changed");
 }
 else{
 	$errorMessage.= "<br>" . $conn->error.$uploadOk;

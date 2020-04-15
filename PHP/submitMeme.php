@@ -37,8 +37,7 @@ for($i=0;$i<count($splitTags)-1;$i++){
 }
 echo 'other stuff done';
 $date=date('Y-m-d H:i:s');
-$isPrivate = (isset($_GET["isPrivate"]))?0:1;
-$sql = "INSERT INTO memes VALUES ('$url', '$title', '$userID', 0, '$tags', '$text', '$isPrivate', '$date', 0 )";
+$sql = "INSERT INTO memes VALUES ('$url', '$title', '$userID', 0, '$tags', '$text', '$date' )";
 //id VARCHAR(31) PRIMARY KEY, title varchar(255), pointerID varchar (31), likes int(15),
 //tags varchar (511), description varchar (511), isPrivate tinyint, age DATETIME(255))
 

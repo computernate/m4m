@@ -12,17 +12,27 @@
 	if($result->num_rows > 0) {
 		while($row=mysqli_fetch_array($result)){
 			$earnings = $row["earnings"];
-			$filetype=$_SESSION["filetype"];
+			if(isset($_SESSION["fileType"])){
+				$filetype=$_SESSION["fileType"];
+			}
 			$bankingID=$row["bankingID"];
 		}
 	}
 ?>
 
-<form id='submitUserImage' method="post" action="PHP/submitUserImage.php" enctype="multipart/form-data">
+<form id='submitUserImage' method="post" action="PHP/submitUserImage.php" enctype="multipart/form-data" id="userImageWrapper">
 	<label for="userImageFile">
 		<div class="userimagewrapper">
+			<?php
+				if(isset($_SESSION["fileType"])){
+			 ?>
 			<img class='userimgside' src='userImages/<?php echo $id.".".$filetype; ?>' alt='<?php echo $_SESSION['user']; ?>'/>
 			<div id="changeImageText"><h4>Change Image</h4></div>
+			<?php }
+				else{ ?>
+ 					<img class='userimgside' src='userImages/noImage.png' alt='<?php echo $_SESSION['user']; ?>'/>
+ 					<div id="changeImageText"><h4>Change Image</h4></div>
+				<?php } ?>
 		</div>
 	</label>
 	<input type="file" id="userImageFile" name="userImageFile" onchange="form.submit()" />
@@ -37,13 +47,33 @@
 </h3>
 
 <div>
-	<p
+
+	<p class="mobileNav"
 		<?php
-			if(strpos($_SERVER['REQUEST_URI'],"newMeme.php")!=false){
+			if(!isset($_GET["sort"])&&strpos($_SERVER['REQUEST_URI'],"index.php")!=false){
 				echo "style='background-color:var(--head-nav-bg-color-2);'";
 			} ?>
 			>
-			<a href='newMeme.php?failure='>New meme</a>
+			<a href="index.php">Popular Cookies</a>
+			</p>
+			<p  class="mobileNav"
+			<?php
+				if(strpos(isset($_GET["sort"])&&$_SERVER['REQUEST_URI'],"index.php")!=false){
+					echo "style='background-color:var(--head-nav-bg-color-2);'";
+				} ?>
+				>
+				<a href="index.php?sort=new">Fresh Cookies</a>
+		</p>
+		<p id="mobileJar" class="mobileNav">
+			<a href='newCookie.php?failure='>Cookie Jar</a>
+		</p>
+		<p
+		<?php
+			if(strpos($_SERVER['REQUEST_URI'],"newCookie.php")!=false){
+				echo "style='background-color:var(--head-nav-bg-color-2);'";
+			} ?>
+			>
+			<a href='newCookie.php?failure='>New Cookie</a>
 	</p>
 
 	<p
@@ -52,7 +82,7 @@
 				echo "style='background-color:var(--head-nav-bg-color-2);'";
 			} ?>
 			>
-			<a href=''>Notifications</a>
+			<a href='notifications.php'>Notifications</a>
 	</p>
 
 	<p
@@ -61,18 +91,9 @@
 				echo "style='background-color:var(--head-nav-bg-color-2);'";
 			} ?>
 			>
-			<a href='userPage.php?uid=<?php echo $_SESSION["ID"]; ?>'>My Memes</a>
+			<a href='userPage.php?uid=<?php echo $_SESSION["ID"]; ?>'>My Cookies</a>
 	</p>
 
-	<p
-		<?php
-			if(strpos($_SERVER['REQUEST_URI'],"likedImages.php")!=false&&strpos($_SERVER['REQUEST_URI'],$_SESSION["ID"])!=false){
-				echo "style='background-color:var(--head-nav-bg-color-2);'";
-			} ?>
-			>
-			<a href='likedImages.php?likedBy=<?php echo $_SESSION["ID"];?>' >Liked Memes</a>
-	</p>
-		<p><a href='' ng-click='submitToCart()' >Cart</a></p>
 
 	<p><a href='' ng-click='logOut()' >Log Out</a></p>
 
