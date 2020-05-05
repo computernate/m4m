@@ -101,3 +101,5 @@
 		<input type="text" id="cartFormData" name="cartFormData" />
 	</form>
 </div>
+
+<a href="terms-and-conditions.php" id="TandC">Terms and Conditions</a>

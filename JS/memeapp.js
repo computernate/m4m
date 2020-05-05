@@ -124,8 +124,8 @@ memeApp.controller( "memectrl" ,  function($scope, $window, $http, $compile){
 						memestring+="	<a href='reportCopy.php?copyid=<?php echo $id; ?>'>Report</a>";
 						memestring+="</p></td></tr>";
 					memestring+="</table>";
-					memestring+="	<form class='buyForm' action='https://the-memery-cookies.myshopify.com/cart/add' target='_blank' method='post' id='form"+memeData[0]+"''>";
-					memestring+="		<input type='hidden' name='id' value='32528941777028' />";
+					memestring+="	<form class='buyForm' action='https://merchies-shop.com/cart/add' target='_blank' method='post' id='form"+memeData[0]+"''>";
+					memestring+="		<input type='hidden' name='id' value='4631467950212' />";
 					memestring+='		<input type="hidden" name="quantity" value="1" />';
 					memestring+='		<input type="hidden" name="properties[cookieid]" value="'+memeData[0]+'" />';
 					memestring+="	</form>";

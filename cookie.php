@@ -1,12 +1,15 @@
 <?php
 
 	session_start();
+
 ?>
 
 <html ng-app="money4memes">
 	<head>
 
 		<title>Cookie</title>
+		<link rel='icon' href='favicon.ico' type='image/x-icon'/ >
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=5e83e3e224d6af001979a5f3&product=inline-share-buttons" async="async"></script>
 	</head>
 	<body ng-controller="memectrl">
@@ -37,6 +40,11 @@
 						}
 						?>
 						<div class="genericBlock">
+							<?php
+							$sameUser;
+							(isset($_SESSION["ID"])&&$row["pointerID"]==$_SESSION["ID"])?$sameUser=true:$sameUser=false;
+							if($sameUser||$row["private"]!=1){
+							?>
 						<h1><?php echo $row['title']; ?></h1><h2 class="color2"> by <a href='userPage.php?uid=<?php echo $name; ?>'><?php echo $name; ?></a></h2>
 						<h3>Cookies bought: <?php echo $row['bought']; ?></h3>
 						<img id = "mainMeme" src='Memes/<?php echo $row["id"].".png"; ?>' alt='<?php echo $row['title']; ?>' class="cookiePicture"/>
@@ -57,40 +65,91 @@
 										<div class="sharethis-inline-share-buttons"></div>
 									</td>
 								</tr><tr>
-									<td>
-										<a href = 'Memes/<?php echo $row["id"].".png"; ?>' download>Save</a>
-									</td>
-									<td>
-										<form class="buyForm" action="https://the-memery-cookies.myshopify.com/cart/add" target="_blank" method="post" id="form<?php echo $id; ?>">
-											<input type="hidden" name="id" value="32528941777028" />
-											<input type="hidden" name="quantity" value="1" />
-											<input type="hidden" name="properties[cookieid]" value="<?php echo $id; ?>" />
-											<a href="" ng-click="buyMeme('<?php echo $id; ?>')" class="buy" >COOKIE</a>
-										</form>'
-									</td>
-									<td>
-										<a href='reportCopy.php?copyid=<?php echo $id; ?>'>Report</a>
-									</td>
-								</tr>
-								</table>
-								<?php if(isset($_SESSION["ID"])&&$row["pointerID"]==$_SESSION["ID"]){ ?>
-								<table class="memeActions">
-									<tr>
+									<?php if($sameUser){ ?>
 										<td>
-											<form class="buyForm" action="https://the-memery-cookies.myshopify.com/cart/add" target="_blank" method="post" id="form<?php echo $id; ?>">
-												<input type="hidden" name="id" value="32528941777028" />
+											<form class="buyForm" action="https://merchies-shop.com/cart/add" target="_blank" method="post" id="formpl<?php echo $id; ?>">
+												<input type="hidden" name="id" value="33536730759300" />
 												<input type="hidden" name="quantity" value="1" />
 												<input type="hidden" name="properties[cookieid]" value="<?php echo $id; ?>" />
-												<a href="" ng-click="buyMeme('<?php echo $id; ?>')" class="buy" >BULK COOKIES</a>
-											</form>'
+												<a href="" ng-click="buyMeme('pl<?php echo $id; ?>')" class="buy" >ENORMOUS (2.99) </a>
+											</form>
 										</td>
-										<td>
-											<a href="PHP/deleteCookie.php?id=<?php echo $id; ?>">Delete</a>
-										</td>
-									</tr>
-								</table>
+									<td>
+										<form class="buyForm" action="https://merchies-shop.com/cart/add" target="_blank" method="post" id="formpm<?php echo $id; ?>">
+											<input type="hidden" name="id" value="33536730792068" />
+											<input type="hidden" name="quantity" value="1" />
+											<input type="hidden" name="properties[cookieid]" value="<?php echo $id; ?>" />
+											<a href="" ng-click="buyMeme('pm<?php echo $id; ?>')" class="buy" >NORMAL (1.49)</a>
+										</form>
+									</td>
+									<td>
+										<form class="buyForm" action="https://merchies-shop.com/cart/add" target="_blank" method="post" id="formps<?php echo $id; ?>">
+											<input type="hidden" name="id" value="33536730824836" />
+											<input type="hidden" name="quantity" value="1" />
+											<input type="hidden" name="properties[cookieid]" value="<?php echo $id; ?>" />
+											<a href="" ng-click="buyMeme('ps<?php echo $id; ?>')" class="buy" >PARTY (2.99) </a>
+										</form>
+									</td>
+								<?php } else{ ?>
+									<td>
+										<form class="buyForm" action="https://merchies-shop.com/cart/add" target="_blank" method="post" id="formsl<?php echo $id; ?>">
+											<input type="hidden" name="id" value="33456487858308" />
+											<input type="hidden" name="quantity" value="1" />
+											<input type="hidden" name="properties[cookieid]" value="<?php echo $id; ?>" />
+											<a href="" ng-click="buyMeme('sl<?php echo $id; ?>')" class="buy" >ENORMOUS (3.99) </a>
+										</form>
+									</td>
+								<td>
+									<form class="buyForm" action="https://merchies-shop.com/cart/add" target="_blank" method="post" id="formsm<?php echo $id; ?>">
+										<input type="hidden" name="id" value="33456487891076" />
+										<input type="hidden" name="quantity" value="1" />
+										<input type="hidden" name="properties[cookieid]" value="<?php echo $id; ?>" />
+										<a href="" ng-click="buyMeme('sm<?php echo $id; ?>')" class="buy" >NORMAL (1.99)</a>
+									</form>
+								</td>
+								<td>
+									<form class="buyForm" action="https://merchies-shop.com/cart/add" target="_blank" method="post" id="formss<?php echo $id; ?>">
+										<input type="hidden" name="id" value="33456487923844" />
+										<input type="hidden" name="quantity" value="1" />
+										<input type="hidden" name="properties[cookieid]" value="<?php echo $id; ?>" />
+										<a href="" ng-click="buyMeme('ss<?php echo $id; ?>')" class="buy" >PARTY (3.99) </a>
+									</form>
+								</td>
 								<?php } ?>
-
+								</tr>
+								</table>
+								<?php if($sameUser){ ?>
+								<table class="memeActions">
+									<td>
+										<form class="buyForm" action="https://merchies-shop.com/cart/add" target="_blank" method="post" id="formsl<?php echo $id; ?>">
+											<input type="hidden" name="id" value="33536767328388" />
+											<input type="hidden" name="quantity" value="1" />
+											<input type="hidden" name="properties[cookieid]" value="<?php echo $id; ?>" />
+											<a href="" ng-click="buyMeme('sl<?php echo $id; ?>')" class="buy" >BIG BULK (8)</a>
+										</form>
+									</td>
+								<td>
+									<form class="buyForm" action="https://merchies-shop.com/cart/add" target="_blank" method="post" id="formsm<?php echo $id; ?>">
+										<input type="hidden" name="id" value="33536767361156" />
+										<input type="hidden" name="quantity" value="1" />
+										<input type="hidden" name="properties[cookieid]" value="<?php echo $id; ?>" />
+										<a href="" ng-click="buyMeme('sm<?php echo $id; ?>')" class="buy" >NORMAL BULK (16)</a>
+									</form>
+								</td>
+								<td>
+									<form class="buyForm" action="https://merchies-shop.com/cart/add" target="_blank" method="post" id="formss<?php echo $id; ?>">
+										<input type="hidden" name="id" value="33536767426692" />
+										<input type="hidden" name="quantity" value="1" />
+										<input type="hidden" name="properties[cookieid]" value="<?php echo $id; ?>" />
+										<a href="" ng-click="buyMeme('ss<?php echo $id; ?>')" class="buy" >SMALL BULK (32)</a>
+									</form>
+								</td>
+								</table>
+								<?php }
+							}
+							else{ ?>
+								<p>This cookie is only for private purposes and is not for purchase.</p>
+							<?php } ?>
 						</div>
 						<div class="break"></div>
 

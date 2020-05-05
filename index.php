@@ -4,7 +4,9 @@
 
 <html ng-app="money4memes">
 	<head>
-		<title>The Memery</title>
+		<title>Merchies</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel='icon' href='favicon.ico' type='image/x-icon'/ >
 	</head>
 	<body ng-controller="memectrl">
 		<?php include "PHP/head.php" ?>
@@ -30,10 +32,13 @@
 					<span class='color2'>EASY:</span> All you do is upload a picture! Then you can post the link wherever you want, and receive your revenue. We take care of hosting, printing, and shipping.
 					Its so easy to use, <span>you'll make money on accident!</span></li>
 				<li>
-					<span class='color2'>UNIQUE:</span> If you wanted a T shirt of a mug, you can go anywhere. But nowhere else will bring you fresh, home-baked, <span>high-quality cookies</span>.
+					<span class='color2'>UNIQUE:</span> If you wanted a T shirt or a mug, you can go anywhere. But nowhere else will bring you fresh, home-baked, <span>high-quality cookies</span>.
+				</li>
+				<li>
+					<span class='color2'>VERSITILE:</span>You don't have to be a company to use Merchies. They make perfect <span>gifts,</span> or the best way to spice up your freelance <span>photography</span> or <span>art</span>!
 				</li>
 			 </ol>
-			 <p>Click the M in the corner to create an account and get started, or see our most popular cookies below!</p>
+			 <p><span>Click the M</span> in the corner to create an account and get started, or see our most popular cookies below!</p>
 		 </div>
 
 		<?php
@@ -44,7 +49,7 @@
 				echo '<span ng-init = "sortMethod=\'good\';"></span>';
 			}
 		?>
-			<div class="tagControls">
+			<div class="tagControls genericBlock">
 				<p id="filters" ng-init = "getTags()">
 					<span ng-repeat = "tag in tags" [id]='{{tag}}' ng-class='{inactiveTag : activeTagFilters.indexOf(tag)!==-1}' ng-click='toggleTag(tag)' class = 'tag'>
 						{{tag}}

@@ -14,3 +14,5 @@ CREATE TABLE tags (tag VARCHAR (31) PRIMARY KEY);
 CREATE TABLE copyReports (memeid1 varchar(31), memeid2 varchar(31), submitterid varchar(31));
 
 CREATE TABLE notifications(user VARCHAR(31), notification VARCHAR (255), date DATETIME(6));
+
+CREATE TABLE orders(id VARCHAR(31), size int(4), isPersonal int(2))

@@ -4,7 +4,8 @@ session_start();
 
 <html ng-app="money4memes">
 	<head>
-		<title>The Memery</title>
+		<title>Liked Images</title>
+	<link rel='icon' href='favicon.ico' type='image/x-icon'/ >
 	</head>
 	<body ng-controller="memectrl">
 		<?php include "PHP/head.php" ?>

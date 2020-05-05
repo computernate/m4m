@@ -82,7 +82,7 @@
 			</tr>
 			<tr>
 				<td>
-					<label class="checkmarkContainer">I agree to the terms and conditions
+					<label class="checkmarkContainer">I agree to the <a href="terms-and-conditions.php" target="_blank">terms and conditions</a>
 					  <input type="checkbox" ng-model="termsandagreements" id="termsandagreements" name="termsandagreements" />
 					  <span class="checkmark"></span>
 					</label>

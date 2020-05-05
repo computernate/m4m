@@ -8,15 +8,15 @@ $sortMethod = ($_GET['sort']=='new')? 'age' : 'bought';
 $query="";
 if(isset($_GET["search"])){
 	$srch = $_GET["search"];
-	$query = "SELECT id, title, pointerID, description, bought, tags, age FROM memes WHERE MATCH(description) AGAINST('$srch') LIMIT 25;";
+	$query = "SELECT id, title, pointerID, description, bought, tags, age FROM memes WHERE MATCH(description) AGAINST('$srch') AND NOT private = '1' LIMIT 25;";
 }
 else if(isset($_GET["filter"])){
 	$filter = $_GET["filter"];
-	$query = "SELECT id, title, pointerID, description, bought, tags, age FROM memes WHERE tags REGEXP '$filter' ORDER BY $sortMethod DESC LIMIT 25 OFFSET ".( 25 * $page );
+	$query = "SELECT id, title, pointerID, description, bought, tags, age FROM memes WHERE tags REGEXP '$filter'  AND NOT private = '1' ORDER BY $sortMethod DESC LIMIT 25 OFFSET ".( 25 * $page );
 }
 else if(isset($_GET["madeBy"])){
 	$madeby = $_GET["madeBy"];
-	$query = "SELECT id, title, pointerID, description, bought, tags, age FROM memes WHERE pointerID = '$madeby'";
+	$query = "SELECT id, title, pointerID, description, bought, tags, age FROM memes WHERE pointerID = '$madeby';";
 }
 else if(isset($_GET["likedBy"])||isset($_GET["madeBy"])){
 	$likingUser = $_GET["likedBy"];
@@ -54,7 +54,7 @@ else if(isset($_GET["likedBy"])||isset($_GET["madeBy"])){
 	exit();
 }
 else{
-	$query = "SELECT id, title, pointerID, description, bought, tags, age FROM memes ORDER BY $sortMethod DESC LIMIT 25 OFFSET ".( 25 * $page );
+	$query = "SELECT id, title, pointerID, description, bought, tags, age FROM memes WHERE NOT private = '1' ORDER BY $sortMethod DESC LIMIT 25 OFFSET ".( 25 * $page );
 }
 
 $result = $conn->query($query);

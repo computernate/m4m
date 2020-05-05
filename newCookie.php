@@ -5,7 +5,9 @@
 <html ng-app="money4memes">
 	<head>
 		<title>New Cookie</title>
+		<link rel='icon' href='favicon.ico' type='image/x-icon'/ >
 		<link type='text/css' rel="stylesheet" href='CSS/color-picker.css' />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<script src="JS/fabric.js"></script>
 		<script src="JS/creatorScripts.js"></script>
 		<script src="JS/color-picker.js"></script>
@@ -51,7 +53,7 @@
 							<td>
 								<span>Title:</span>
 							</td>
-							<td>
+							<td colspan="2">
 								<input type="text" name="memeTitle" id="memeTitle" ng-model="memeTitle" maxlength="254" minlength="1" required />
 							</td>
 						</tr>
@@ -59,7 +61,7 @@
 							<td>
 								<span>Tags:</span>
 							</td>
-							<td>
+							<td colspan="2">
 								<input type="text" list='allTags' placeholder="Select or create a tag" name='tag' id='newTag' ng-model='actingTag' ng-init="getTags()" />
 								<input type='hidden' ng-value="stringify(activeTags)" name='atags' />
 
@@ -80,15 +82,27 @@
 							<td>
 								<span>Description:</span>
 							</td>
-							<td>
-							<textarea name="memeText" id="memeText" width="400" maxlength="510" minlength="1" ng-model="memeText" required> </textarea>
+							<td colspan="2">
+								<textarea name="memeText" id="memeText" width="400" maxlength="510" minlength="1" ng-model="memeText" required> </textarea>
 							</td>
 						</tr>
 						<tr>
-							<td colspan="2">
+							<td>
+								<span>For private use</span>
+							</td>
+							<td>
+								<input type='checkbox' name="isPrivate" id="isPrivate" width="400" ng-model="isPrivate" />
+							</td>
+								<td>
+									<span id="leaveunchecked">Leave unchecked for others to see and buy this cookie</span>
+								</td>
+						</tr>
+						<tr>
+							<td colspan="3">
 								<input type='hidden' id="uploadingMeme" name="uploadingMeme" ng-model="imageBlob" />
 								<?php if($bankingID=="") { ?>
-										<h3 class="earningsError">You need to add an earnings method before posting a cookie. Please go to the user side bar, and click the $0.00 to add one.</h3>
+										<h3 class="earningsError" ng-show='!isPrivate'>You need to add an earnings method before posting a cookie for resell. Please go to the user side bar, and click the $0.00 to add one or make your cookie private.</h3>
+										<input type="submit" value="Post cookie!" name="submit" id="submitMeme" ng-disabled="(!makeMeme.$valid)" ng-show="isPrivate" />
 								<?php }
 								else{ ?>
 										<input type="submit" value="Post cookie!" name="submit" id="submitMeme" ng-disabled="(!makeMeme.$valid)" />

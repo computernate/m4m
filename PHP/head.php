@@ -46,7 +46,6 @@ if(isset($_GET["message"])){
 				include "userSidebar.php";
 			}
 		?>
-		<a href="terms-and-conditions.php" id="TandC">Terms and Conditions</a>
 	</div>
 	<div id="navToggle">
 		<img src="Images/navToggle.png" alt="Navigation" ng-click="activatedFullNav=!activatedFullNav">

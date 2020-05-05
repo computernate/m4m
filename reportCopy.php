@@ -5,6 +5,7 @@
 <html ng-app="money4memes">
 	<head>
 		<title>Report Copy</title>
+	<link rel='icon' href='favicon.ico' type='image/x-icon'/ >
 	</head>
 	<body ng-controller="memectrl">
 		<?php include "PHP/head.php" ?>

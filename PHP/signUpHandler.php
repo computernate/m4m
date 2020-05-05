@@ -11,7 +11,7 @@ $id = $name;
 
 if($name&&$password&&$email&&$promo){
 
-	$sql = "INSERT INTO users VALUES ('$id', '$name', '$password',  '$email',0,1,'','')";
+	$sql = "INSERT INTO users VALUES ('$id', '$name', '$password',  '$email',0,0,'','')";
 //"0nqjdr90iqi", 'Nathan', "9315", "nateroskelley@gmail.com",0,1,"",""
 if ($conn->query($sql) === TRUE) {
 		echo "New record created successfully";
@@ -23,7 +23,7 @@ if ($conn->query($sql) === TRUE) {
 	$_SESSION["ID"]=$id;
 	setcookie("username",$name,time()+(60*60*24*7));
 	setcookie("password",$password,time()+(60*60*24*7));
-	header("Location: ../index.php?message=You have been successfully created! Enjoy Meming");
+	header("Location: ../index.php?message=You have been successfully created!");
 	//$conn->close();
 }
 

@@ -37,19 +37,20 @@ for($i=0;$i<count($splitTags)-1;$i++){
 }
 echo 'other stuff done';
 $date=date('Y-m-d H:i:s');
-$sql = "INSERT INTO memes VALUES ('$url', '$title', '$userID', 0, '$tags', '$text', '$date' )";
+$private = (isset($_GET['isPrivate']))?0:1;
+$sql = "INSERT INTO memes VALUES ('$url', '$title', '$userID', 0, '$tags', '$text', '$date', $private )";
 //id VARCHAR(31) PRIMARY KEY, title varchar(255), pointerID varchar (31), likes int(15),
 //tags varchar (511), description varchar (511), isPrivate tinyint, age DATETIME(255))
 
 if ($conn->query($sql) === TRUE){
 	echo 'true';
-	header("Location: ../index.php");
+	header("Location: ../cookie.php?meme=".$url);
 }
 else{
 	$errorMessage.= "<br>" . $conn->error.$uploadOk;
   echo 'false';
   echo $errorMessage;
-	//header("Location: ../newMeme.php?message=$errorMessage");
+	header("Location: ../newMeme.php?message=$errorMessage");
 }
 
 ?>

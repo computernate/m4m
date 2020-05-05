@@ -134,7 +134,18 @@ html,body{
 	height:100%;
 	left:-250px;
 	transition: 0.5s, 0.5s right;
+	overflow-y:scroll;
+	overflow-x:hidden;
 }
+
+#fullNav::-webkit-scrollbar{
+	background-color:var(--head-bg-color);
+	width:3px;
+}
+#fullNav::-webkit-scrollbar-thumb{
+	background-color:var(--a-bg-color);
+}
+
 #fullNav.activeFullNav{
 	left:0px;
 }
@@ -451,7 +462,7 @@ margin-left:0px;
 .tagOption{
 	font-size:35px;
 }
-.option input[type='checkbox']{
+#isPrivate{
 	width:40px;
 	border:1px solid var(--create-input-text);
 	padding:5px;
@@ -485,7 +496,10 @@ margin-left:0px;
 }
 #createMeme{
 	margin:0px auto;
-	background-color:var(--create-bg-color);
+}
+
+span#leaveunchecked{
+	font-size:20px;
 }
 canvas{
 	border:2px solid black;
@@ -689,8 +703,6 @@ Memes on the Meme Feed
 	background-color:var(--tag-inactive-color);
 }
 .tagControls{
-	width:500px;
-	margin:0px auto;
 	background-color:var(--tag-bg-color);
 	border:5px black solid;
 	border-radius:10px;
@@ -1033,7 +1045,7 @@ change earnings
 	background-color:var(--create-input-disabled);
 }
 
-@media (max-width: 750px){
+@media only screen and (max-width: 750px){
 	.genericBlock{
 		width:100%;
 	}
@@ -1055,6 +1067,9 @@ change earnings
 	#makeMeme span{
 		font-size:25px;
 	}
+	#makeMeme tr td{
+		color:var(--text-color);
+	}
 	#userImageWrapper{
 		padding-left:0px;
 	}
@@ -1063,6 +1078,7 @@ change earnings
 	}
 	#fullNav{
 		width:100%;
+		overflow-y:scroll;
 	}
 	#navToggleUpper, #navToggle{
 		display:block;
@@ -1075,7 +1091,6 @@ change earnings
 	#fullNav{
 		width:100%;
 		left:-100%;
-		overflow-y:scroll;
 	}
 	#fullNav p, #TandC{
 		width:100%;
@@ -1103,7 +1118,10 @@ change earnings
 	#fullNav form input{
 		width:85%;
 		height:40px;
-		margin-left:0px;
+		margin-left:7.5%;
+	}
+	#fullNav form p{
+		margin-left:7.5%;
 	}
 	#signUp{
 		margin-left:0px;
