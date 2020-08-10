@@ -11,17 +11,34 @@
 		<script src="JS/fabric.js"></script>
 		<script src="JS/creatorScripts.js"></script>
 		<script src="JS/color-picker.js"></script>
+		<style>
+
+			.centerCreate{
+				margin-left:auto;
+				margin-right:auto;
+			}
+
+			label{
+				font-size:60px;
+				border:solid white 4px;
+				padding:20px;
+			}
+
+		</style>
 	</head>
 	<body ng-controller="memectrl"  onload="initializeCanvas()">
 		<?php include "PHP/head.php" ?>
 		<div id="wrapper">
 			<!--<div id="createMeme">-->
 			<div class="genericBlock" id="createMeme">
-				<p id="creatorControls">
+				<h1 style = "text-align:center">Create New Cookie</h2>
+				<div id="creatorControls">
 					<input type="file" name="fileForCreator" id="fileForCreator" onchange="addToCreator(this)">
-					<label for="fileForCreator">Choose Image</label>
+					<label for="fileForCreator" class="centerCreate">Choose Image</label>
+					<br />
+					<br />
+					<input type="button" value="Change to Portrait" id="changeOrientation" onclick="flipCanvas()"  class="centerCreate"/>
 					<input type="button" onclick="addTextbox()" value="Add Textbox" />
-					<input type="button" value="Portrait" id="changeOrientation" onclick="flipCanvas()" />
 					<select id="font-family"></select>
 
 					<span id="textControls1" class='disabled'>
@@ -36,7 +53,7 @@
 
 					<input type="button" onclick="sendElementBack()" value="Send Back" />
 					<input type="button" onclick="deleteElement()" value="X" />
-				</p>
+				</div>
 
 
 
@@ -54,7 +71,7 @@
 								<span>Title:</span>
 							</td>
 							<td colspan="2">
-								<input type="text" name="memeTitle" id="memeTitle" ng-model="memeTitle" maxlength="254" minlength="1" required />
+								<input type="text" name="memeTitle" id="memeTitle" ng-model="memeTitle" maxlength="254" minlength="1" placeholder = "required" required />
 							</td>
 						</tr>
 						<tr>
@@ -83,7 +100,7 @@
 								<span>Description:</span>
 							</td>
 							<td colspan="2">
-								<textarea name="memeText" id="memeText" width="400" maxlength="510" minlength="1" ng-model="memeText" required> </textarea>
+								<textarea name="memeText" id="memeText" width="400" maxlength="510" minlength="1" ng-model="memeText"> </textarea>
 							</td>
 						</tr>
 						<tr>
@@ -105,7 +122,7 @@
 										<input type="submit" value="Post cookie!" name="submit" id="submitMeme" ng-disabled="(!makeMeme.$valid)" ng-show="isPrivate" />
 								<?php }
 								else{ ?>
-										<input type="submit" value="Post cookie!" name="submit" id="submitMeme" ng-disabled="(!makeMeme.$valid)" />
+										<input type="submit" value="Create cookie!" name="submit" id="submitMeme" ng-disabled="(!makeMeme.$valid)" />
 								<?php } ?>
 							</td>
 						</tr>

@@ -10,8 +10,9 @@ if(!$isAdmin){
 $picid = $_GET["picid"];
 $size = $_GET["size"];
 $isPersonal = $_GET["private"];
+$orderId = rand();
 
-$sql = "INSERT INTO orders VALUES('$picid', $size, $isPersonal);";
+$sql = "INSERT INTO orders VALUES('$picid', $size, $isPersonal, $orderId);";
 
 if ($conn->query($sql) === TRUE){
   echo "true";

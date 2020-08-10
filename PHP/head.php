@@ -54,12 +54,12 @@ if(isset($_GET["message"])){
 		<a href="index.php" style='<?php
 			if(!isset($_GET["sort"])&&strpos($_SERVER['REQUEST_URI'],"index.php")!=false){
 				echo "background-color:var(--head-nav-bg-color-2);";
-			} ?>'>Popular Cookies</a>
+			} ?>'>Home</a>
 		<a href="index.php?sort=new" style='<?php
 			if(isset($_GET["sort"])&&strpos($_SERVER['REQUEST_URI'],"index.php")!=false){
 				echo "background-color:var(--head-nav-bg-color-2);";
-			} ?>'>Fresh Cookies</a>
-			<a href="#" class="cookieJar">Cookie Jar</a>
+			} ?>'>See Cookies</a>
+			<a href="https://merchies-shop.com/cart" class="cookieJar">Cart</a>
 		<form name="search" method="get" action="search.php">
 			<div class="searchBox">
 					<input class="searchInput" type="text" name="search" placeholder="Search">

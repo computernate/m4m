@@ -17,6 +17,7 @@ else if(isset($_GET["filter"])){
 else if(isset($_GET["madeBy"])){
 	$madeby = $_GET["madeBy"];
 	$query = "SELECT id, title, pointerID, description, bought, tags, age FROM memes WHERE pointerID = '$madeby';";
+	echo $query;
 }
 else if(isset($_GET["likedBy"])||isset($_GET["madeBy"])){
 	$likingUser = $_GET["likedBy"];

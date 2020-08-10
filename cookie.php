@@ -66,28 +66,45 @@
 									</td>
 								</tr><tr>
 									<?php if($sameUser){ ?>
+
+										<!--<td>
+											<div class="buyForm">
+												<a href="" ng-click="buyCookie('33536730759300', '<?php echo $id; ?>')" class="buy">ENORMOUS ($2.99)</a>
+											</div>
+										</td>
+
 										<td>
-											<form class="buyForm" action="https://merchies-shop.com/cart/add" target="_blank" method="post" id="formpl<?php echo $id; ?>">
+											<div class="buyForm">
+												<a href="" ng-click="buyCookie('33536730792068', '<?php echo $id; ?>')" class="buy">NORMAL ($1.49)</a>
+											</div>
+										</td>
+										<td>
+											<div class="buyForm">
+												<a href="" ng-click="buyCookie('33536730824836', '<?php echo $id; ?>')"  class="buy">PARTY ($2.99) </a>
+											</div>
+										</td>-->
+										<td>
+											<form class="buyForm" action="https://merchies-shop.com/cart/add" target="_blank" method="post" id="formsl<?php echo $id; ?>">
 												<input type="hidden" name="id" value="33536730759300" />
 												<input type="hidden" name="quantity" value="1" />
 												<input type="hidden" name="properties[cookieid]" value="<?php echo $id; ?>" />
-												<a href="" ng-click="buyMeme('pl<?php echo $id; ?>')" class="buy" >ENORMOUS (2.99) </a>
+												<a href="" ng-click="buyCookie('sl<?php echo $id; ?>')" class="buy" >ENORMOUS ($1.99) </a>
 											</form>
 										</td>
 									<td>
-										<form class="buyForm" action="https://merchies-shop.com/cart/add" target="_blank" method="post" id="formpm<?php echo $id; ?>">
+										<form class="buyForm" action="https://merchies-shop.com/cart/add" target="_blank" method="post" id="formsm<?php echo $id; ?>">
 											<input type="hidden" name="id" value="33536730792068" />
 											<input type="hidden" name="quantity" value="1" />
 											<input type="hidden" name="properties[cookieid]" value="<?php echo $id; ?>" />
-											<a href="" ng-click="buyMeme('pm<?php echo $id; ?>')" class="buy" >NORMAL (1.49)</a>
+											<a href="" ng-click="buyCookie('sm<?php echo $id; ?>')" class="buy" >NORMAL ($1.25)</a>
 										</form>
 									</td>
 									<td>
-										<form class="buyForm" action="https://merchies-shop.com/cart/add" target="_blank" method="post" id="formps<?php echo $id; ?>">
+										<form class="buyForm" action="https://merchies-shop.com/cart/add" target="_blank" method="post" id="formss<?php echo $id; ?>">
 											<input type="hidden" name="id" value="33536730824836" />
 											<input type="hidden" name="quantity" value="1" />
 											<input type="hidden" name="properties[cookieid]" value="<?php echo $id; ?>" />
-											<a href="" ng-click="buyMeme('ps<?php echo $id; ?>')" class="buy" >PARTY (2.99) </a>
+											<a href="" ng-click="buyCookie('ss<?php echo $id; ?>')" class="buy" >PARTY ($1.99) </a>
 										</form>
 									</td>
 								<?php } else{ ?>
@@ -96,7 +113,7 @@
 											<input type="hidden" name="id" value="33456487858308" />
 											<input type="hidden" name="quantity" value="1" />
 											<input type="hidden" name="properties[cookieid]" value="<?php echo $id; ?>" />
-											<a href="" ng-click="buyMeme('sl<?php echo $id; ?>')" class="buy" >ENORMOUS (3.99) </a>
+											<a href="" ng-click="buyCookie('sl<?php echo $id; ?>')" class="buy" >ENORMOUS ($2.99) </a>
 										</form>
 									</td>
 								<td>
@@ -104,7 +121,7 @@
 										<input type="hidden" name="id" value="33456487891076" />
 										<input type="hidden" name="quantity" value="1" />
 										<input type="hidden" name="properties[cookieid]" value="<?php echo $id; ?>" />
-										<a href="" ng-click="buyMeme('sm<?php echo $id; ?>')" class="buy" >NORMAL (1.99)</a>
+										<a href="" ng-click="buyCookie('sm<?php echo $id; ?>')" class="buy" >NORMAL ($1.99)</a>
 									</form>
 								</td>
 								<td>
@@ -112,7 +129,7 @@
 										<input type="hidden" name="id" value="33456487923844" />
 										<input type="hidden" name="quantity" value="1" />
 										<input type="hidden" name="properties[cookieid]" value="<?php echo $id; ?>" />
-										<a href="" ng-click="buyMeme('ss<?php echo $id; ?>')" class="buy" >PARTY (3.99) </a>
+										<a href="" ng-click="buyCookie('ss<?php echo $id; ?>')" class="buy" >PARTY ($2.99) </a>
 									</form>
 								</td>
 								<?php } ?>
@@ -121,27 +138,27 @@
 								<?php if($sameUser){ ?>
 								<table class="memeActions">
 									<td>
-										<form class="buyForm" action="https://merchies-shop.com/cart/add" target="_blank" method="post" id="formsl<?php echo $id; ?>">
+										<form class="buyForm" action="https://merchies-shop.com/cart/add" target="_blank" method="post" id="formbl<?php echo $id; ?>">
 											<input type="hidden" name="id" value="33536767328388" />
 											<input type="hidden" name="quantity" value="1" />
 											<input type="hidden" name="properties[cookieid]" value="<?php echo $id; ?>" />
-											<a href="" ng-click="buyMeme('sl<?php echo $id; ?>')" class="buy" >BIG BULK (8)</a>
+											<a href="" ng-click="buyCookie('bl<?php echo $id; ?>')" class="buy" >BIG BULK (6)</a>
 										</form>
 									</td>
 								<td>
-									<form class="buyForm" action="https://merchies-shop.com/cart/add" target="_blank" method="post" id="formsm<?php echo $id; ?>">
+									<form class="buyForm" action="https://merchies-shop.com/cart/add" target="_blank" method="post" id="formbm<?php echo $id; ?>">
 										<input type="hidden" name="id" value="33536767361156" />
 										<input type="hidden" name="quantity" value="1" />
 										<input type="hidden" name="properties[cookieid]" value="<?php echo $id; ?>" />
-										<a href="" ng-click="buyMeme('sm<?php echo $id; ?>')" class="buy" >NORMAL BULK (16)</a>
+										<a href="" ng-click="buyCookie('bm<?php echo $id; ?>')" class="buy" >NORMAL BULK (12)</a>
 									</form>
 								</td>
 								<td>
-									<form class="buyForm" action="https://merchies-shop.com/cart/add" target="_blank" method="post" id="formss<?php echo $id; ?>">
+									<form class="buyForm" action="https://merchies-shop.com/cart/add" target="_blank" method="post" id="formbs<?php echo $id; ?>">
 										<input type="hidden" name="id" value="33536767426692" />
 										<input type="hidden" name="quantity" value="1" />
 										<input type="hidden" name="properties[cookieid]" value="<?php echo $id; ?>" />
-										<a href="" ng-click="buyMeme('ss<?php echo $id; ?>')" class="buy" >SMALL BULK (32)</a>
+										<a href="" ng-click="buyCookie('bs<?php echo $id; ?>')" class="buy" >SMALL BULK (24)</a>
 									</form>
 								</td>
 								</table>

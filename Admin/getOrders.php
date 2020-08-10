@@ -13,9 +13,9 @@ $result = $conn->query($query);
 if($result->num_rows > 0) {
 	$returnString="";
 	while($row=mysqli_fetch_array($result)){
-		for($a = 0;$a<=2;$a++){
+		for($a = 0;$a<=3;$a++){
 			$returnString.=$row[$a];
-			if($a!==2){
+			if($a!==3){
 				$returnString.=":";
 			}
 			else{

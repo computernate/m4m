@@ -21,7 +21,9 @@ var tPick;
 var bPick;
 
 function initializeCanvas(){
-
+  if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
+      alert("WARNING: This page is not optimized for mobile performance. You may continue, but we suggest switching to desktop.");
+  }
   if(window.innerWidth<=750){
     document.getElementById("memeCreator").width="324";
       document.getElementById("memeCreator").height="250";
@@ -75,6 +77,7 @@ function addToCreator(image){
     var reader = new FileReader();
     reader.onload = function (e) {
       fabric.Image.fromURL(reader.result, function(oImg) {
+        oImg.scaleToHeight(canvas.getHeight());
         canvas.add(oImg);
       });
     };
@@ -147,7 +150,7 @@ function flipCanvas(){
     var canvasElement="<canvas width='"+height+"' height='"+width+"' id='memeCreator'></canvas>";
     document.getElementById('canvas-wrapper').innerHTML=canvasElement;
     initializeCanvas();
-    document.getElementById("changeOrientation").value=(width=="500px")?"Portrait":"Landscape";
+    document.getElementById("changeOrientation").value=(width=="500px")?"Change to Portrait":"Change to Landscape";
   }
 }
 

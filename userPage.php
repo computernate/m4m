@@ -32,7 +32,7 @@
           </h1>
 
           <div id="allMemes">
-            <div ng-init="getMoreMemes('');sortMethod='new';"></div>
+            <div ng-init="sortMethod='new';getMoreMemes('&madeBy=<?php echo $userData['id']; ?>');"></div>
           </div>
 
         </div>

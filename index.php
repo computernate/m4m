@@ -20,48 +20,37 @@
 }(document, 'script', 'facebook-jssdk'));</script>
 		<div id="wrapper">
 
-
+		 <?php
+		 if(!isset($_GET["sort"])){
+		  ?>
 		 <div id="intro" class='genericBlock'>
+
 			 <h1>Welcome to Merchies Cookies!</h1>
-			 <p>Merchandising is hard. Here at Merchies Cookies, we've tried to create the perfect merchandising experience for you by fixing the 3 hardest parts:</p>
-			 <ol>
+			 <p>We create custom printed cookies, and sell them all over the country! Perfect for:</p>
+			 <ul>
 				<li>
-					<span class='color2'>NO INVESTMENT:</span> At Merchies, we take care of everything so there is <span>zero investment</span>. We only print cookies when the order is placed, send the cookies directly to the customer,
-					 and send you	your hard earned revenue. </li>
+					<span class='color2'>PARTIES</span> From baby showers, college parties, to weddings, funerals, and everything in between!
+				 		Custom printed cookies make a beautiful custom decoration, and party favor that everyone will appreciate</li>
 				<li>
-					<span class='color2'>EASY:</span> All you do is upload a picture! Then you can post the link wherever you want, and receive your revenue. We take care of hosting, printing, and shipping.
-					Its so easy to use, <span>you'll make money on accident!</span></li>
+					<span class='color2'>GIFTS</span> Turn someone's favorite moment into a great gift! They will truly appreciate seeing
+						a family photo, a great achievement, or an old memory on a delicious cookie!</li>
 				<li>
-					<span class='color2'>UNIQUE:</span> If you wanted a T shirt or a mug, you can go anywhere. But nowhere else will bring you fresh, home-baked, <span>high-quality cookies</span>.
+					<span class='color2'>MERCHANDISING</span> If you wanted a T shirt or a mug, you can go anywhere. But nowhere else will bring you fresh, home-baked, high-quality cookies.
 				</li>
 				<li>
-					<span class='color2'>VERSITILE:</span>You don't have to be a company to use Merchies. They make perfect <span>gifts,</span> or the best way to spice up your freelance <span>photography</span> or <span>art</span>!
+					<span class='color2'>ART</span> If you're an artist, photographer, or even a band, make money through your craft with us! We'll take care of your
+						orders, and even host for you so all you need to do is post a picture, and share your link!
 				</li>
-			 </ol>
-			 <p><span>Click the M</span> in the corner to create an account and get started, or see our most popular cookies below!</p>
+			</ul>
+			 <p><span ng-click="activatedFullNav=!activatedFullNav">Click here</span> or the M in the corner to create an account and get started!</p>
+			 <img src="Images/wedding.jpg" style="width:100%;margin-top:5px;"/>
+			 <img src = "Images/merch.jpg" style="width:100%;margin-top:5px;"/>
 		 </div>
-
-		<?php
-			if(isset($_GET["sort"])&&$_GET['sort']=='new'){
-				echo '<span ng-init = "sortMethod=\'new\';"></span>';
-			}
-			else{
-				echo '<span ng-init = "sortMethod=\'good\';"></span>';
-			}
-		?>
-			<div class="tagControls genericBlock">
-				<p id="filters" ng-init = "getTags()">
-					<span ng-repeat = "tag in tags" [id]='{{tag}}' ng-class='{inactiveTag : activeTagFilters.indexOf(tag)!==-1}' ng-click='toggleTag(tag)' class = 'tag'>
-						{{tag}}
-					</span>
-				</p>
-
-				<input type="button" ng-click="refreshPage()" value="See cookies with highlighted tags"/>
-			</div>
-			<div id="allMemes">
-				<div ng-init="getMoreMemes('');pagination=0;"></div>
-			</div>
-
+	 <?php }else{ ?>
+		 <div id="allMemes">
+			 <div ng-init="getMoreMemes()"></div>
+		 </div>
+	 <?php }?>
 		</div>
 	</body>
 </html>

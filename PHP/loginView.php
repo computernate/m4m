@@ -16,7 +16,7 @@
 			<a href="index.php?sort=new">Fresh Cookies</a>
 	</p>
 	<p id="mobileJar" class="mobileNav">
-		<a href='newCookie.php?failure='>Cookie Jar</a>
+		<a href='https://merchies-shop.com/cart'>Cookie Jar</a>
 	</p>
 </div>
 <form id="login" method="post" action="PHP/logIn.php">

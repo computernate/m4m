@@ -24,7 +24,7 @@
 	<label for="userImageFile">
 		<div class="userimagewrapper">
 			<?php
-				if(isset($_SESSION["fileType"])){
+				if(isset($_SESSION["fileType"])&&$_SESSION["fileType"]!=""){
 			 ?>
 			<img class='userimgside' src='userImages/<?php echo $id.".".$filetype; ?>' alt='<?php echo $_SESSION['user']; ?>'/>
 			<div id="changeImageText"><h4>Change Image</h4></div>
@@ -65,7 +65,7 @@
 				<a href="index.php?sort=new">Fresh Cookies</a>
 		</p>
 		<p id="mobileJar" class="mobileNav">
-			<a href='newCookie.php?failure='>Cookie Jar</a>
+			<a href='https://merchies-shop.com/cart'>Cookie Jar</a>
 		</p>
 		<p
 		<?php

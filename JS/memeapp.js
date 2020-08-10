@@ -101,6 +101,7 @@ memeApp.controller( "memectrl" ,  function($scope, $window, $http, $compile){
 			filter=filter.substring(0,filter.length-1);
 		}
 		$http.get("PHP/getMemes.php?pag="+$scope.pagination+"&sort="+$scope.sortMethod+filter+filters).then(function(data){
+			console.log(data.data);
 			if(data.data=="false"){
 				memestring="<p>An error has occured. Please <a ng-click='getMoreMemes(\"\")'>click here</a> to try again</p>";
 			}
@@ -119,13 +120,13 @@ memeApp.controller( "memectrl" ,  function($scope, $window, $http, $compile){
 						memestring+="</td></tr>";
 						memestring+="<tr><td><p>";
 						memestring+="	<a class='memeDetails' href = 'cookie.php?meme="+memeData[0]+"'>More Info</a>";
-						memestring+='		<a href="" class="memeDetails buy" ng-click="buyMeme(\''+memeData[0]+'\')" class="buy" >COOKIE</a>';
+						memestring+='		<a href="" class="memeDetails buy" ng-click="buyCookie(\''+memeData[0]+'\')" class="buy" >NORMAL ($1.99)</a>';
 						memestring+="</span>";
 						memestring+="	<a href='reportCopy.php?copyid=<?php echo $id; ?>'>Report</a>";
 						memestring+="</p></td></tr>";
 					memestring+="</table>";
 					memestring+="	<form class='buyForm' action='https://merchies-shop.com/cart/add' target='_blank' method='post' id='form"+memeData[0]+"''>";
-					memestring+="		<input type='hidden' name='id' value='4631467950212' />";
+					memestring+="		<input type='hidden' name='id' value='33536730792068' />";
 					memestring+='		<input type="hidden" name="quantity" value="1" />';
 					memestring+='		<input type="hidden" name="properties[cookieid]" value="'+memeData[0]+'" />';
 					memestring+="	</form>";
@@ -154,6 +155,7 @@ Refreshes index, called when asked for new tags
 	/**
 	expandMeme
 	takes in an element ID, and appends to it a box of info such as the creaor, Tshirt link if applicable, likes, comments, etc.
+	No longer in use
 	*/
 	$scope.expandMeme = function(id,user){
 		document.getElementById(id).classList.add("memeOut");
@@ -179,7 +181,7 @@ Refreshes index, called when asked for new tags
 
 
 	/**
-	Closes a meme after it is unhovered
+	Closes a meme after it is unhovered (depreciated)
 	**/
 	$scope.closeMeme = function(id){
 		document.getElementById(id).classList.remove("memeOut");
@@ -300,10 +302,14 @@ Refreshes index, called when asked for new tags
 		document.getElementById("uploadingMeme").value=src;
 	}
 
-	$scope.buyMeme=function(memeid){
-		console.log(memeid);
-		console.log(document.getElementById("form"+memeid));
-		document.getElementById("form"+memeid).submit();
+	$scope.buyCookie=function(cookieid){
+		console.log(cookieid);
+		console.log(document.getElementById("form"+cookieid));
+		document.getElementById("form"+cookieid).submit();
+	}
+
+	$scope.buyCookiesQuick=function(){
+
 	}
 
 	$scope.earningsSelected=false;
@@ -322,6 +328,28 @@ Refreshes index, called when asked for new tags
 			break;
 		}
 		$scope.earningsID="";
+	}
+
+
+	/**
+		This function takes an uploaded image, and displays it with options to buy
+		Credit to georgeawg from stackowverflow for the image displaying
+	**/
+	$scope.quickImages=[];
+	$scope.addToQuick=function(img){
+		var files = img.target.files; //FileList object
+		for (var i = 0; i < files.length; i++) {
+				var file = files[i];
+						var reader = new FileReader();
+						reader.onload = $scope.imageIsLoaded;
+						reader.readAsDataURL(file);
+			}
+	}
+
+	$scope.imageIsLoaded = function(e){
+		 $scope.$apply(function() {
+				 $scope.quickImages.push(e.target.result);
+		 });
 	}
 
 });

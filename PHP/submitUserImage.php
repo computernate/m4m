@@ -18,14 +18,14 @@ $errorMessage="";
         $uploadOk = 1;
         echo 'Image size okay';
     } else {
-        $errorMessage= "File is not an image.";
+        $errorMessage.= "File is not an image.";
         $uploadOk = 0;
       	//header("Location:../newMeme.php?message=$errorMessage");
         echo 'File is not an image';
     }
 
 	if ($_FILES["userImageFile"]["size"] > 1500000) {
-    $errorMessage= "Sorry, your profile is too Dank. Please try a smaller sized meme.";
+    $errorMessage.= "Sorry, your profile is too large.";
     $uploadOk = 0;
     echo 'file too large';
   	//header("Location:../newMeme.php?message=$errorMessage");
@@ -34,7 +34,7 @@ $errorMessage="";
 
 if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
 && $imageFileType != "gif" ) {
-    $errorMessage= "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+    $errorMessage.= "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
     $uploadOk = 0;
     echo 'file type okay';
   //	header("Location:../newMeme.php?message=$errorMessage");
@@ -42,7 +42,7 @@ if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg
 
 
 if ($uploadOk == 0) {
-    $errorMessage= "Sorry, your file was not uploaded.";
+    $errorMessage.= " Your file was not uploaded.";
     echo 'not uploaded';
   	//header("Location:../newMeme.php?message=$errorMessage");
 	}
