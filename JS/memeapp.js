@@ -111,25 +111,19 @@ memeApp.controller( "memectrl" ,  function($scope, $window, $http, $compile){
 					var memeData=dataStrings[a].split(":");
 					memestring+="<table class='meme genericBlock' id='"+memeData[0]+"'>";
 						memestring+="<tr>";
-						memestring+="<td><h2>"+memeData[1]+"</h2><h3 class='likes' id='likes"+memeData[0]+"'>Cookies sold: "+memeData[4]+"</h3></td>";
+							memestring+="<td><h2>"+memeData[1]+"</h2><h3 class='likes' id='likes"+memeData[0]+"'>Cookies sold: "+memeData[4]+"</h3></td>";
 						memestring+="</tr><tr>";
-						memestring+="<td>";
-						memestring+="<a href='cookie.php?meme="+memeData[0]+"' >";
-						memestring+=	"<img src='Memes/"+memeData[0]+".png' alt='"+memeData[1]+"' />";
-						memestring+="</a>";
+							memestring+="<td>";
+							memestring+="<a href='cookie.php?meme="+memeData[0]+"' >";
+							memestring+=	"<img src='Memes/"+memeData[0]+".png' alt='"+memeData[1]+"' />";
+							memestring+="</a>";
 						memestring+="</td></tr>";
-						memestring+="<tr><td><p>";
-						memestring+="	<a class='memeDetails' href = 'cookie.php?meme="+memeData[0]+"'>More Info</a>";
-						memestring+='		<a href="" class="memeDetails buy" ng-click="buyCookie(\''+memeData[0]+'\')" class="buy" >NORMAL ($1.99)</a>';
-						memestring+="</span>";
-						memestring+="	<a href='reportCopy.php?copyid=<?php echo $id; ?>'>Report</a>";
-						memestring+="</p></td></tr>";
-					memestring+="</table>";
-					memestring+="	<form class='buyForm' action='https://merchies-shop.com/cart/add' target='_blank' method='post' id='form"+memeData[0]+"''>";
-					memestring+="		<input type='hidden' name='id' value='33536730792068' />";
-					memestring+='		<input type="hidden" name="quantity" value="1" />';
-					memestring+='		<input type="hidden" name="properties[cookieid]" value="'+memeData[0]+'" />';
-					memestring+="	</form>";
+						memestring+="<tr><td><div class='buyWrapper'>";
+							memestring+='<p class="buy" ng-click=\'buyCookie("'+memeData[0]+'",33456487858308)\'>HUGE (2.99)</p>';
+							memestring+='<p class="buy" ng-click=\'buyCookie("'+memeData[0]+'",33456487891076)\'>NORMAL (1.99)</p>';
+							memestring+='<p class="buy" ng-click=\'buyCookie("'+memeData[0]+'",33456487923844)\'>PARTY (2.99)</p>';
+						memestring+='</div></td></tr></table>';
+
 				}
 			}
 			var compiledHtml = $compile(memestring)($scope);
@@ -302,14 +296,21 @@ Refreshes index, called when asked for new tags
 		document.getElementById("uploadingMeme").value=src;
 	}
 
-	$scope.buyCookie=function(cookieid){
-		console.log(cookieid);
-		console.log(document.getElementById("form"+cookieid));
-		document.getElementById("form"+cookieid).submit();
+
+	/*Cookie id is the id of the cookie in our side, size is the cookie on shopify*/
+	$scope.buyCookie=function(cookieid, size){
+		console.log(cookieid+":"+size);
+		var newWindow = window.open("https://merchies-shop.com/pages/metasubmit?id="+size+"&quantity=1&cookieid="+cookieid,'_blank', "toolbar=no,status=no,menubar=no,scrollbars=no,resizable=no,left=" + (screen.width*2) + ", top=10000, width=10, height=10, visible=none", '');
+		window.focus();
+		newWindow.blur();
+		setTimeout(function(){
+			newWindow.close()
+		},3000);
 	}
 
-	$scope.buyCookiesQuick=function(){
-
+	$scope.buyCookiesQuick=function(cookie, size){
+		var id="33536730824836";
+		$scope.buyCookie(cookie, id)
 	}
 
 	$scope.earningsSelected=false;
