@@ -257,6 +257,11 @@ Refreshes index, called when asked for new tags
 	}
 
 
+
+
+
+
+
 	$scope.activeTagFilters=[];
 	$scope.toggleTag=function(tag){
 		var tagElement = angular.element(document.querySelector("#"+tag));
@@ -270,9 +275,22 @@ Refreshes index, called when asked for new tags
 		}
 	}
 
+
+
+
+
+
+
+
 	$scope.singleMeme=function(id){
 
 	}
+
+
+
+
+
+
 
 	$scope.checkName = function( ){
 		var statement =  $scope.signupName ;
@@ -291,26 +309,52 @@ Refreshes index, called when asked for new tags
 		//document.getElementById( "key" ).value=$scope.getUniqueKey( );
 	}
 
+
+
+
+
+
+
+
 	$scope.copyurl="";
 //I can probably just remove this once the image editor works, this is only temporary
 	$scope.getCopyMeme=function(){
 		$scope.copyurl="Memes/"+$scope.copyMeme;
 	}
 
+
+
+
+
+
 	$scope.submitMeme=function(){
 		var src = canvas.toDataURL("image/png",1);
 		document.getElementById("uploadingMeme").value=src;
 	}
 
-	$scope.buyCookie=function(cookieid){
-		console.log(cookieid);
-		console.log(document.getElementById("form"+cookieid));
-		document.getElementById("form"+cookieid).submit();
+
+
+
+
+
+	$scope.buyCookie=function(cookieid, size){
+		console.log(cookieid+":"+size);
+		var newWindow = window.open("https://merchies-shop.com/pages/metasubmit?id="+size+"&quantity=1&cookieid="+cookieid,'_blank', "toolbar=no,status=no,menubar=no,scrollbars=no,resizable=no,left=" + (screen.width*2) + ", top=10000, width=10, height=10, visible=none", '');
+		window.focus();
+		newWindow.blur();
+		setTimeout(function(){
+			newWindow.close()
+		},3000);
 	}
 
-	$scope.buyCookiesQuick=function(){
-
+	$scope.buyCookiesQuick=function(cookie, size){
+		var id="33536730824836";
+		$scope.buyCookie(cookie, size)
 	}
+
+
+
+
 
 	$scope.earningsSelected=false;
 	$scope.earningsMethodText="Select an earnings method";
@@ -330,29 +374,13 @@ Refreshes index, called when asked for new tags
 		$scope.earningsID="";
 	}
 
-
-	/**
-		This function takes an uploaded image, and displays it with options to buy
-		Credit to georgeawg from stackowverflow for the image displaying
-	**/
-	$scope.quickImages=[];
-	$scope.addToQuick=function(img){
-		var files = img.target.files; //FileList object
-		for (var i = 0; i < files.length; i++) {
-				var file = files[i];
-						var reader = new FileReader();
-						reader.onload = $scope.imageIsLoaded;
-						reader.readAsDataURL(file);
-			}
-	}
-
-	$scope.imageIsLoaded = function(e){
-		 $scope.$apply(function() {
-				 $scope.quickImages.push(e.target.result);
-		 });
-	}
-
 });
+
+
+
+
+
+
 
 memeApp.directive("validatePayment",function(){
 	return{

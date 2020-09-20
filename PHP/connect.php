@@ -1,8 +1,12 @@
 <?php
+
 $servername = "localhost";
-$username = "merchies";
-$password = "publicuse";
-$dbname = "merchiescookies";
+$username = "root";
+//merchies
+$password = "";
+//publicuse
+$dbname = "money_4_memes";
+//merchiescookies
 
 $conn=new mysqli($servername, $username, $password, $dbname);
 
