@@ -111,25 +111,19 @@ memeApp.controller( "memectrl" ,  function($scope, $window, $http, $compile){
 					var memeData=dataStrings[a].split(":");
 					memestring+="<table class='meme genericBlock' id='"+memeData[0]+"'>";
 						memestring+="<tr>";
-						memestring+="<td><h2>"+memeData[1]+"</h2><h3 class='likes' id='likes"+memeData[0]+"'>Cookies sold: "+memeData[4]+"</h3></td>";
+							memestring+="<td><h2>"+memeData[1]+"</h2><h3 class='likes' id='likes"+memeData[0]+"'>Cookies sold: "+memeData[4]+"</h3></td>";
 						memestring+="</tr><tr>";
-						memestring+="<td>";
-						memestring+="<a href='cookie.php?meme="+memeData[0]+"' >";
-						memestring+=	"<img src='Memes/"+memeData[0]+".png' alt='"+memeData[1]+"' />";
-						memestring+="</a>";
+							memestring+="<td>";
+							memestring+="<a href='cookie.php?meme="+memeData[0]+"' >";
+							memestring+=	"<img src='Memes/"+memeData[0]+".png' alt='"+memeData[1]+"' />";
+							memestring+="</a>";
 						memestring+="</td></tr>";
-						memestring+="<tr><td><p>";
-						memestring+="	<a class='memeDetails' href = 'cookie.php?meme="+memeData[0]+"'>More Info</a>";
-						memestring+='		<a href="" class="memeDetails buy" ng-click="buyCookie(\''+memeData[0]+'\')" class="buy" >NORMAL ($1.99)</a>';
-						memestring+="</span>";
-						memestring+="	<a href='reportCopy.php?copyid=<?php echo $id; ?>'>Report</a>";
-						memestring+="</p></td></tr>";
-					memestring+="</table>";
-					memestring+="	<form class='buyForm' action='https://merchies-shop.com/cart/add' target='_blank' method='post' id='form"+memeData[0]+"''>";
-					memestring+="		<input type='hidden' name='id' value='33536730792068' />";
-					memestring+='		<input type="hidden" name="quantity" value="1" />';
-					memestring+='		<input type="hidden" name="properties[cookieid]" value="'+memeData[0]+'" />';
-					memestring+="	</form>";
+						memestring+="<tr><td><div class='buyWrapper'>";
+							memestring+='<p class="buy" ng-click=\'buyCookie("'+memeData[0]+'",33456487858308)\'>HUGE (2.99)</p>';
+							memestring+='<p class="buy" ng-click=\'buyCookie("'+memeData[0]+'",33456487891076)\'>NORMAL (1.99)</p>';
+							memestring+='<p class="buy" ng-click=\'buyCookie("'+memeData[0]+'",33456487923844)\'>PARTY (2.99)</p>';
+						memestring+='</div></td></tr></table>';
+
 				}
 			}
 			var compiledHtml = $compile(memestring)($scope);
@@ -317,7 +311,7 @@ Refreshes index, called when asked for new tags
 
 
 	$scope.copyurl="";
-//I can probably just remove this once the image editor works, this is only temporary
+	//I can probably just remove this once the image editor works, this is only temporary
 	$scope.getCopyMeme=function(){
 		$scope.copyurl="Memes/"+$scope.copyMeme;
 	}
@@ -347,11 +341,75 @@ Refreshes index, called when asked for new tags
 		},3000);
 	}
 
+
+
+
 	$scope.buyCookiesQuick=function(cookie, size){
-		var id="33536730824836";
-		$scope.buyCookie(cookie, size)
+
+		var cookieID = (Math.random().toString(36)+'00000000000000000').slice(2, 14)
+		console.log(cookieID);
+		document.getElementById("memeTitle").value = cookieID;
+		var src = canvas.toDataURL("image/png",1);
+		document.getElementById("uploadingMeme").value=src;
+
+		$.post("submitMeme.php",$("#makeMeme").serialize());
+		console.log("submitted");
+
+		$scope.buyCookie(cookieID, size)
 	}
 
+
+
+	/**
+		This function takes an uploaded image, and displays it with options to buy
+		Credit to georgeawg from stackowverflow for the image displaying
+	**/
+	var quickImages=[];
+	var canvascounter = 0;
+	addToQuick=function(img){
+
+			var canvasElement = document.createElement("Canvas");
+			canvasElement.setAttribute("id","quickcookiecanvas"+canvascounter);
+				canvasElement.setAttribute("width","300");
+				canvasElement.setAttribute("height","450");
+			if(window.innerWidth<=750){
+				canvasElement.setAttribute("width","300");
+				canvasElement.setAttribute("height","450");
+			}
+			document.getElementById("addQuickCookies").appendChild(canvasElement);
+
+			canvas = new fabric.Canvas("quickcookiecanvas"+canvascounter, {preserveObjectStacking:true});
+
+			var background = new fabric.Rect({
+				fill:'white',
+				top:-1,
+				left:-1,
+				width:649,
+				height:649,
+				selectable:false
+			});
+
+			canvas.add(background);
+
+			if (img.files && img.files[0]) {
+				var reader = new FileReader();
+				reader.onload = function (e) {
+					fabric.Image.fromURL(reader.result, function(oImg) {
+						oImg.scaleToHeight(canvas.getHeight());
+						canvas.add(oImg);
+						canvas.centerObject(oImg);
+					});
+				};
+				reader.readAsDataURL(img.files[0]);
+			}
+
+			var buyString = '<div class="buyWrapper"><p class="buy" ng-click="buyCookiesQuick(\''+"quickcookiecanvas"+canvascounter+'\',33536730759300)">HUGE (1.99)</p>	<p class="buy" ng-click="buyCookiesQuick(\''+"quickcookiecanvas"+canvascounter+'\',33536730792068)">NORMAL (1.25)</p>	<p class="buy" ng-click="buyCookiesQuick(\''+"quickcookiecanvas"+canvascounter+'\',33536730824836)">PARTY (1.99)</p></div>'
+
+			var compiledHtml = $compile(buyString)($scope);
+			angular.element( document.querySelector( '#addQuickCookies' ) ).append(buyString);
+
+			canvascounter++;
+	}
 
 
 

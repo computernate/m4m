@@ -551,12 +551,44 @@ background-color:var(--create-input-bg-hover);
 	text-align:center;
 	margin-left:auto;
 	margin-right:auto;
+	overflow-x:hidden;
+	position:relative;
 }
 .quickCookieImage{
 	height:300px;
-	text-align:center;
 }
 
+.quickCookieUpload{
+	visibility:hidden;
+	height:0px;
+	width:0px;
+}
+.quickCookieUploadDiv{
+	height:100px;
+}
+.quickCookieButton{
+	border:1px solid white;
+	border-radius:7px;
+	padding:20px;
+	font-size:20px;
+	float:left;
+	width:80%;
+	margin:8%;
+	margin-top:10px;
+	text-align:center;
+	display:block;
+}
+.quickCookieButton:hover{
+	background-color:var(--a-bg-color);
+}
+
+.hiddenForm{
+	visibility:hidden;
+}
+
+.buy:hover{
+	background-color:#825600;
+}
 /****************************
 
 Memes on the Meme Feed
@@ -742,7 +774,18 @@ Memes on the Meme Feed
 	border:1px solid white;
 	border-radius:3px;
 	display:block;
-	margin-top:auto;
+	float:left;
+	font-size:150%;
+	width:28.5%;
+	margin:1%;
+	padding:10px;
+	text-align:center;
+	margin:.25%;
+	margin-top:15px;
+}
+.buyWrapper{
+	margin:0px auto;
+	margin-bottom:50px
 }
 .buyMemeButton{
 	background-color:var(--meme-bg-color);
@@ -780,6 +823,7 @@ Single Meme
 	border:3px solid black;
 	border-radius:10px;
 	margin:0px auto;
+	padding:20px;
 }
 
 

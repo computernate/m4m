@@ -28,7 +28,9 @@ if(file_put_contents($newurl, $data)){
 
 $title=mysqli_real_escape_string ($conn,strip_tags( trim($_POST["memeTitle"])));
 $text=mysqli_real_escape_string ($conn,strip_tags( trim($_POST["memeText"])));
-$userID=$_SESSION["ID"];
+$userID = "";
+if(isset($_SESSION["ID"]))
+  $userID=$_SESSION["ID"];
 $tags = $_POST['atags'];
 $splitTags=explode(",",$tags);
 for($i=0;$i<count($splitTags)-1;$i++){

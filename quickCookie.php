@@ -7,41 +7,30 @@
 		<title>Quick Cookie</title>
 		<script src="JS/fabric.js"></script>
 	   <link rel='icon' href='favicon.ico' type='image/x-icon'/ >
-		 				<script>
-		 					var testQuickAjax=function(){
-							$.get("/PHP/addCookie.php",
-								{
-									id: "weddingidk",
-									size: "33536730824836"
-								},
-								function(data, status){
-									console.log("Data: " + data + "\nStatus: " + status);
-								});
-							}
-		 				</script>
 	</head>
 	<body ng-controller="memectrl">
 		<?php include "PHP/head.php" ?>
 		<div id="wrapper">
 			<div class="genericBlock">
         <h1>BUY COOKIE</h1>
-        <p>Note: For more editing options, to save cookies, and to resell through our website, click the M in the corner to make an account!</p>
-        <input type="file" name="quickCookieImage" id="quickCookieImage" onchange="addToQuick(this)">
-        <label for="fileForCreator" class="centerCreate">Choose Images</label>
-
+        <p>Upload a picture to get started!</p>
+        <p>Note: For more editing options (including landscape), to save cookies, and to resell through our website, click the M in the corner to make an account!</p>
+				<p>Note 2, revenge of the sith: After uploading a photo, drag it around to move the image</p>
+      	<div class="quickCookieUploadDiv">
+					<input type="file" name="quickCookieUpload" id="quickCookiePortraitUpload" class="quickCookieUpload" onchange="addToQuick(this)">
+        	<label for="quickCookiePortraitUpload" class="quickCookieButton">Upload Image</label>
+				</div>
         <div id="addQuickCookies">
 
         </div>
-
-				<form class="buyForm" action="https://merchies-shop.com/cart/add" target="_blank" method="post" id="thecookie">
-					<input type="hidden" name="id" value="33536730759300" />
-					<input type="hidden" name="quantity" value="1" />
-					<input type="hidden" name="properties[cookieid]" value="weddingidk" />
-					<a href="" ng-click="buyCookieQuick('thecookie')" class="buy" >ENORMOUS ($1.99) </a>
-				</form>
-
-				<a href="" onclick="testQuickAjax()" class="buy" >ENORMOUS (0) </a>
 			</div>
     </div>
+		<form action="PHP/submitMeme.php" method="post" enctype="multipart/form-data" class="hiddenForm" name = "makeMeme" id="makeMeme" ng-submit="submitMeme()" novalidate>
+						<input type="hidden" name="memeTitle" id="memeTitle" ng-model="memeTitle" maxlength="254" minlength="1" placeholder = "required" required />
+						<input type='hidden' ng-value="stringify(activeTags)" name='atags' value="" />
+						<input name="memeText" type="hidden" id="memeText" ng-model="memeText" value=""> </textarea>
+						<input type='hidden' id="uploadingMeme" name="uploadingMeme" />
+						<input type='checkbox' name="isPrivate" id="isPrivate" width="400" ng-model="isPrivate" checked />
+		</form>
   </body>
 </html>
