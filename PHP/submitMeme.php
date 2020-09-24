@@ -37,6 +37,9 @@ for($i=0;$i<count($splitTags)-1;$i++){
 	$tagsql="INSERT IGNORE INTO tags VALUES ('".$splitTags[$i]."');";
 	$conn->query($tagsql);
 }
+if(!isset($_POST["comingFromHome"]))
+  die("finished, go back home");
+  
 echo 'other stuff done';
 $date=date('Y-m-d H:i:s');
 $private = (isset($_GET['isPrivate']))?0:1;
@@ -46,13 +49,15 @@ $sql = "INSERT INTO memes VALUES ('$url', '$title', '$userID', 0, '$tags', '$tex
 
 if ($conn->query($sql) === TRUE){
 	echo 'true';
-	header("Location: ../cookie.php?meme=".$url);
+  if(!isset($_POST["comingFromHome"]))
+	   header("Location: ../cookie.php?meme=".$url);
 }
 else{
 	$errorMessage.= "<br>" . $conn->error.$uploadOk;
   echo 'false';
   echo $errorMessage;
-	header("Location: ../newMeme.php?message=$errorMessage");
+  if(!isset($_POST["comingFromHome"]))
+	   header("Location: ../newMeme.php?message=$errorMessage");
 }
 
 ?>

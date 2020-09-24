@@ -7,8 +7,7 @@ memeApp.controller( "memectrl" ,  function($scope, $window, $http, $compile){
 	}
 
 	//Make the head go up when scrolled update, and take care of hasScrolled variable
-	//It is not very elegant, but I could not figure out angular scrolling so I had to use vanilla
-
+	//It is not very elegant, but Angular doesn't reset its page measurements after I add things.
 	var lastPagey=0;
 	$scope.hasScrolled=false;
 	$scope.scrolledUp=false;
@@ -37,11 +36,6 @@ memeApp.controller( "memectrl" ,  function($scope, $window, $http, $compile){
 		if(window.location.href.indexOf("index") <= -1){
 			return;
 		}
-		/**
-
-		Something to do: Fix the scrolling!!!!
-
-		**/
 
 		var offset=document.body.scrollTop+700;
 		var height = document.getElementById('wrapper').offsetHeight ;
@@ -84,7 +78,7 @@ memeApp.controller( "memectrl" ,  function($scope, $window, $http, $compile){
 
 
 	/**
-	Get More Memes
+	Get More Cookies
 	Calls PHP/getMemes.php and uses the data to create a string of html that
 	appends to the end of #allMemes displaying the memes.
 	Data returned by getMemes should be in the format id, hasShirt, title, fileType, pointerID, description, likes, tags
@@ -339,20 +333,24 @@ Refreshes index, called when asked for new tags
 		setTimeout(function(){
 			newWindow.close()
 		},3000);
+
+		angular.element(document.querySelector( 'body' )).prepend('<div id="topMessage"><h2>ADDED TO CART</h2></div>');
+
 	}
 
 
 
 
 	$scope.buyCookiesQuick=function(cookie, size){
-
-		var cookieID = (Math.random().toString(36)+'00000000000000000').slice(2, 14)
-		console.log(cookieID);
+		console.log("Buying");
+		var cookieID = (Math.random().toString(36)+'00000000000000000').slice(2, 14);
 		document.getElementById("memeTitle").value = cookieID;
 		var src = canvas.toDataURL("image/png",1);
 		document.getElementById("uploadingMeme").value=src;
 
-		$.post("submitMeme.php",$("#makeMeme").serialize());
+		$.post("PHP/submitMeme.php",$("#makeMeme").serialize()).done(function(data){
+			console.log(data);
+		});
 		console.log("submitted");
 
 		$scope.buyCookie(cookieID, size)
@@ -403,16 +401,13 @@ Refreshes index, called when asked for new tags
 				reader.readAsDataURL(img.files[0]);
 			}
 
-			var buyString = '<div class="buyWrapper"><p class="buy" ng-click="buyCookiesQuick(\''+"quickcookiecanvas"+canvascounter+'\',33536730759300)">HUGE (1.99)</p>	<p class="buy" ng-click="buyCookiesQuick(\''+"quickcookiecanvas"+canvascounter+'\',33536730792068)">NORMAL (1.25)</p>	<p class="buy" ng-click="buyCookiesQuick(\''+"quickcookiecanvas"+canvascounter+'\',33536730824836)">PARTY (1.99)</p></div>'
+			var buyString = '<div class="buyWrapper"><p class="buy" ng-click="buyCookiesQuick(\'quickcookiecanvas'+canvascounter+'\',\'33536730759300\')">HUGE (1.99)</p>	<p class="buy" ng-click="buyCookiesQuick(\'quickcookiecanvas'+canvascounter+'\',\'33536730792068\')">NORMAL (1.25)</p>	<p class="buy" ng-click="buyCookiesQuick(\'quickcookiecanvas'+canvascounter+'\',\'33536730824836\')">PARTY (1.99)</p></div>';
 
 			var compiledHtml = $compile(buyString)($scope);
-			angular.element( document.querySelector( '#addQuickCookies' ) ).append(buyString);
+			angular.element( document.querySelector( '#addQuickCookies' ) ).append(compiledHtml);
 
 			canvascounter++;
 	}
-
-
-
 
 	$scope.earningsSelected=false;
 	$scope.earningsMethodText="Select an earnings method";

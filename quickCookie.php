@@ -30,6 +30,7 @@
 						<input type='hidden' ng-value="stringify(activeTags)" name='atags' value="" />
 						<input name="memeText" type="hidden" id="memeText" ng-model="memeText" value=""> </textarea>
 						<input type='hidden' id="uploadingMeme" name="uploadingMeme" />
+						<input type='hidden' id="comingFromHome" name="comingFromHome" value="1" />
 						<input type='checkbox' name="isPrivate" id="isPrivate" width="400" ng-model="isPrivate" checked />
 		</form>
   </body>
