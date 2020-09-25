@@ -7,7 +7,7 @@ $username = "merchies";
 //merchies
 $password = "publicuse";
 //publicuse
-$dbname = "merchiescookies";
+$dbname = "merchies";
 //merchiescookies
 
 $conn=new mysqli($servername, $username, $password, $dbname);
