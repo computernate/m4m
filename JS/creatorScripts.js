@@ -25,11 +25,11 @@ function initializeCanvas(){
       alert("WARNING: This page is not optimized for mobile performance. You may continue, but we suggest switching to desktop.");
   }
   if(window.innerWidth<=750){
-    document.getElementById("memeCreator").width="324";
-      document.getElementById("memeCreator").height="250";
+    document.getElementById("ImageCreator").width="324";
+      document.getElementById("ImageCreator").height="250";
   }
 
-  canvas = new fabric.Canvas('memeCreator', {preserveObjectStacking:true});
+  canvas = new fabric.Canvas('ImageCreator', {preserveObjectStacking:true});
   tPick = new CP(document.querySelector('#textColor'));
 
   canvas.add(background);
@@ -145,9 +145,9 @@ function setTextboxes(){
 function flipCanvas(){
   if(confirm("WARNING: This will erase your progress so far. Continue?")){
     canvas=null;
-    var width=document.getElementById('memeCreator').style.width;
-    var height=document.getElementById('memeCreator').style.height;
-    var canvasElement="<canvas width='"+height+"' height='"+width+"' id='memeCreator'></canvas>";
+    var width=document.getElementById('ImageCreator').style.width;
+    var height=document.getElementById('ImageCreator').style.height;
+    var canvasElement="<canvas width='"+height+"' height='"+width+"' id='ImageCreator'></canvas>";
     document.getElementById('canvas-wrapper').innerHTML=canvasElement;
     initializeCanvas();
     document.getElementById("changeOrientation").value=(width=="500px")?"Change to Portrait":"Change to Landscape";
@@ -167,7 +167,7 @@ function pullImage(){
   var src = canvas.toDataURL("image/png",1);
   console.log(src);
   document.getElementById("pulledImage").src=src;
-  document.getElementById("uploadingMeme").value=src;
+  document.getElementById("uploadingImage").value=src;
 }
 
 window.onkeydown=function(e){

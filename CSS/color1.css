@@ -14,7 +14,7 @@
 	--head-nav-bg-color-2:#5595FF;
 	--nav-input-bg-color:#5595FF;
 
-	/*Create Meme*/
+	/*Create Image*/
 	--create-bg-color:#226d77;
 	--create-input-bg:#36B1C0;
 	--create-input-disabled:#666;
@@ -23,10 +23,10 @@
 	--create-input-text:#FFF;
 	--create-label-text:#FFF;
 
-	/*Meme Feed*/
-	--meme-bg-color:#36B1C0;
-	--meme-text-color:#FFFFFF;
-	--meme-text-color-2:#ffe6b3;/*#D6651E;*/
+	/*Image Feed*/
+	--image-bg-color:#36B1C0;
+	--image-text-color:#FFFFFF;
+	--image-text-color-2:#ffe6b3;/*#D6651E;*/
 	--pull-out-bg:#DA9100;
 
 	/*Tags*/

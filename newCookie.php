@@ -1,8 +1,10 @@
 <?php
+///Editor for new image
+///Nathan Roskelley September 2020
 	session_start();
 ?>
 
-<html ng-app="money4memes">
+<html ng-app="merchies">
 	<head>
 		<title>New Cookie</title>
 		<link rel='icon' href='favicon.ico' type='image/x-icon'/ >
@@ -26,11 +28,10 @@
 
 		</style>
 	</head>
-	<body ng-controller="memectrl"  onload="initializeCanvas()">
+	<body ng-controller="merchiesctrl"  onload="initializeCanvas()">
 		<?php include "PHP/head.php" ?>
 		<div id="wrapper">
-			<!--<div id="createMeme">-->
-			<div class="genericBlock" id="createMeme">
+			<div class="genericBlock" id="create">
 				<h1 style = "text-align:center">Create New Cookie</h2>
 				<div id="creatorControls">
 					<input type="file" name="fileForCreator" id="fileForCreator" onchange="addToCreator(this)">
@@ -58,20 +59,20 @@
 
 
 				<div id="canvas-wrapper">
-					<canvas id="memeCreator" width="647" height="500" >
+					<canvas id="ImageCreator" width="647" height="500" >
 				</div>
 
 
 
 
-				<form action="PHP/submitMeme.php" method="post" enctype="multipart/form-data" class="memeOptions" name = "makeMeme" id="makeMeme" ng-submit="submitMeme()" novalidate>
+				<form action="PHP/submitCookie.php" method="post" enctype="multipart/form-data" class="imageOptions" name = "makeCookie" id="makeCookie" ng-submit="submitImage()" novalidate>
 					<table>
 						<tr>
 							<td>
 								<span>Title:</span>
 							</td>
 							<td colspan="2">
-								<input type="text" name="memeTitle" id="memeTitle" ng-model="memeTitle" maxlength="254" minlength="1" placeholder = "required" required />
+								<input type="text" name="imageTitle" id="imageTitle" ng-model="imageTitle" maxlength="254" minlength="1" placeholder = "required" required />
 							</td>
 						</tr>
 						<tr>
@@ -100,7 +101,7 @@
 								<span>Description:</span>
 							</td>
 							<td colspan="2">
-								<textarea name="memeText" id="memeText" width="400" maxlength="510" minlength="1" ng-model="memeText"> </textarea>
+								<textarea name="imageText" id="imageText" width="400" maxlength="510" minlength="1" ng-model="imageText"> </textarea>
 							</td>
 						</tr>
 						<tr>
@@ -116,13 +117,13 @@
 						</tr>
 						<tr>
 							<td colspan="3">
-								<input type='hidden' id="uploadingMeme" name="uploadingMeme" ng-model="imageBlob" />
+								<input type='hidden' id="uploadingImage" name="uploadingImage" ng-model="imageBlob" />
 								<?php if($bankingID=="") { ?>
 										<h3 class="earningsError" ng-show='!isPrivate'>You need to add an earnings method before posting a cookie for resell. Please go to the user side bar, and click the $0.00 to add one or make your cookie private.</h3>
-										<input type="submit" value="Post cookie!" name="submit" id="submitMeme" ng-disabled="(!makeMeme.$valid)" ng-show="isPrivate" />
+										<input type="submit" value="Post cookie!" name="submit" id="submitCookie" ng-disabled="(!makeCookie.$valid)" ng-show="isPrivate" />
 								<?php }
 								else{ ?>
-										<input type="submit" value="Create cookie!" name="submit" id="submitMeme" ng-disabled="(!makeMeme.$valid)" />
+										<input type="submit" value="Create cookie!" name="submit" id="submitCookie" ng-disabled="(!makeCookie.$valid)" />
 								<?php } ?>
 							</td>
 						</tr>

@@ -1,12 +1,12 @@
 <?php
 	session_start();
 ?>
-<html ng-app="money4memes">
+<html ng-app="merchies">
 	<head>
 		<title>Search</title>
 	<link rel='icon' href='favicon.ico' type='image/x-icon'/ >
 	</head>
-	<body ng-controller="memectrl">
+	<body ng-controller="merchiesctrl">
 		<?php include "PHP/head.php" ?>
 		<div id="wrapper">
 
@@ -26,8 +26,8 @@
         </h2>
       </div>
 
-      <div id="allMemes">
-				<div ng-init="getMoreMemes('&search=<?php echo $_GET['search'] ?>')"></div>
+      <div id="allCookies">
+				<div ng-init="getMoreCookies('&search=<?php echo $_GET['search'] ?>')"></div>
 			</div>
     </div>
     <h4>

@@ -1,5 +1,7 @@
-
 <?php
+///The sidebar view for a user who has logged in
+///Nate Roskelley September 2020
+
 	$id=$_SESSION["ID"];
 	$earningsquery = "SELECT earnings, bankingID FROM users WHERE id='$id';";
 
@@ -54,18 +56,18 @@
 				echo "style='background-color:var(--head-nav-bg-color-2);'";
 			} ?>
 			>
-			<a href="index.php">Popular Cookies</a>
+			<a href="index.php">Home</a>
 			</p>
 			<p  class="mobileNav"
 			<?php
-				if(strpos(isset($_GET["sort"])&&$_SERVER['REQUEST_URI'],"index.php")!=false){
+				if(strpos(isset($_GET["sort"])&&$_SERVER['REQUEST_URI'],"seeCookie.php")!=false){
 					echo "style='background-color:var(--head-nav-bg-color-2);'";
 				} ?>
 				>
-				<a href="index.php?sort=new">Fresh Cookies</a>
+				<a href="seeCookie.php?sort=new">Cookies</a>
 		</p>
 		<p id="mobileJar" class="mobileNav">
-			<a href='https://merchies-shop.com/cart'>Cookie Jar</a>
+			<a href='https://merchies-shop.com/cart'>Cart</a>
 		</p>
 		<p
 		<?php
@@ -97,7 +99,7 @@
 
 	<p><a href='' ng-click='logOut()' >Log Out</a></p>
 
-	<form method="post" action="https://the-memery-cookies.myshopify.com/cart" id="cartForm" />
+	<form method="post" action="https://merchiescookies.myshopify.com/cart" id="cartForm" />
 		<input type="text" id="cartFormData" name="cartFormData" />
 	</form>
 </div>

@@ -1,4 +1,4 @@
-var adminApp = angular.module( "money4memes", [] );
+var adminApp = angular.module( "merchies", [] );
 
 adminApp.controller( "adminapp" ,  function($scope, $window, $http, $compile){
 
@@ -32,7 +32,7 @@ adminApp.controller( "adminapp" ,  function($scope, $window, $http, $compile){
             var currentData = allData[a].split(":");
 
             var img = new Image();
-            img.src='../Memes/'+currentData[0]+'.png';
+            img.src='../userCookies/'+currentData[0]+'.png';
             img.mcsize = currentData[1];
             img.mcid = currentData[3];
             img.mcname = currentData[0];
@@ -47,27 +47,27 @@ adminApp.controller( "adminapp" ,  function($scope, $window, $http, $compile){
                 console.log(this.mcid);
                 if(this.mcsize=="1"){
                   if(!isFlipped){
-                    finalString+="<div class='largeContainer container' id='order"+this.mcid+"' ><image class='large rotated' src='../Memes/"+this.mcname+".png' ng-click='fulfillOrder(\""+this.mcname+"\","+this.mcoid+", 1, "+this.mcid+")' /></div>";
+                    finalString+="<div class='largeContainer container' id='order"+this.mcid+"' ><image class='large rotated' src='../userCookies/"+this.mcname+".png' ng-click='fulfillOrder(\""+this.mcname+"\","+this.mcoid+", 1, "+this.mcid+")' /></div>";
                   }
                   else{
-                    finalString+="<div class='largeContainer container' id='order"+this.mcid+"' ><image class='large' src='../Memes/"+this.mcname+".png' ng-click='fulfillOrder(\""+this.mcname+"\","+this.mcoid+", 1, "+this.mcid+")' /></div>";
+                    finalString+="<div class='largeContainer container' id='order"+this.mcid+"' ><image class='large' src='../userCookies/"+this.mcname+".png' ng-click='fulfillOrder(\""+this.mcname+"\","+this.mcoid+", 1, "+this.mcid+")' /></div>";
                   }
                 }
                 if(this.mcsize=="2"){
                   isFlipped=!isFlipped;
                   if(!isFlipped){
-                    finalString+="<div class='mediumContainer container' id='order"+this.mcid+"' ><image class='medium rotated' src='../Memes/"+this.mcname+".png' ng-click='fulfillOrder(\""+this.mcname+"\","+this.mcoid+", 2, "+this.mcid+" )' /></div>";
+                    finalString+="<div class='mediumContainer container' id='order"+this.mcid+"' ><image class='medium rotated' src='../userCookies/"+this.mcname+".png' ng-click='fulfillOrder(\""+this.mcname+"\","+this.mcoid+", 2, "+this.mcid+" )' /></div>";
                   }
                   else{
-                      finalString+="<div class='mediumContainer container' id='order"+this.mcid+"' ><image class='medium' src='../Memes/"+this.mcname+".png' ng-click='fulfillOrder(\""+this.mcname+"\","+this.mcoid+", 2, "+this.mcid+" )' /></div>";
+                      finalString+="<div class='mediumContainer container' id='order"+this.mcid+"' ><image class='medium' src='../userCookies/"+this.mcname+".png' ng-click='fulfillOrder(\""+this.mcname+"\","+this.mcoid+", 2, "+this.mcid+" )' /></div>";
                   }
                 }
                 if(this.mcsize=="3"){
                   if(!isFlipped){
-                    finalString+="<div class='smallContainer container' id='order"+this.mcid+"'><image class='small rotated' src='../Memes/"+this.mcname+".png' ng-click='fulfillOrder(\""+this.mcname+"\","+this.mcoid+", 3, "+this.mcid+" )' /></div>";
+                    finalString+="<div class='smallContainer container' id='order"+this.mcid+"'><image class='small rotated' src='../userCookies/"+this.mcname+".png' ng-click='fulfillOrder(\""+this.mcname+"\","+this.mcoid+", 3, "+this.mcid+" )' /></div>";
                   }
                   else{
-                    finalString+="<div class='smallContainer container' id='order"+this.mcid+"'><image class='small' src='../Memes/"+this.mcname+".png' ng-click='fulfillOrder(\""+this.mcname+"\","+this.mcoid+", 3, "+this.mcid+" )' /></div>";
+                    finalString+="<div class='smallContainer container' id='order"+this.mcid+"'><image class='small' src='../userCookies/"+this.mcname+".png' ng-click='fulfillOrder(\""+this.mcname+"\","+this.mcoid+", 3, "+this.mcid+" )' /></div>";
                   }
                 }
               console.log(finalString);

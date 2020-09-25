@@ -1,24 +1,30 @@
 <div>
 <p class="mobileNav"
 	<?php
+	///View for users who have not yet logged in
+	///Nate Roskelley September 2020
+
 		if(!isset($_GET["sort"])&&strpos($_SERVER['REQUEST_URI'],"index.php")!=false){
 			echo "style='background-color:var(--head-nav-bg-color-2);'";
 		} ?>
 		>
-		<a href="index.php">Popular Cookies</a>
+
+		<a href="index.php">Home</a>
 		</p>
-		<p  class="mobileNav"
+		<!--If the user is on mobile, store everything on the sidebar-->
+		<p class="mobileNav"
 		<?php
 			if(strpos(isset($_GET["sort"])&&$_SERVER['REQUEST_URI'],"index.php")!=false){
 				echo "style='background-color:var(--head-nav-bg-color-2);'";
 			} ?>
 			>
-			<a href="index.php?sort=new">Fresh Cookies</a>
+			<a href="seeCookies.php?sort=new">Cookies</a>
 	</p>
 	<p id="mobileJar" class="mobileNav">
-		<a href='https://merchies-shop.com/cart'>Cookie Jar</a>
+		<a href='https://merchies-shop.com/cart'>Cart</a>
 	</p>
 </div>
+<!--Log the user in-->
 <form id="login" method="post" action="PHP/logIn.php">
 	<table>
 		<tr>
@@ -39,7 +45,12 @@
 		</tr>
 	</table>
 </form>
-<form name="signUp" id="signUp" method="post" action="PHP/signUpHandler.php" novalidate>
+
+
+
+<!-- Sign the user up -->
+
+<form name="signUp" id="signUp" method="post" action="PHP/registerHandler.php" novalidate>
 	<table>
 			<tr>
 				<td><p>Username</p></td>

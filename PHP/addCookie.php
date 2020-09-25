@@ -1,14 +1,14 @@
 <?php
+///This page adds a cookie to the shopify website.
+///Takes in a GET id (The cookie's url name) and a size (ID from shopify)
+///Nate Roskelley September 2020
+
 
 $id = $_GET["id"];
 $size= $_GET["size"];
 
 $url = "https://merchies-shop.com/pages/metasubmit?id=".$id."&quantity=1&cookieid=".$cookieid;
 $data = array("id" => "$size", "quantity" => 1, "cookieid"=>$id);
-//https://merchies-shop.com/pages/metasubmit?id=33456487858308&quantity=1&cookieid=weddingid
-//<id type="integer">33456487858308</id>
-//<product-id type="integer">4631467950212</product-id>
-//
 
 //url-ify the data for the POST
 $fields_string = http_build_query($data);
@@ -28,6 +28,7 @@ curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_NOBODY, true);
 curl_setopt($ch, CURLOPT_HEADER, true);
 curl_setopt($ch, CURLOPT_HTTPGET, true);
+
 //execute post
 $result = curl_exec($ch);
 echo $url;

@@ -2,12 +2,12 @@
 	session_start();
 ?>
 
-<html ng-app="money4memes">
+<html ng-app="merchies">
 	<head>
 		<title>Terms and conditions</title>
 	<link rel='icon' href='favicon.ico' type='image/x-icon'/ >
 	</head>
-	<body ng-controller="memectrl">
+	<body ng-controller="merchiesctrl">
 		<?php include "PHP/head.php" ?>
 		<div id="wrapper">
       <div class="genericBlock">
@@ -26,7 +26,7 @@
         </ol>
         <h3>Selling restrictions</h3>
         <ol>
-          <li>To resell a cookie, you must be the original creator, or have written consent from the original creator.</li>
+          <li>To resell a cookie, you must be the original creator, have written consent from the original creator, or own the rights to the image.</li>
         </ol>
       </div>
     </div>

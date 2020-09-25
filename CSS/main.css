@@ -4,7 +4,6 @@
 	src: url(../fonts/refdevil.ttf);
 }
 
-
 @font-face{
 	font-family:truman;
 	src: url(../fonts/TRUMANS.otf);
@@ -15,17 +14,38 @@
 	src: url(../fonts/empire.ttf);
 }
 
+
+
+
+/****************************
+
+General
+
+***************************/
+
+
 #wrapper{
 	margin-top:120px;
 	color: var(--text-color-2);
 	font-family:truman;
 }
+
 html,body{
 	height:100%;
 	font-family:truman;
 }
 
 
+
+.genericBlock{
+	background-color:var(--image-bg-color);
+	width:600px;
+	color:var(--text-color);
+	border:3px solid black;
+	border-radius:10px;
+	margin:0px auto;
+	padding:20px;
+}
 
 
 /**************************
@@ -125,6 +145,7 @@ html,body{
 	margin-top:10px;
 }
 
+
 /*Pull out menu*/
 #fullNav{
 	position:fixed;
@@ -200,7 +221,15 @@ html,body{
 #mobileTop{
 	visibility:hidden;
 }
-/*Login info*/
+
+
+
+
+/*************************
+
+Login
+
+*************************/
 #login{
 	float:left;
 	width:250px;
@@ -250,6 +279,7 @@ html,body{
 #signUp .error{
 	color:var(--error-color);
 }
+
 /* Customize the label (the container) */
 .checkmarkContainer {
   display: block;
@@ -392,30 +422,30 @@ a.money:hover{
 
 /***********************
 
-Create Meme
+Create Image
 
 ************************/
 
 
-#makeMeme span{
+#makeCookie span{
 		color:var(--text-color);
 		font-size:35px;
 		margin-left:20px;
 }
-#makeMeme{
+#makeCookie{
 margin-left:0px;
 	margin-bottom:10px;
 	margin-top:10px;
 	display:block;
 	color:var(--create-label-text);
 }
-#makeMeme{
+#makeCookie{
 	width:100%;
 }
-#makeMeme table{
+#makeCookie table{
 	width:100%;
 }
-#makeMeme textArea{
+#makeCookie textArea{
 	width:90%;
 	height:100px;
 }
@@ -424,17 +454,17 @@ margin-left:0px;
 	margin-top:20px;
 }
 
-#makeMeme input{
+#makeCookie input{
 	border:1px solid var(--create-input-text);
 	padding:10px;
 	background-color:var(--create-input-bg);
 	color:var(--create-input-text);
 }
-#makeMeme input:hover{
+#makeCookie input:hover{
 	background-color:var(--create-input-bg-hover);
 }
 
-#submitMeme{
+#submitCookie{
 	width:100%;
 	text-align:center;
 	border:1px solid var(--create-input-text);
@@ -443,10 +473,10 @@ margin-left:0px;
 	color:var(--create-input-text);
 	font-size:35px;
 }
-#submitMeme:hover{
+#submitCookie:hover{
 	background-color:var(--create-input-bg-hover);
 }
-#submitMeme[disabled="disabled"]{
+#submitCookie[disabled="disabled"]{
 	background-color:var(--create-input-disabled);
 }
 #borderToggle.borderDisabled{
@@ -465,7 +495,7 @@ margin-left:0px;
 	border:1px solid var(--create-input-text);
 	background-color:var(--create-input-bg);
 }
-#uploadingMeme{
+#uploadingImage{
 	visibility:hidden;
 }
 #pulledImage{
@@ -478,17 +508,8 @@ margin-left:0px;
 	width:400px;
 	height:100px;
 }
-.memeOptions{
+.imageOptions{
 	margin-top:50px;
-}
-#createMeme{
-	margin:20px auto;
-}
-#createMeme{
-	width:750px;
-}
-#createMeme{
-	margin:0px auto;
 }
 
 span#leaveunchecked{
@@ -591,7 +612,7 @@ background-color:var(--create-input-bg-hover);
 }
 /****************************
 
-Memes on the Meme Feed
+Images on the seeCookies Feed
 
 ***************************/
 
@@ -618,117 +639,37 @@ Memes on the Meme Feed
 	width:500px;
 	margin-left:auto;
 }
-#allMemes{
+#allCookies{
 	text-align:center;
 	width:100%;
 }
-.meme.genericBlock{
+.cookie.genericBlock{
 	margin: 20px auto;
 	display:block;
 	font-family:truman;
-	color:var(--meme-text-color);
+	color:var(--image-text-color);
 	margin-top:30px;
 	text-align:center;
 }
-.meme h2{
+.cookie h2{
 	text-align:center;
 	font-size:45px;
-	color:var(--meme-text-color-2);
+	color:var(--image-text-color-2);
 }
-.meme a{
+.cookie a{
 	font-size:30px;
 }
-.meme h3{
+.cookie h3{
 	text-align:center;
 	font-size:30px;
 }
-.meme img{
+.cookie img{
 	margin:0px auto;
 }
-.meme img{
+.cookie img{
 	border:1px solid black;
 	width:80%;
 	border:5px solid black;
-}
-
-.meme.memeOut h2, .meme.memeOut h3{
-	color:var(--meme-text-color-2);
-}
-.memeDetails{
-	width:33%;
-	display:block;
-	float:left;
-}
-.memeDataWrapper{
-	transition:width 1s;
-	height:500px;
-	align-items: stretch;
-}
-.memeData{
-	margin-top:0px;
-	width:0px;
-	transition:width 1s;
-	height:100%;
-	z-index:-1;
-	overflow-y:scroll;
-	text-overflow:clip;
-	background-color:var(--meme-bg-color);
-	font-size:25px;
-	padding:0px;
-}
-.meme a{
-	color:var(--meme-text-color);
-	text-decoration:none;
-	padding:5px;
-}
-.meme a:hover{
-	color:var(--meme-text-color-2);
-}
-.memeControls td{
-	font-size:30px;
-	text-align:center;
-}
-.memeControls{
-	border-top:var(--meme-text-color-2) 1px solid;
-	border-bottom:var(--meme-text-color-2) 1px solid;
-	width:500px;
-	margin-left:-20px;
-}
-.likes{
-	color:var(--meme-text-color-2);
-}
-.meme textarea{
-	margin-top:5px;
-	width:460px;
-	height:100px;
-}
-.meme input{
-	width:460px;
-	background-color:var(--meme-bg-color);
-	color:var(--meme-text-color);
-	font-family:truman;
-	font-size: 20px;
-	border:0px;
-	margin-top:5px;
-	margin-bottom:20px;
-}
-
-.meme .break{
-	width:500px;
-	height:0px;
-	margin-left:-20px;
-	margin-top:5px;
-	margin-bottom:5px;
-	border-top:var(--meme-text-color-2) 1px solid;
-}
-.meme tbody{
-	display:block;
-}
-.meme tr{
-	display:block;
-}
-.meme td{
-	display:block;
 }
 
 .inactiveTag{
@@ -787,44 +728,13 @@ Memes on the Meme Feed
 	margin:0px auto;
 	margin-bottom:50px
 }
-.buyMemeButton{
-	background-color:var(--meme-bg-color);
-	color:var(--meme-text-color);
-	text-decoration:none;
-	border:0px;
-}
-.buyMemeButton:hover{
-font-family:truman;
-font-size: 20px;
-}
-.pullout p{
-	font-family:ariel;
-	width:50px;
-	height:50px;
-	background-color:var(--jar-bg-color);
-	display:inline;
-	color:white;
-	padding:10px;
-	font-size:25px;
-	vertical-align:center;
-}
 
 /****************************
 
-Single Meme
+Single Cookie
 
 ****************************/
 
-
-.genericBlock{
-	background-color:var(--meme-bg-color);
-	width:600px;
-	color:var(--text-color);
-	border:3px solid black;
-	border-radius:10px;
-	margin:0px auto;
-	padding:20px;
-}
 
 
 .genericBlock .cookiePicture{
@@ -835,27 +745,27 @@ Single Meme
 	color:var(--text-color-2);
 }
 
-#singleMeme{
+#singleCookie{
 	text-align:center;
 }
-#singleMeme h3{
+#singleCookie h3{
 	margin-top:40px;
 }
 
-#singleMeme #comments a{
+#singleCookie #comments a{
 	text-decoration:none;
-	color:var(--meme-text-color);
+	color:var(--image-text-color);
 	padding-top:20px;
 	display:block;
 	text-align:left;
 	padding:20px;
 	font-size:30px;
 }
-#singleMeme #comments a:hover{
-	color:var(--meme-text-color-2);
+#singleCookie #comments a:hover{
+	color:var(--image-text-color-2);
 }
-#singleMeme #comments p{
-	color:var(--meme-text-color);
+#singleCookie #comments p{
+	color:var(--image-text-color);
 	text-align:left;
 	font-size:25px;
 	padding-left:20px;
@@ -879,7 +789,7 @@ background-color:var(--create-input-bg-hover);
 .commentBreak{
 	border:1px solid white;
 }
-#singleMeme .break{
+#singleCookie .break{
 	height:0px;
 	border:1px solid black;
 	margin-left:-20px;
@@ -903,17 +813,17 @@ background-color:var(--create-input-bg-hover);
 	float:left;
 }
 
-#mainMeme{
+#mainCookie{
 	border:5px solid black;
 }
 
-#singleMeme h1{
+#singleCookie h1{
 	font-size:50px;
 }
-#singleMeme h2{
+#singleCookie h2{
 	font-size:45px;
 }
-#singleMeme h3{
+#singleCookie h3{
 	font-size:40px;
 }
 h2 a{
@@ -924,68 +834,16 @@ h2 a:hover{
 	text-decoration:underline;
 }
 .break{
-	border:1px solid var(--meme-text-color-2);
+	border:1px solid var(--image-text-color-2);
 	height:0px;
 	width:100%;
 	margin-right:-20px;
 	margin-bottom:20px;
 	margin-top:20px;
 }
-
-.memeActions{
-	width:100%;
-}
-.memeActions td{
-	text-align:center;
-	padding:15px;
-	width:33%;
-}
-.memeActions a{
-	color:var(--text-color);
-	text-decoration:none;
-	font-size:35px;
-	font-weight:bold;
-	padding:10px;
-}
-.memeActions a:hover{
-	text-decoration:underline;
-}
 #comments textarea{
 	width:80%;
 	height:100px;
-}
-
-/*************************
-
-	Report Copy
-
-*************************/
-
-#reportCopy{
-	margin-left: auto;
-	margin-right:auto;
-	background-color:var(--copy-bg-color);
-	color:var(--copy-text-color);
-}
-#reportCopy h2{
-	text-align:center;
-}
-#reportCopy p{
-	text-align:center;
-}
-#reportCopy img{
-	height:500px;
-	margin:5px;
-}
-#reportCopy input{
-	width:100%;
-}
-#reportCopy input[type="submit"]{
-	height:100px;
-	font-size:30px;
-}
-#reportCopy input[type="submit"]:hover{
-	background-color:var(--copy-bg-color-2);
 }
 
 /*******************************************
@@ -1103,25 +961,22 @@ change earnings
 	.genericBlock{
 		width:100%;
 	}
-	#singleMeme h1{
+	#singleCookie h1{
 		font-size:50px;
 	}
-	#singleMeme h2, .meme h2{
+	#singleCookie h2, .cookie h2{
 		font-size:40px;
 	}
-	#singleMeme h3, .meme a{
+	#singleCookie h3, .cookie a{
 		font-size:40px;
 	}
-	.memeActions a{
-		font-size:200%;
-	}
-	#createMeme{
+	#createImage{
 		width:100%;
 	}
-	#makeMeme span{
+	#makeCookie span{
 		font-size:25px;
 	}
-	#makeMeme tr td{
+	#makeCookie tr td{
 		color:var(--text-color);
 	}
 	#userImageWrapper{
@@ -1191,7 +1046,7 @@ change earnings
 	#changeImageText{
 		left:calc(34% - 55px);
 	}
-	.meme a{
+	.cookie a{
 		font-size:100%;
 	}
 	.mobileNav{

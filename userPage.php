@@ -1,12 +1,12 @@
 <?php
 	session_start();
 ?>
-<html ng-app="money4memes">
+<html ng-app="merchies">
 	<head>
 		<title>User</title>
 		<link rel='icon' href='favicon.ico' type='image/x-icon'/ >
 	</head>
-	<body ng-controller="memectrl">
+	<body ng-controller="merchiesctrl">
 		<?php include "PHP/head.php" ?>
 		<div id="wrapper">
       <?php
@@ -31,8 +31,8 @@
             <?php echo $userData['name']; ?>
           </h1>
 
-          <div id="allMemes">
-            <div ng-init="sortMethod='new';getMoreMemes('&madeBy=<?php echo $userData['id']; ?>');"></div>
+          <div id="allImages">
+            <div ng-init="sortMethod='new';getMoreCookies('&madeBy=<?php echo $userData['id']; ?>');"></div>
           </div>
 
         </div>

@@ -1,13 +1,15 @@
 <?php
+///Change the user's banking info
+///Nate Roskelley September 2020
 	session_start();
 ?>
 
-<html ng-app="money4memes">
+<html ng-app="merchies">
 	<head>
 		<title>Earnigns Info</title>
 	<link rel='icon' href='favicon.ico' type='image/x-icon'/ >
 	</head>
-	<body ng-controller="memectrl">
+	<body ng-controller="merchiesctrl">
 		<?php include "PHP/head.php" ?>
 		<div id="wrapper">
       <form action="PHP/changeEarnings.php" method="post" id="changeEarnings" class="genericBlock" name="changeEarnings" novalidate>

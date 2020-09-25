@@ -1,4 +1,6 @@
 <?php
+///Logs the user out
+///Nate Roskelley September 2020
 session_start();
 	unset($_SESSION["user"]);
 	unset($_COOKIE["username"]);

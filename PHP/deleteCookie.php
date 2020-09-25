@@ -1,27 +1,29 @@
 <?php
+///Deletes the cookie info
+///Nate Roskelley September 2020
+
+
 include 'connect.php';
 session_start();
 
+//Get the current user and cookie
 $user=$_SESSION["ID"];
-$cookie = $_GET["id"];
+$cookie = $_GET["cookieid"];
 
-$checkUserSql = "SELECT pointerID FROM memes WHERE id = '$cookie';";
-
+//Make sure the user is the one trying to delete
+$checkUserSql = "SELECT pointerID FROM images WHERE id = '$cookie';";
 $checkUserName;
-
-$likes=$conn->query($checkUserSql);
-$numLikes=0;
-if($likes->num_rows > 0) {
-	while($row=mysqli_fetch_array($likes)){
-		$checkUserName=intval($row[0]);
+$checkingUserNameQuery=$conn->query($checkUserSql);
+if($checkingUserNameQuery->num_rows > 0) {
+	while($row=mysqli_fetch_array($checkingUserNameQuery)){
+		$checkUserName=$row[0];
 	}
 }
-else{
-  echo var_dump($likes);
-}
 
+
+//If they are, delete the image
 if($checkUserName == $user){
-  $deleteSQL = "DELETE FROM memes WHERE id = '$cookie';";
+  $deleteSQL = "DELETE FROM images WHERE id = '$cookie';";
 
   $deleted = $conn->query($deleteSQL);
 

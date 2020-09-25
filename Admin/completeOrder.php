@@ -14,7 +14,7 @@ $orderid=$_GET["orderid"];
 
 if($isPrivate==0){
 
-    $getUserSql = "SELECT pointerID FROM memes WHERE id='$id'";
+    $getUserSql = "SELECT pointerID FROM images WHERE id='$id'";
     $resultUser = $conn->query($getUserSql);
 
     if($resultUser->num_rows > 0) {
@@ -30,7 +30,7 @@ if($isPrivate==0){
         }
         $conn->query($changeMoneySql);
 
-        $increaseCookies = "UPDATE memes SET bought = bought + 1 WHERE id='$id';";
+        $increaseCookies = "UPDATE images SET bought = bought + 1 WHERE id='$id';";
         $conn->query($increaseCookies);
       }
     }

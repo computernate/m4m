@@ -8,7 +8,7 @@ if(!$isAdmin){
 }
 ?>
 
-<html ng-app="money4memes">
+<html ng-app="merchies">
 <head>
   <script src="../JS/angular.js"> </script>
   <script src="adminapp.js"> </script>

@@ -2,12 +2,12 @@
 	session_start();
 ?>
 
-<html ng-app="money4memes">
+<html ng-app="merchies">
 	<head>
 		<title>Notifications</title>
 	<link rel='icon' href='favicon.ico' type='image/x-icon'/ >
 	</head>
-	<body ng-controller="memectrl">
+	<body ng-controller="merchiesctrl">
 		<?php include "PHP/head.php" ?>
 		<div id="wrapper">
       <div class="genericBlock">

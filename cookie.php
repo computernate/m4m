@@ -4,7 +4,7 @@
 
 ?>
 
-<html ng-app="money4memes">
+<html ng-app="merchies">
 	<head>
 
 		<title>Cookie</title>
@@ -12,13 +12,13 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=5e83e3e224d6af001979a5f3&product=inline-share-buttons" async="async"></script>
 	</head>
-	<body ng-controller="memectrl">
+	<body ng-controller="merchiesctrl">
 		<?php include "PHP/head.php" ?>
 		<div id="wrapper">
-			<div id = 'singleMeme'>
+			<div id = 'singleCookie'>
 				<?php
-				$id = $_GET["meme"];
-				$query = "SELECT * FROM memes WHERE id = '".$id."'";
+				$id = $_GET["cookie"];
+				$query = "SELECT * FROM images WHERE id = '".$id."'";
 
 				$result = $conn->query($query);
 
@@ -47,7 +47,7 @@
 							?>
 						<h1><?php echo $row['title']; ?></h1><h2 class="color2"> by <a href='userPage.php?uid=<?php echo $name; ?>'><?php echo $name; ?></a></h2>
 						<h3>Cookies bought: <?php echo $row['bought']; ?></h3>
-						<img id = "mainMeme" src='Memes/<?php echo $row["id"].".png"; ?>' alt='<?php echo $row['title']; ?>' class="cookiePicture"/>
+						<img id = "mainCookie" src='userCookies/<?php echo $row["id"].".png"; ?>' alt='<?php echo $row['title']; ?>' class="cookiePicture"/>
 
 						<h3><?php echo $row["description"]; ?></h3>
 
@@ -55,7 +55,7 @@
 						$tags = explode(",",$row['tags']);
 						if(count($tags)>0){
 							for($b=0;$b<count($tags)-1;$b++){
-								echo "<span class='memeTag'>".$tags[$b]." </span>";
+								echo "<span class='imageTag'>".$tags[$b]." </span>";
 							}
 						}
 						 ?>
@@ -86,11 +86,11 @@
 
 					<?php
 
-					$queryMemes = "SELECT * FROM memes WHERE pointerID = '".$row['pointerID']."' LIMIT 0, 6;";
+					$queryImages = "SELECT * FROM images WHERE pointerID = '".$row['pointerID']."' LIMIT 0, 6;";
 
-					$resultMemes = $conn->query($queryMemes);
+					$resultImages = $conn->query($queryImages);
 
-					if($resultMemes->num_rows > 0) {
+					if($resultImages->num_rows > 0) {
 
 						?>
 						<h3>Also made by <?php echo $name; ?></h3>
@@ -98,8 +98,8 @@
 						<?php
 
 						$returnString="";
-						while($rowMemes=mysqli_fetch_array($resultMemes)){
-							echo '<div class="related"><a href = "cookie.php?meme='.$rowMemes["id"].'"><img src="Memes/'. $rowMemes["id"].".png".'" alt="'.$rowMemes['title'].'" /></a></div>';
+						while($rowImages=mysqli_fetch_array($resultImages)){
+							echo '<div class="related"><a href = "cookie.php?cookie='.$rowImages["id"].'"><img src="userCookies/'. $rowImages["id"].".png".'" alt="'.$rowImages['title'].'" /></a></div>';
 						}
 						?>
 						</div>
@@ -110,7 +110,7 @@
 					}
 
 
-					$query3 = "SELECT * FROM comments WHERE memeid='".$id."';";
+					$query3 = "SELECT * FROM comments WHERE imageId='".$id."';";
 
 
 					$result3 = $conn->query($query3);

@@ -1,11 +1,13 @@
 <?php
+///Connects the user to the database
+///Nate Roskelley September 2020
 
 $servername = "localhost";
 $username = "root";
 //merchies
 $password = "";
 //publicuse
-$dbname = "money_4_memes";
+$dbname = "merchies";
 //merchiescookies
 
 $conn=new mysqli($servername, $username, $password, $dbname);

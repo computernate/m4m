@@ -1,10 +1,6 @@
-var memeApp = angular.module( "money4memes", [] );
+var merchiesApp = angular.module( "merchies", [] );
 
-memeApp.controller( "memectrl" ,  function($scope, $window, $http, $compile){
-
-	$scope.logValue = function(){
-		console.log($scope.imageBlob);
-	}
+merchiesApp.controller( "merchiesctrl" ,  function($scope, $window, $http, $compile){
 
 	//Make the head go up when scrolled update, and take care of hasScrolled variable
 	//It is not very elegant, but Angular doesn't reset its page measurements after I add things.
@@ -41,7 +37,7 @@ memeApp.controller( "memectrl" ,  function($scope, $window, $http, $compile){
 		var height = document.getElementById('wrapper').offsetHeight ;
 
 		if(offset >= height){
-			$scope.getMoreMemes('');
+			$scope.getMoreCookies('');
 		}
 
 	}
@@ -79,13 +75,13 @@ memeApp.controller( "memectrl" ,  function($scope, $window, $http, $compile){
 
 	/**
 	Get More Cookies
-	Calls PHP/getMemes.php and uses the data to create a string of html that
-	appends to the end of #allMemes displaying the memes.
-	Data returned by getMemes should be in the format id, hasShirt, title, fileType, pointerID, description, likes, tags
+	Calls PHP/getCookies.php and uses the data to create a string of html that
+	appends to the end of #allCookies displaying the images.
+	Data returned by getCookies should be in the format id, hasShirt, title, fileType, pointerID, description, likes, tags
 	**/
 	$scope.pagination=0;
-	$scope.getMoreMemes=function(filters){
-		var memestring="";
+	$scope.getMoreCookies=function(filters){
+		var cookieString="";
 		var filter = "";
 		if( $scope.activeTagFilters.length !== 0 ){
 			filter+="&filter=";
@@ -94,34 +90,34 @@ memeApp.controller( "memectrl" ,  function($scope, $window, $http, $compile){
 			}
 			filter=filter.substring(0,filter.length-1);
 		}
-		$http.get("PHP/getMemes.php?pag="+$scope.pagination+"&sort="+$scope.sortMethod+filter+filters).then(function(data){
+		$http.get("PHP/getImages.php?pag="+$scope.pagination+"&sort="+$scope.sortMethod+filter+filters).then(function(data){
 			console.log(data.data);
 			if(data.data=="false"){
-				memestring="<p>An error has occured. Please <a ng-click='getMoreMemes(\"\")'>click here</a> to try again</p>";
+				cookieString="<p>An error has occured, or there are no more cookies. Please <a ng-click='getMoreCookies(\"\")'>click here</a> to try again</p>";
 			}
 			else{
 				dataStrings = data.data.split(";");
 				for(var a=0;a<dataStrings.length-1;a++){
-					var memeData=dataStrings[a].split(":");
-					memestring+="<table class='meme genericBlock' id='"+memeData[0]+"'>";
-						memestring+="<tr>";
-							memestring+="<td><h2>"+memeData[1]+"</h2><h3 class='likes' id='likes"+memeData[0]+"'>Cookies sold: "+memeData[4]+"</h3></td>";
-						memestring+="</tr><tr>";
-							memestring+="<td>";
-							memestring+="<a href='cookie.php?meme="+memeData[0]+"' >";
-							memestring+=	"<img src='Memes/"+memeData[0]+".png' alt='"+memeData[1]+"' />";
-							memestring+="</a>";
-						memestring+="</td></tr>";
-						memestring+="<tr><td><div class='buyWrapper'>";
-							memestring+='<p class="buy" ng-click=\'buyCookie("'+memeData[0]+'",33456487858308)\'>HUGE (2.99)</p>';
-							memestring+='<p class="buy" ng-click=\'buyCookie("'+memeData[0]+'",33456487891076)\'>NORMAL (1.99)</p>';
-							memestring+='<p class="buy" ng-click=\'buyCookie("'+memeData[0]+'",33456487923844)\'>PARTY (2.99)</p>';
-						memestring+='</div></td></tr></table>';
+					var imageData=dataStrings[a].split(":");
+					cookieString+="<table class='cookie genericBlock' id='"+imageData[0]+"'>";
+						cookieString+="<tr>";
+							cookieString+="<td><h2>"+imageData[1]+"</h2><h3 class='likes' id='likes"+imageData[0]+"'>Cookies sold: "+imageData[4]+"</h3></td>";
+						cookieString+="</tr><tr>";
+							cookieString+="<td>";
+							cookieString+="<a href='cookie.php?cookie="+imageData[0]+"' >";
+							cookieString+=	"<img src='userCookies/"+imageData[0]+".png' alt='"+imageData[1]+"' />";
+							cookieString+="</a>";
+						cookieString+="</td></tr>";
+						cookieString+="<tr><td><div class='buyWrapper'>";
+							cookieString+='<p class="buy" ng-click=\'buyCookie("'+imageData[0]+'",33456487858308)\'>HUGE (2.99)</p>';
+							cookieString+='<p class="buy" ng-click=\'buyCookie("'+imageData[0]+'",33456487891076)\'>NORMAL (1.99)</p>';
+							cookieString+='<p class="buy" ng-click=\'buyCookie("'+imageData[0]+'",33456487923844)\'>PARTY (2.99)</p>';
+						cookieString+='</div></td></tr></table>';
 
 				}
 			}
-			var compiledHtml = $compile(memestring)($scope);
-			angular.element( document.querySelector( '#allMemes' ) ).append(compiledHtml);
+			var compiledHtml = $compile(cookieString)($scope);
+			angular.element( document.querySelector( '#allCookies' ) ).append(compiledHtml);
 			$scope.pagination++;
 		});
 	}
@@ -132,57 +128,26 @@ memeApp.controller( "memectrl" ,  function($scope, $window, $http, $compile){
 Refreshes index, called when asked for new tags
 **/
 	$scope.refreshPage=function(){
-		//angular.element( document.querySelector( '#allMemes' ) ).innerHTML="";
-		document.getElementById("allMemes").innerHTML = "";
+		document.getElementById("allCookies").innerHTML = "";
 		$scope.pagination = 0;
-		$scope.getMoreMemes('');
+		$scope.getMoreCookies('');
 	}
 
 
 
 	/**
-	expandMeme
-	takes in an element ID, and appends to it a box of info such as the creaor, Tshirt link if applicable, likes, comments, etc.
-	No longer in use
-	*/
-	$scope.expandMeme = function(id,user){
-		document.getElementById(id).classList.add("memeOut");
-		document.getElementById(id+"expanded").classList.add("memeOut");
-		document.getElementById(id+"expandedwrapper").classList.add("memeOut");
-
-
-		if(!document.getElementById(id).classList.contains("hasBeenOpened")){
-			$http.get("PHP/getUserData.php?reason=memeUser&id="+user).then(function(data){
-				//var userData=data.data.split(",");
-
-				var userString = data.data;
-				angular.element( document.querySelector( '#userInfo' + id ) ).append(userString);
-				document.getElementById(id).classList.add("hasBeenOpened");
-
-			});
-		}
-
-		$scope.getComments(id);
-
-	}
-
-
-
-	/**
-	Closes a meme after it is unhovered (depreciated)
+		Takes a user comment and links it to the image
 	**/
-	$scope.closeMeme = function(id){
-		document.getElementById(id).classList.remove("memeOut");
-		document.getElementById(id+"expanded").classList.remove("memeOut");
-	}
-
-
 	$scope.submitComment=function(id){
+
 		var content=document.getElementById("comment"+id).value;
+
 		$http.get("PHP/submitComment.php?id="+id+"&content="+content).then(function(data){
+
 			if(data.data!="true"){
 				document.getElementById("subbut"+id).value=data.data;
 			}
+
 			else{
 				var content=document.getElementById("comment"+id).value="";
 				$scope.getComments(id);
@@ -190,6 +155,10 @@ Refreshes index, called when asked for new tags
 		});
 	}
 
+	/**
+		Gets all the commments for an image by ID.
+		Comes in the form comment:userid:userimg;
+	**/
 	$scope.getComments=function(id){
 		$http.get("PHP/getComments.php?id="+id).then(function(data){
 			var finalString="";
@@ -211,14 +180,15 @@ Refreshes index, called when asked for new tags
 		});
 	}
 
-	$scope.addLike=function(id){
-		$http.get("PHP/like.php?id="+id).then(function(data){
-			document.getElementById("likes"+id).innerHTML=data.data;
-		});
-	}
+
+
 
 	$scope.activeTags=[];
 	$scope.tags=[];
+
+	/**
+		Gets a list of all tags
+	**/
 	$scope.getTags=function(){
 		$http.get('PHP/getTags.php').then(function(data){
 			$scope.tags=data.data.split(",");
@@ -227,15 +197,24 @@ Refreshes index, called when asked for new tags
 		});
 	}
 
+	/**
+		Adds a tag to active tags
+	**/
 	$scope.addTag=function(){
 		if($scope.activeTags.indexOf($scope.actingTag)==-1)
 			$scope.activeTags.push($scope.actingTag);
 	}
 
+	/**
+		Deletes a tag from activeTags
+	**/
 	$scope.deleteTag=function(tag){
 		$scope.activeTags.splice($scope.activeTags.indexOf(tag));
 	}
 
+	/**
+		Stringify an array and separate by comma
+	**/
 	$scope.stringify=function(array){
 		var returnValue="";
 		for(var a=0;a<array.length;a++){
@@ -249,14 +228,19 @@ Refreshes index, called when asked for new tags
 
 
 
-
+	/**
+		Toggles a tag for searching
+	**/
 	$scope.activeTagFilters=[];
 	$scope.toggleTag=function(tag){
+
 		var tagElement = angular.element(document.querySelector("#"+tag));
+
 		if($scope.activeTagFilters.indexOf(tag)==-1){
 			//tagElement.("inactiveTag");
 			$scope.activeTagFilters.push(tag);
 		}
+
 		else{
 			//tagElement.addClass("inactiveTag");
 			$scope.activeTagFilters.splice($scope.activeTagFilters.indexOf(tag),1);
@@ -266,22 +250,12 @@ Refreshes index, called when asked for new tags
 
 
 
-
-
-
-
-	$scope.singleMeme=function(id){
-
-	}
-
-
-
-
-
-
-
+	/**
+		Check that a name is not taken for sign up
+	**/
 	$scope.checkName = function( ){
 		var statement =  $scope.signupName ;
+
 		$http.get( "PHP/checkName.php?sql=" + statement
 		).then( function( data ){
 
@@ -289,47 +263,41 @@ Refreshes index, called when asked for new tags
 				$scope.nameExists = true;
 				$scope.signUp.name.$setValidity( "unique" , true );
 			}
+
 			else{
 				$scope.nameExists = false;
 				$scope.signUp.name.$setValidity( "unique" , false );
 			}
+
 		});
-		//document.getElementById( "key" ).value=$scope.getUniqueKey( );
 	}
 
 
 
 
 
-
-
-
-	$scope.copyurl="";
-	//I can probably just remove this once the image editor works, this is only temporary
-	$scope.getCopyMeme=function(){
-		$scope.copyurl="Memes/"+$scope.copyMeme;
-	}
-
-
-
-
-
-
-	$scope.submitMeme=function(){
+	/**
+		Submit an image for the newCookie page
+	**/
+	$scope.submitImage=function(){
 		var src = canvas.toDataURL("image/png",1);
-		document.getElementById("uploadingMeme").value=src;
+		document.getElementById("uploadingImage").value=src;
 	}
 
 
 
 
 
-
+	/**
+		Take a cookieid, and a sizeid (provided by spotify) and
+		submit them to the cart
+	**/
 	$scope.buyCookie=function(cookieid, size){
-		console.log(cookieid+":"+size);
+
 		var newWindow = window.open("https://merchies-shop.com/pages/metasubmit?id="+size+"&quantity=1&cookieid="+cookieid,'_blank', "toolbar=no,status=no,menubar=no,scrollbars=no,resizable=no,left=" + (screen.width*2) + ", top=10000, width=10, height=10, visible=none", '');
 		window.focus();
 		newWindow.blur();
+
 		setTimeout(function(){
 			newWindow.close()
 		},3000);
@@ -340,15 +308,17 @@ Refreshes index, called when asked for new tags
 
 
 
-
+	/**
+		Buy cookies for the submit page. Uploads the cookie to the database before invoking buy.
+	**/
 	$scope.buyCookiesQuick=function(cookie, size){
 		console.log("Buying");
 		var cookieID = (Math.random().toString(36)+'00000000000000000').slice(2, 14);
-		document.getElementById("memeTitle").value = cookieID;
+		document.getElementById("imageTitle").value = cookieID;
 		var src = canvas.toDataURL("image/png",1);
-		document.getElementById("uploadingMeme").value=src;
+		document.getElementById("uploadingImage").value=src;
 
-		$.post("PHP/submitMeme.php",$("#makeMeme").serialize()).done(function(data){
+		$.post("PHP/submitCookie.php",$("#makeCookie").serialize()).done(function(data){
 			console.log(data);
 		});
 		console.log("submitted");
@@ -367,6 +337,7 @@ Refreshes index, called when asked for new tags
 	addToQuick=function(img){
 
 			var canvasElement = document.createElement("Canvas");
+
 			canvasElement.setAttribute("id","quickcookiecanvas"+canvascounter);
 				canvasElement.setAttribute("width","300");
 				canvasElement.setAttribute("height","450");
@@ -374,6 +345,7 @@ Refreshes index, called when asked for new tags
 				canvasElement.setAttribute("width","300");
 				canvasElement.setAttribute("height","450");
 			}
+
 			document.getElementById("addQuickCookies").appendChild(canvasElement);
 
 			canvas = new fabric.Canvas("quickcookiecanvas"+canvascounter, {preserveObjectStacking:true});
@@ -409,20 +381,31 @@ Refreshes index, called when asked for new tags
 			canvascounter++;
 	}
 
+
+
+	/**
+		Validates earnings method
+	**/
 	$scope.earningsSelected=false;
 	$scope.earningsMethodText="Select an earnings method";
+
 	$scope.changeEarningsText = function(newText){
+
 		$scope.earningsSelected=true;
+
 		switch(newText){
 			case "paypal":
 				$scope.earningsMethodText="Please enter your email address, phone number, or name associated with your paypal account.";
 			break;
+
 			case "venmo":
 				$scope.earningsMethodText="Please enter your venmo, followed by a space, then the last 4 digits of your cell phone number";
 			break;
+
 			case "googlePay":
 				$scope.earningsMethodText="Please enter the email address associated with the account.";
 			break;
+
 		}
 		$scope.earningsID="";
 	}
@@ -434,8 +417,10 @@ Refreshes index, called when asked for new tags
 
 
 
-
-memeApp.directive("validatePayment",function(){
+/**
+	Validate earnings page
+**/
+merchiesApp.directive("validatePayment",function(){
 	return{
 		require:'ngModel',
 		link:function(scope, element, attr, mCtrl) {
