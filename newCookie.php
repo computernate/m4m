@@ -16,14 +16,21 @@
 		<style>
 
 			.centerCreate{
+				padding:5px;
 				margin-left:auto;
 				margin-right:auto;
 			}
 
 			label{
-				font-size:60px;
+				display:block;
+				text-align:center;
+				font-size:40px;
 				border:solid white 4px;
 				padding:20px;
+			}
+
+			h1{
+				font-size:50px;
 			}
 
 		</style>
@@ -32,7 +39,7 @@
 		<?php include "PHP/head.php" ?>
 		<div id="wrapper">
 			<div class="genericBlock" id="create">
-				<h1 style = "text-align:center">Create New Cookie</h2>
+				<h1 style = "text-align:center">Create New Cookie</h1>
 				<div id="creatorControls">
 					<input type="file" name="fileForCreator" id="fileForCreator" onchange="addToCreator(this)">
 					<label for="fileForCreator" class="centerCreate">Choose Image</label>
@@ -59,7 +66,7 @@
 
 
 				<div id="canvas-wrapper">
-					<canvas id="ImageCreator" width="647" height="500" >
+					<canvas id="ImageCreator" width="450" height="300" >
 				</div>
 
 
@@ -106,7 +113,7 @@
 						</tr>
 						<tr>
 							<td>
-								<span>For private use</span>
+								<span>Private</span>
 							</td>
 							<td>
 								<input type='checkbox' name="isPrivate" id="isPrivate" width="400" ng-model="isPrivate" />

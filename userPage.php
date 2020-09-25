@@ -31,7 +31,7 @@
             <?php echo $userData['name']; ?>
           </h1>
 
-          <div id="allImages">
+          <div id="allCookies">
             <div ng-init="sortMethod='new';getMoreCookies('&madeBy=<?php echo $userData['id']; ?>');"></div>
           </div>
 
