@@ -2,10 +2,11 @@
 ///Connects the user to the database
 ///Nate Roskelley September 2020
 
-$servername = "merchies";
+$servername = "localhost";
+
 $username = "merchies";
 //merchies
-$password = "publicuse";
+$password = "3nT3R#merchies";
 //publicuse
 $dbname = "merchies";
 //merchiescookies
