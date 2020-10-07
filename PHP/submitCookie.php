@@ -37,7 +37,7 @@ if(file_put_contents($newurl, $data)){
 }
 
 //If the user is temporary, we are done
-if(!isset($_POST["comingFromHome"]))
+if(isset($_POST["comingFromHome"]))
   die("finished, go back home");
 
 //Get the user provided info
@@ -57,20 +57,18 @@ for($i=0;$i<count($splitTags)-1;$i++){
 
 //Get already established info
 $date=date('Y-m-d H:i:s');
-$private = (isset($_GET['isPrivate']))?0:1;
+$private = (isset($_POST['isPrivate']))?1:0;
 $sql = "INSERT INTO images VALUES ('$url', '$title', '$userID', 0, '$tags', '$text', '$date', $private )";
 
 //Create the image in the database
 if ($conn->query($sql) === TRUE){
 	echo 'true';
-  if(!isset($_POST["comingFromHome"]))
-	   header("Location: ../cookie.php?image=".$url);
+	   header("Location: ../cookie.php?cookie=".$url);
 }
 else{
 	$errorMessage.= "<br>" . $conn->error.$uploadOk;
   echo 'false';
   echo $errorMessage;
-  if(!isset($_POST["comingFromHome"]))
 	   header("Location: ../newCookie.php?message=$errorMessage");
 }
 

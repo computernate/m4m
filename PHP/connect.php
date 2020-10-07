@@ -3,9 +3,10 @@
 ///Nate Roskelley September 2020
 
 $servername = "localhost";
-$username = "root";
+
+$username = "merchies";
 //merchies
-$password = "";
+$password = "3nT3R#merchies";
 //publicuse
 $dbname = "merchies";
 //merchiescookies

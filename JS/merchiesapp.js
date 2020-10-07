@@ -101,7 +101,7 @@ merchiesApp.controller( "merchiesctrl" ,  function($scope, $window, $http, $comp
 					var imageData=dataStrings[a].split(":");
 					cookieString+="<table class='cookie genericBlock' id='"+imageData[0]+"'>";
 						cookieString+="<tr>";
-							cookieString+="<td><h2>"+imageData[1]+"</h2><h3 class='likes' id='likes"+imageData[0]+"'>Cookies sold: "+imageData[4]+"</h3></td>";
+							cookieString+="<td><h2>"+imageData[1]+"</h2><h3>Cookies sold: "+imageData[4]+"</h3></td>";
 						cookieString+="</tr><tr>";
 							cookieString+="<td>";
 							cookieString+="<a href='cookie.php?cookie="+imageData[0]+"' >";

@@ -13,22 +13,21 @@ $query="";
 //If the request is coming from search
 if(isset($_GET["search"])){
 	$srch = $_GET["search"];
-	$query = "SELECT id, title, pointerID, description, bought, tags, age FROM images WHERE MATCH(description) AGAINST('$srch') AND NOT private = '1' LIMIT 25;";
+	$query = "SELECT id, title, pointerID, description, bought, tags, age FROM images WHERE MATCH(description) AGAINST('$srch') AND NOT isPrivate = '1' LIMIT 25;";
 }
 //If the reason is a tag filter
 else if(isset($_GET["filter"])){
 	$filter = $_GET["filter"];
-	$query = "SELECT id, title, pointerID, description, bought, tags, age FROM images WHERE tags REGEXP '$filter'  AND NOT private = '1' ORDER BY $sortMethod DESC LIMIT 25 OFFSET ".( 25 * $page );
+	$query = "SELECT id, title, pointerID, description, bought, tags, age FROM images WHERE tags REGEXP '$filter'  AND NOT isPrivate = '1' ORDER BY $sortMethod DESC LIMIT 25 OFFSET ".( 25 * $page );
 }
 //If the reason is to see a user's cookies
 else if(isset($_GET["madeBy"])){
 	$madeby = $_GET["madeBy"];
 	$query = "SELECT id, title, pointerID, description, bought, tags, age FROM images WHERE pointerID = '$madeby';";
-	echo $query;
 }
 //Default reason
 else{
-	$query = "SELECT id, title, pointerID, description, bought, tags, age FROM images WHERE NOT private = '1' ORDER BY $sortMethod DESC LIMIT 25 OFFSET ".( 25 * $page );
+	$query = "SELECT id, title, pointerID, description, bought, tags, age FROM images WHERE NOT isPrivate = '1' ORDER BY $sortMethod DESC LIMIT 25 OFFSET ".( 25 * $page );
 }
 
 $result = $conn->query($query);

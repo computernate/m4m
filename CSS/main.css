@@ -726,7 +726,8 @@ Images on the seeCookies Feed
 }
 .buyWrapper{
 	margin:0px auto;
-	margin-bottom:50px
+	width:550px;
+	overflow:auto;
 }
 
 /****************************
