@@ -40,7 +40,7 @@ if($isPrivate==0){
 }
 
 
-  $deleteSql = "DELETE FROM orders WHERE orderid=$orderid;";
+  $deleteSql = "DELETE FROM orders WHERE orderid='$orderid';";
   $likes=$conn->query($deleteSql);
 
 
