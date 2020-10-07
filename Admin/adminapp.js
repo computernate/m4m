@@ -27,7 +27,7 @@ adminApp.controller( "adminapp" ,  function($scope, $window, $http, $compile){
         }
         else{
           var allData=data.data.split(";");
-          for(var a=0;a<allData.length;a++){
+          for(var a=0;a<allData.length;a++){b
             var isFlipped=false;
             var currentData = allData[a].split(":");
 

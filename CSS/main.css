@@ -6,12 +6,12 @@
 
 @font-face{
 	font-family:truman;
-	src: url(../fonts/TRUMANS.otf);
+	src: url(../fonts/empire.ttf);
 }
 
 @font-face{
 	font-family:empire;
-	src: url(../fonts/empire.ttf);
+	src: url(../fonts/TRUMANS.otf);
 }
 
 
