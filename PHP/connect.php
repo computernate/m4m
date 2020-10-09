@@ -3,7 +3,6 @@
 ///Nate Roskelley September 2020
 
 $servername = "localhost";
-
 $username = "merchies";
 //merchies
 $password = "3nT3R#merchies";
