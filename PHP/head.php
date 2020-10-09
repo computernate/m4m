@@ -25,9 +25,36 @@ if(isset($_GET["message"])){
 	echo '<div id="topMessage"><h2>'.$_GET["message"].'</h2></div>';
 }
 
+$rand = rand(0,1);
+
+if($rand==1){
+	$_SESSION['HugePrice']='$2.99';
+	$_SESSION['MediumPrice']='$2.49';
+	$_SESSION['SmallPrice']='$2.99';
+
+	$_SESSION['HugePin']="33536730759300";
+	$_SESSION['MediumPin']="33536730792068";
+	$_SESSION['SmallPin']="33536730824836";
+}
+else{
+	$_SESSION['HugePrice']='$2.49';
+	$_SESSION['MediumPrice']='$1.99';
+	$_SESSION['SmallPrice']='$2.49';
+
+	$_SESSION['HugePin']="36559852011684";
+	$_SESSION['MediumPin']="36559852044452";
+	$_SESSION['SmallPin']="36559852077220";
+}
+
+
+
 ?>
-
-
+<div style='visibility:hidden' ng-init='HugePin=<?php echo $_SESSION['HugePin'] ?>;'>
+<div style='visibility:hidden' ng-init='MediumPin=<?php echo $_SESSION['HugePin'] ?>;'>
+<div style='visibility:hidden' ng-init='SmallPin=<?php echo $_SESSION['HugePin'] ?>;'>
+<div style='visibility:hidden' ng-init='HugePrice=<?php echo $_SESSION['HugePrice'] ?>;'>
+<div style='visibility:hidden' ng-init='MediumPrice=<?php echo $_SESSION['MediumPrice'] ?>;'>
+<div style='visibility:hidden' ng-init='SmallPrice=<?php echo $_SESSION['SmallPrice'] ?>;'>
 
 <link type="text/css" rel="stylesheet" href="CSS/main.css" />
 <link type="text/css" rel="stylesheet" href="CSS/color1.css" />
@@ -64,12 +91,12 @@ if(isset($_GET["message"])){
 		<a href="index.php" style='<?php
 			if(!isset($_GET["sort"])&&strpos($_SERVER['REQUEST_URI'],"index.php")!=false){
 				echo "background-color:var(--head-nav-bg-color-2);";
-			} ?>'>Home</a>
+			} ?>'>Create Cookie</a>
 
 		<a href="seeCookies.php?sort=new" style='<?php
 			if(isset($_GET["sort"])&&strpos($_SERVER['REQUEST_URI'],"seeCookies.php")!=false){
 				echo "background-color:var(--head-nav-bg-color-2);";
-			} ?>'>Cookies</a>
+			} ?>'>About us</a>
 
 			<a href="https://merchies-shop.com/cart" class="cookieJar">Cart</a>
 

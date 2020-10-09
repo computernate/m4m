@@ -60,10 +60,10 @@
 						}
 						 ?>
 								<?php if($sameUser){ ?>
-									<div class="buyWrapper"> 
-										<p class="buy" ng-click="buyCookie('<?php echo $id; ?>',33536730759300)">HUGE (1.99)</p>
-										<p class="buy" ng-click="buyCookie('<?php echo $id; ?>',33536730792068)">NORMAL (1.25)</p>
-										<p class="buy" ng-click="buyCookie('<?php echo $id; ?>',33536730824836)">PARTY (1.99)</p>
+									<div class="buyWrapper">
+										<p class="buy" ng-click="buyCookie('<?php echo $id; ?>',<?php echo $_SESSION["HugePin"] ?>)">HUGE (<?php echo $_SESSION["HugePrice"] ?>)</p>
+										<p class="buy" ng-click="buyCookie('<?php echo $id; ?>',<?php echo $_SESSION["MediumPin"] ?>)">NORMAL (<?php echo $_SESSION["MediumPrice"] ?>)</p>
+										<p class="buy" ng-click="buyCookie('<?php echo $id; ?>',<?php echo $_SESSION["SmallPin"] ?>)">PARTY (<?php echo $_SESSION["SmallPrice"] ?>)</p>
 									</div>
 									<div class="buyWrapper">
 										<p class="buy" ng-click="buyCookie('<?php echo $id; ?>',33536767328388)">HUGE (6)</p>

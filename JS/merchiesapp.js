@@ -109,9 +109,9 @@ merchiesApp.controller( "merchiesctrl" ,  function($scope, $window, $http, $comp
 							cookieString+="</a>";
 						cookieString+="</td></tr>";
 						cookieString+="<tr><td><div class='buyWrapper'>";
-							cookieString+='<p class="buy" ng-click=\'buyCookie("'+imageData[0]+'",33456487858308)\'>HUGE (2.99)</p>';
-							cookieString+='<p class="buy" ng-click=\'buyCookie("'+imageData[0]+'",33456487891076)\'>NORMAL (1.99)</p>';
-							cookieString+='<p class="buy" ng-click=\'buyCookie("'+imageData[0]+'",33456487923844)\'>PARTY (2.99)</p>';
+							cookieString+='<p class="buy" ng-click=\'buyCookie("'+imageData[0]+'",'+$scope.HugePin+')\'>HUGE ('+$scope.HugePrice+')</p>';
+							cookieString+='<p class="buy" ng-click=\'buyCookie("'+imageData[0]+'",'+$scope.MediumPin+')\'>NORMAL ('+$scope.MediumPrice+')</p>';
+							cookieString+='<p class="buy" ng-click=\'buyCookie("'+imageData[0]+'",'+$scope.MediumPin+')\'>PARTY ('+$scope.SmallPrice+')</p>';
 						cookieString+='</div></td></tr></table>';
 
 				}
@@ -372,8 +372,11 @@ Refreshes index, called when asked for new tags
 				};
 				reader.readAsDataURL(img.files[0]);
 			}
-
-			var buyString = '<div class="buyWrapper"><p class="buy" ng-click="buyCookiesQuick(\'quickcookiecanvas'+canvascounter+'\',\'33536730759300\')">HUGE (1.99)</p>	<p class="buy" ng-click="buyCookiesQuick(\'quickcookiecanvas'+canvascounter+'\',\'33536730792068\')">NORMAL (1.25)</p>	<p class="buy" ng-click="buyCookiesQuick(\'quickcookiecanvas'+canvascounter+'\',\'33536730824836\')">PARTY (1.99)</p></div>';
+			
+			var buyString = '<div class="buyWrapper">';
+			buyString+='<p class="buy" ng-click="buyCookiesQuick(\'quickcookiecanvas'+canvascounter+'\',\''+$scope.HugePin+'\')">HUGE ('+$scope.HugePrice+')</p>';
+			buyString+='<p class="buy" ng-click="buyCookiesQuick(\'quickcookiecanvas'+canvascounter+'\',\''+$scope.MediumPin+'\')">NORMAL ('+$scope.MediumPrice+')</p>';
+			buyString+='<p class="buy" ng-click="buyCookiesQuick(\'quickcookiecanvas'+canvascounter+'\',\''+$scope.MediumPin+'\')">PARTY ('+$scope.SmallPrice+')</p></div>';
 
 			var compiledHtml = $compile(buyString)($scope);
 			angular.element( document.querySelector( '#addQuickCookies' ) ).append(compiledHtml);
