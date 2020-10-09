@@ -49,12 +49,12 @@ else{
 
 
 ?>
-<div style='visibility:hidden' ng-init='HugePin=<?php echo $_SESSION['HugePin'] ?>;'>
-<div style='visibility:hidden' ng-init='MediumPin=<?php echo $_SESSION['HugePin'] ?>;'>
-<div style='visibility:hidden' ng-init='SmallPin=<?php echo $_SESSION['HugePin'] ?>;'>
-<div style='visibility:hidden' ng-init='HugePrice=<?php echo $_SESSION['HugePrice'] ?>;'>
-<div style='visibility:hidden' ng-init='MediumPrice=<?php echo $_SESSION['MediumPrice'] ?>;'>
-<div style='visibility:hidden' ng-init='SmallPrice=<?php echo $_SESSION['SmallPrice'] ?>;'>
+<div style='visibility:hidden' ng-init='HugePin="<?php echo $_SESSION['HugePin'] ?>";'>
+<div style='visibility:hidden' ng-init='MediumPin="<?php echo $_SESSION['HugePin'] ?>";'>
+<div style='visibility:hidden' ng-init='SmallPin="<?php echo $_SESSION['HugePin'] ?>";'>
+<div style='visibility:hidden' ng-init='HugePrice="<?php echo $_SESSION['HugePrice'] ?>";'>
+<div style='visibility:hidden' ng-init='MediumPrice="<?php echo $_SESSION['MediumPrice'] ?>";'>
+<div style='visibility:hidden' ng-init='SmallPrice="<?php echo $_SESSION['SmallPrice'] ?>";'>
 
 <link type="text/css" rel="stylesheet" href="CSS/main.css" />
 <link type="text/css" rel="stylesheet" href="CSS/color1.css" />
