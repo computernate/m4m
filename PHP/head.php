@@ -60,6 +60,7 @@ else{
 <link type="text/css" rel="stylesheet" href="CSS/color1.css" />
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
+<meta name="viewport" content="width=device-width">
 <script src="JS/angular.js"> </script>
 <script src="JS/jquery-3.4.1.js"> </script>
 <script src="JS/merchiesapp.js"> </script>
@@ -96,7 +97,7 @@ else{
 		<a href="seeCookies.php?sort=new" style='<?php
 			if(isset($_GET["sort"])&&strpos($_SERVER['REQUEST_URI'],"seeCookies.php")!=false){
 				echo "background-color:var(--head-nav-bg-color-2);";
-			} ?>'>About us</a>
+			} ?>'>About Merchies</a>
 
 			<a href="https://merchies-shop.com/cart" class="cookieJar">Cart</a>
 
@@ -114,4 +115,8 @@ else{
 		</form>
 
 	</div>
+</div>
+<div id='SocialMediaLinks'>
+	<a href="https://www.facebook.com/merchiescookies"><img src='../fb.png' /></a>
+	<a href="https://www.instagram.com/merchiescookies/"><img src='../insta.png' /></a>
 </div>

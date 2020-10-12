@@ -302,7 +302,7 @@ Refreshes index, called when asked for new tags
 			newWindow.close()
 		},3000);
 
-		angular.element(document.querySelector( 'body' )).prepend('<div id="topMessage"><h2>ADDED TO CART</h2></div>');
+		angular.element(document.querySelector( 'body' )).prepend('<div id="topMessage"><h2>ADDED TO CART <a href="https://merchies-shop.com/cart">See here</a></h2></div>');
 
 	}
 
@@ -372,7 +372,7 @@ Refreshes index, called when asked for new tags
 				};
 				reader.readAsDataURL(img.files[0]);
 			}
-			
+
 			var buyString = '<div class="buyWrapper">';
 			buyString+='<p class="buy" ng-click="buyCookiesQuick(\'quickcookiecanvas'+canvascounter+'\',\''+$scope.HugePin+'\')">HUGE ('+$scope.HugePrice+')</p>';
 			buyString+='<p class="buy" ng-click="buyCookiesQuick(\'quickcookiecanvas'+canvascounter+'\',\''+$scope.MediumPin+'\')">NORMAL ('+$scope.MediumPrice+')</p>';

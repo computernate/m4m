@@ -75,7 +75,7 @@
 				echo "style='background-color:var(--head-nav-bg-color-2);'";
 			} ?>
 			>
-			<a href='newCookie.php?failure='>New Cookie</a>
+			<a href='newCookie.php?failure='>Pro Cookie</a>
 	</p>
 
 	<p

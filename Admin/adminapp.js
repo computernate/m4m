@@ -27,9 +27,24 @@ adminApp.controller( "adminapp" ,  function($scope, $window, $http, $compile){
         }
         else{
           var allData=data.data.split(";");
-          for(var a=0;a<allData.length;a++){b
+
+          var allDataSplit;
+          for(var a=0;a<allData.length;a++){
+            allDataSplit[a] = allData[a].split(":");
+          }
+
+          //Solution from jahroy on stackoverflow
+          allDataSplit.sort(function(a, b) {
+            if (a[1] === b[1]) {
+                return 0;
+            }
+            else {
+                return (a[1] < b[1]) ? -1 : 1;
+          });
+
+          for(var a=0;a<allData.length;a++){
             var isFlipped=false;
-            var currentData = allData[a].split(":");
+            var currentData = allDataSplit[a];
 
             var img = new Image();
             img.src='../userCookies/'+currentData[0]+'.png';
