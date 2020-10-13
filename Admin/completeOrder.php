@@ -12,7 +12,7 @@ $isPrivate=$_GET["isPrivate"];
 $size=$_GET["size"];
 $orderid=$_GET["orderid"];
 
-if($isPrivate==0){
+if($isPrivate==1){
 
     $getUserSql = "SELECT pointerID FROM images WHERE id='$id'";
     $resultUser = $conn->query($getUserSql);

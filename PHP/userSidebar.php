@@ -56,7 +56,7 @@
 				echo "style='background-color:var(--head-nav-bg-color-2);'";
 			} ?>
 			>
-			<a href="index.php">Home</a>
+			<a href="index.php">Quick cookie</a>
 			</p>
 			<p  class="mobileNav"
 			<?php
@@ -64,7 +64,7 @@
 					echo "style='background-color:var(--head-nav-bg-color-2);'";
 				} ?>
 				>
-				<a href="seeCookie.php?sort=new">Cookies</a>
+				<a href="seeCookie.php?sort=new">About us</a>
 		</p>
 		<p id="mobileJar" class="mobileNav">
 			<a href='https://merchies-shop.com/cart'>Cart</a>
