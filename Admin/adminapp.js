@@ -97,10 +97,10 @@ adminApp.controller( "adminapp" ,  function($scope, $window, $http, $compile){
     }
 
     $scope.fulfillOrder=function(cookieid, isPrivate, size, orderid){
-      console.log("cookie");
       $http.get('completeOrder.php?cookie='+cookieid+'&isPrivate='+isPrivate+'&size='+size+'&orderid='+orderid).then(function(data){
         if(data.data=="true"){
           document.getElementById("order"+orderid).remove();
+          console.log(data.data);
         }
         else{
           console.log(data.data);

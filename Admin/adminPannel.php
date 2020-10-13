@@ -30,8 +30,8 @@ if(!$isAdmin){
 }
   .container{
     float:left;
-    margin-left:10px;
-    margin-bottom:10px;
+    margin-left:60px;
+    margin-bottom:60px;
   }
   .rotated{
     -webkit-transform: rotate(90deg);
@@ -68,8 +68,8 @@ if(!$isAdmin){
     margin:2%;
   }
   .medium.rotated{
-    height:280px;
-    width:214px;
+    height:330px;
+    width:244px;
     -webkit-transform-origin: 65% 50%;
     -moz-transform-origin:65% 50%;
     -ms-transform-origin:65% 50%;

@@ -12,7 +12,7 @@ $isPrivate=$_GET["isPrivate"];
 $size=$_GET["size"];
 $orderid=$_GET["orderid"];
 
-if($isPrivate==1){
+if($isPrivate==0){
 
     $getUserSql = "SELECT pointerID FROM images WHERE id='$id'";
     $resultUser = $conn->query($getUserSql);
@@ -44,7 +44,7 @@ if($isPrivate==1){
   $likes=$conn->query($deleteSql);
 
 
-    echo "true";
+  echo $deleteSql;
 
 
  ?>
