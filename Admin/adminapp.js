@@ -30,7 +30,7 @@ adminApp.controller( "adminapp" ,  function($scope, $window, $http, $compile){
 
           var allDataSplit;
           for(var a=0;a<allData.length;a++){
-            allDataSplit[a] = allData[a].split(":");
+            allDataSplit.push(allData[a].split(":"));
           }
 
           //Solution from jahroy on stackoverflow
