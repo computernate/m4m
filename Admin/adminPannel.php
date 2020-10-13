@@ -5,7 +5,7 @@ include "checkIsAdmin.php";
 
 if(!$isAdmin){
   echo " USER: ".$_SESSION["ID"];
-  die(" You do not have access for this");
+  //die(" You do not have access for this");
 }
 ?>
 
