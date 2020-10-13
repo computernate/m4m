@@ -4,8 +4,8 @@ include "../PHP/connect.php";
 include "checkIsAdmin.php";
 
 if(!$isAdmin){
-  echo $_SESSION["ID"];
-  die("You do not have access for this");
+  echo " USER: ".$_SESSION["ID"];
+  die(" You do not have access for this");
 }
 ?>
 
