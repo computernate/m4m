@@ -28,7 +28,7 @@ adminApp.controller( "adminapp" ,  function($scope, $window, $http, $compile){
         else{
           var allData=data.data.split(";");
 
-          var allDataSplit;
+          var allDataSplit=[];
           for(var a=0;a<allData.length;a++){
             allDataSplit.push(allData[a].split(":"));
           }
