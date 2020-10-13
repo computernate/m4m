@@ -60,8 +60,7 @@ else{
 <link type="text/css" rel="stylesheet" href="CSS/color1.css" />
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
-<meta name="viewport" content="width=device-width">
-<meta name="viewport" content="height=device-height">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="JS/angular.js"> </script>
 <script src="JS/jquery-3.4.1.js"> </script>
 <script src="JS/merchiesapp.js"> </script>

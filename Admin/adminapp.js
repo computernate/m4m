@@ -40,6 +40,7 @@ adminApp.controller( "adminapp" ,  function($scope, $window, $http, $compile){
             }
             else {
                 return (a[1] < b[1]) ? -1 : 1;
+              }
           });
 
           for(var a=0;a<allData.length;a++){
