@@ -971,7 +971,8 @@ change earnings
 		margin-left:0px;
 	}
 	.genericBlock{
-		width:100%;
+		width:90%;
+		padding:5%
 	}
 	#singleCookie h1{
 		font-size:50px;
