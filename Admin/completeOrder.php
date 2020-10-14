@@ -41,8 +41,14 @@ if($isPrivate==0){
 
 
   $deleteSql = "DELETE FROM orders WHERE orderid='$orderid';";
-  $likes=$conn->query($deleteSql);
-
+  $deleteQuery=$conn->query($deleteSql);
+  if(!$deleteQuery){
+    echo "AN ERROR HAS OCCURRED. PLEASE TRY AGAIN";
+    echo $conn->
+  }
+  else{
+    echo 'true';
+  }
 
   echo $deleteSql;
 

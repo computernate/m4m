@@ -225,8 +225,8 @@ html,body{
 
 #SocialMediaLinks{
 	bottom:0;
-	left:0;
-	position:absolute;
+	right:0;
+	position:fixed;
 }
 #SocialMediaLinks img{
 	width:50px;

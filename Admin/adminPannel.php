@@ -30,8 +30,8 @@ if(!$isAdmin){
 }
   .container{
     float:left;
-    margin-left:60px;
-    margin-bottom:60px;
+    margin-left:40px;
+    margin-bottom:40px;
   }
   .rotated{
     -webkit-transform: rotate(90deg);
