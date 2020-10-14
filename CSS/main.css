@@ -967,6 +967,9 @@ change earnings
 }
 
 @media only screen and (max-width: 750px){
+	body{
+		margin-left:0px;
+	}
 	.genericBlock{
 		width:100%;
 	}
@@ -1021,6 +1024,7 @@ change earnings
 	#fullNav div p{
 		width:100%;
 		font-size:35px;
+		height:45px !important;
 	}
 	#fullNav h3, #fullNav h2{
 		width:100%;
@@ -1069,4 +1073,5 @@ change earnings
 		margin:10px;
 		font-size:35px;
 	}
+
 }
