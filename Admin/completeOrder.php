@@ -42,15 +42,22 @@ if($isPrivate==0){
 
 $deleteSql = "DELETE FROM orders WHERE orderid='$orderid';";
 $deleteQuery=$conn->query($deleteSql);
+
+$id = str_replace( array( '..', '/', '\\', ':' ), '', $id );
+
   if(!$deleteQuery){
     echo "AN ERROR HAS OCCURRED. PLEASE TRY AGAIN";
     echo $conn->error;
   }
   else{
+
+    if($isPrivate==2){
+      unlink("../UserImages/".$id.".png");
+    }
+
+
     echo 'true';
   }
-
-  echo $deleteSql;
 
 
  ?>
