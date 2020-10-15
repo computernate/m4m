@@ -61,20 +61,20 @@
 						 ?>
 								<?php if($sameUser){ ?>
 									<div class="buyWrapper">
-										<p class="buy" ng-click="buyCookie('<?php echo $id; ?>',<?php echo $_SESSION["HugePin"] ?>)">HUGE (<?php echo $_SESSION["HugePrice"] ?>)</p>
+										<p class="buy" ng-click="buyCookie('<?php echo $id; ?>',<?php echo $_SESSION["HugePin"] ?>)">ENORMOUS (<?php echo $_SESSION["HugePrice"] ?>)</p>
 										<p class="buy" ng-click="buyCookie('<?php echo $id; ?>',<?php echo $_SESSION["MediumPin"] ?>)">NORMAL (<?php echo $_SESSION["MediumPrice"] ?>)</p>
-										<p class="buy" ng-click="buyCookie('<?php echo $id; ?>',<?php echo $_SESSION["SmallPin"] ?>)">PARTY (<?php echo $_SESSION["SmallPrice"] ?>)</p>
+										<p class="buy" ng-click="buyCookie('<?php echo $id; ?>',<?php echo $_SESSION["SmallPin"] ?>)">4 SMALL (<?php echo $_SESSION["SmallPrice"] ?>)</p>
 									</div>
 									<div class="buyWrapper">
-										<p class="buy" ng-click="buyCookie('<?php echo $id; ?>',33536767328388)">HUGE (6)</p>
-										<p class="buy" ng-click="buyCookie('<?php echo $id; ?>',33536767361156)">NORMAL (12)</p>
-										<p class="buy" ng-click="buyCookie('<?php echo $id; ?>',33536767426692)">PARTY (24)</p>
+										<p class="buy" ng-click="buyCookie('<?php echo $id; ?>',33536767328388)">ENORMOUS (6) $25.00</p>
+										<p class="buy" ng-click="buyCookie('<?php echo $id; ?>',33536767361156)">NORMAL (12) $25.00</p>
+										<p class="buy" ng-click="buyCookie('<?php echo $id; ?>',33536767426692)">4 SMALL (24) $25.00</p>
 									</div>
 								<?php } else{ ?>
 									<div class="buyWrapper">
-										<p class="buy" ng-click="buyCookie('<?php echo $id; ?>',33456487858308)">HUGE (2.99)</p>
-										<p class="buy" ng-click="buyCookie('<?php echo $id; ?>',33456487891076)">NORMAL (1.99)</p>
-										<p class="buy" ng-click="buyCookie('<?php echo $id; ?>',33456487923844)">PARTY (2.99)</p>
+										<p class="buy" ng-click="buyCookie('<?php echo $id; ?>',<?php echo $_SESSION["HugePin"] ?>)">ENORMOUS (<?php echo $_SESSION["HugePrice"] ?>)</p>
+										<p class="buy" ng-click="buyCookie('<?php echo $id; ?>',<?php echo $_SESSION["MediumPin"] ?>)">NORMAL (<?php echo $_SESSION["MediumPrice"] ?>)</p>
+										<p class="buy" ng-click="buyCookie('<?php echo $id; ?>',<?php echo $_SESSION["SmallPin"] ?>)">4 SMALL (<?php echo $_SESSION["SmallPrice"] ?>)</p>
 									</div>
 								<?php }
 							}
