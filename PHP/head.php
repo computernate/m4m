@@ -116,3 +116,8 @@ else{
 
 	</div>
 </div>
+
+<div id='SocialMediaLinks'>
+	<a href="https://www.facebook.com/merchiescookies"><img src='../Images/fb.png' /></a>
+	<a href="https://www.instagram.com/merchiescookies/"><img src='../Images/insta.png' /></a>
+</div>

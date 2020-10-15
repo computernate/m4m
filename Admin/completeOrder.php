@@ -40,11 +40,11 @@ if($isPrivate==0){
 }
 
 
-  $deleteSql = "DELETE FROM orders WHERE orderid='$orderid';";
-  $deleteQuery=$conn->query($deleteSql);
+$deleteSql = "DELETE FROM orders WHERE orderid='$orderid';";
+$deleteQuery=$conn->query($deleteSql);
   if(!$deleteQuery){
     echo "AN ERROR HAS OCCURRED. PLEASE TRY AGAIN";
-    echo $conn->
+    echo $conn->error;
   }
   else{
     echo 'true';

@@ -14,7 +14,7 @@
 			<div class="genericBlock">
         <h1>BUY COOKIE</h1>
         <p>Upload a picture to get started!</p>
-        <p>Note 1 and the philosopher's stone: For more editing options (including landscape), to save cookies, and to resell through our website, click the M in the corner to make an account!</p>
+        <p>Note: For more editing options (including landscape), to save cookies, and to resell through our website, click the M in the corner to make an account!</p>
 				<p>Note 2, revenge of the sith: After uploading a photo, drag it around to move the image</p>
 				<p>Note 3, fallen kingdom: Examples of cookies and public cookies for purchase can be seen under "cookie"</p>
       	<div class="quickCookieUploadDiv">
