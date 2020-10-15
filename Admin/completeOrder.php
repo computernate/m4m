@@ -52,7 +52,7 @@ $id = str_replace( array( '..', '/', '\\', ':' ), '', $id );
   else{
 
     if($isPrivate==2){
-      unlink("../UserImages/".$id.".png");
+      unlink("../userCookies/".$id.".png");
     }
 
 
