@@ -315,6 +315,7 @@ Refreshes index, called when asked for new tags
 		console.log("Buying");
 		var cookieID = (Math.random().toString(36)+'00000000000000000').slice(2, 14);
 		document.getElementById("imageTitle").value = cookieID;
+		var canvas = document.getElementById(cookie);
 		var src = canvas.toDataURL("image/png",1);
 		document.getElementById("uploadingImage").value=src;
 
@@ -348,7 +349,7 @@ Refreshes index, called when asked for new tags
 
 			document.getElementById("addQuickCookies").appendChild(canvasElement);
 
-			canvas = new fabric.Canvas("quickcookiecanvas"+canvascounter, {preserveObjectStacking:true});
+			var canvas = new fabric.Canvas("quickcookiecanvas"+canvascounter, {preserveObjectStacking:true});
 
 			var background = new fabric.Rect({
 				fill:'white',
