@@ -338,7 +338,7 @@ Refreshes index, called when asked for new tags
 	addToQuick=function(img, type){
 
 			var canvasElement = document.createElement("Canvas");
-			if(type==0)
+			if(type==0){
 				canvasElement.setAttribute("id","quickcookiecanvas"+canvascounter);
 					canvasElement.setAttribute("width","300");
 					canvasElement.setAttribute("height","450");
@@ -346,6 +346,7 @@ Refreshes index, called when asked for new tags
 					canvasElement.setAttribute("width","300");
 					canvasElement.setAttribute("height","450");
 				}
+			}
 			else{
 				canvasElement.setAttribute("id","quickcookiecanvas"+canvascounter);
 				canvasElement.setAttribute("width","450");
