@@ -121,6 +121,7 @@ html,body{
 	float:left;
 	font-family:empire;
 	text-decoration:none;
+	padding-top:5px;
 }
 .topnav{
 	display:inline;

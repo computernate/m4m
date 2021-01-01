@@ -12,6 +12,7 @@
 	<body ng-controller="merchiesctrl">
 		<?php include "PHP/head.php" ?>
 		<div id="wrapper">
+			<h1>Payment Info</h1>
       <form action="PHP/changeEarnings.php" method="post" id="changeEarnings" class="genericBlock" name="changeEarnings" novalidate>
 				<p>
 					<label for="paypal" ng-click='changeEarningsText("paypal")'>
@@ -30,6 +31,7 @@
 				<br />
 				<p>You will receive <span>$1.00</span> for each of your <span>large</span> and <span>party</span> cookies sold, and <span>$0.50</span> for each normal. That can add up very fast if you advertise well for it!</p>
 				<p>Payments for each month begin going out on the <span>15th</span> of the following month.</p>
+				<p>To return here, go to the user menu and select the earnings</p>
 			<br />
         <p ng-bind="earningsMethodText"></p>
 				<input ng-show="earningsSelected" type="text" name="earningsID" id="earningsID" ng-model="earningsID" required validate-payment/>

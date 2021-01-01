@@ -25,7 +25,7 @@ if ($conn->query($sql) === TRUE) {
 	$_SESSION["ID"]=$id;
 	setcookie("username",$name,time()+(60*60*24*7));
 	setcookie("password",$password,time()+(60*60*24*7));
-	header("Location: ../index.php?message=You have been successfully created!");
+	header("Location: ../changeEarningsInfo.php?message=You have been successfully created!");
 	//$conn->close();
 }
 

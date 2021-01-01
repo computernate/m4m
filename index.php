@@ -16,15 +16,15 @@
         <p>Click to select</p>
         <table class='homeTable'>
 					<tr>
-						<td ng-init = "CookieVisible = true" ng-click="CookieVisible=!CookieVisible"><img src="Images/Events.jpg" /></td>
+						<td ng-init = "CookieVisible = false" ng-click="CookieVisible=!CookieVisible"><img src="Images/Events.jpg" /></td>
 						<td ng-click="activatedFullNav=!activatedFullNav"><img src="Images/Resell.jpg" /></td>
 					</tr>
 				</table>
-      	<div class="quickCookieUploadDiv" ng-hidden="CookieVisible">
+      	<div class="quickCookieUploadDiv" ng-show="CookieVisible">
 					<input type="file" name="quickCookieUpload" id="quickCookiePortraitUpload" class="quickCookieUpload" onchange="addToQuick(this)">
         	<label for="quickCookiePortraitUpload" class="quickCookieButton">Vertical Cookie</label>
 				</div>
-      	<div class="quickCookieUploadDiv" ng-hidden="CookieVisible">
+      	<div class="quickCookieUploadDiv" ng-show="CookieVisible">
 					<input type="file" name="quickCookieUpload" id="quickCookieLandscapeUpload" class="quickCookieUpload" onchange="addToQuick(this)">
         	<label for="quickCookieLandscapeUpload" class="quickCookieButton">Horizontal Cookie</label>
 				</div>

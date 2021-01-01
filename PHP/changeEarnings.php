@@ -15,7 +15,7 @@ $userID=$_SESSION["ID"];
 //Update the banking method
 $sql = "UPDATE users SET bankingID='$newBanking' WHERE id='$userID';";
 if ($conn->query($sql) === TRUE){
-	header("Location: ../index.php");
+	header("Location: ../newCookie.php?message=Earnings info saved. Create your cookie!");
 }
 else{
 	echo $conn->error;
