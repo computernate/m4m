@@ -12,14 +12,18 @@
 		<?php include "PHP/head.php" ?>
 		<div id="wrapper">
 			<div class="genericBlock">
-        <h1>BUY COOKIE</h1>
-        <p>Upload a picture to get started!</p>
-        <p>Note: For more editing options (including landscape), to save cookies, and to resell through our website, click the M in the corner to make an account!</p>
-				<p>Note 2, revenge of the sith: After uploading a photo, drag it around to move the image</p>
-				<p>Note 3, fallen kingdom: Examples of cookies and public cookies for purchase can be seen under "cookie"</p>
+        <h1>COOKIE TYPE</h1>
+        <p>Click to select</p>
+        <table class='homeTable'>
+					<tr>
+						<td><img src="Images/Events.jpg" /></td>
+						<td><img src="Images/Resell.jpg" /></td>
+					</tr>
+				</table>
       	<div class="quickCookieUploadDiv">
 					<input type="file" name="quickCookieUpload" id="quickCookiePortraitUpload" class="quickCookieUpload" onchange="addToQuick(this)">
-        	<label for="quickCookiePortraitUpload" class="quickCookieButton">Upload Image</label>
+        	<label for="quickCookiePortraitUpload" class="quickCookieButton">Vertical Cookie</label>
+        	<label for="quickCookiePortraitUpload" class="quickCookieButton">Horozontal Cookie</label>
 				</div>
         <div id="addQuickCookies">
 
