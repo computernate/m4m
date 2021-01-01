@@ -21,11 +21,11 @@
 					</tr>
 				</table>
       	<div class="quickCookieUploadDiv" ng-show="CookieVisible">
-					<input type="file" name="quickCookieUpload" id="quickCookiePortraitUpload" class="quickCookieUpload" onchange="addToQuick(this)">
+					<input type="file" name="quickCookieUpload" id="quickCookiePortraitUpload" class="quickCookieUpload" onchange="addToQuick(this, 0)">
         	<label for="quickCookiePortraitUpload" class="quickCookieButton">Vertical Cookie</label>
 				</div>
       	<div class="quickCookieUploadDiv" ng-show="CookieVisible">
-					<input type="file" name="quickCookieUpload" id="quickCookieLandscapeUpload" class="quickCookieUpload" onchange="addToQuick(this)">
+					<input type="file" name="quickCookieUpload" id="quickCookieLandscapeUpload" class="quickCookieUpload" onchange="addToQuick(this, 1)">
         	<label for="quickCookieLandscapeUpload" class="quickCookieButton">Horizontal Cookie</label>
 				</div>
         <div id="addQuickCookies">

@@ -29,8 +29,8 @@ $rand = rand(0,1);
 
 if($rand==1){
 	$_SESSION['HugePrice']='$2.99';
-	$_SESSION['MediumPrice']='$2.49';
-	$_SESSION['SmallPrice']='$2.99';
+	$_SESSION['MediumPrice']='$14.99';
+	$_SESSION['SmallPrice']='$24.99';
 
 	$_SESSION['HugePin']="33536730759300";
 	$_SESSION['MediumPin']="33536730792068";
@@ -38,8 +38,8 @@ if($rand==1){
 }
 else{
 	$_SESSION['HugePrice']='$2.49';
-	$_SESSION['MediumPrice']='$1.99';
-	$_SESSION['SmallPrice']='$2.49';
+	$_SESSION['MediumPrice']='$11.99';
+	$_SESSION['SmallPrice']='$19.99';
 
 	$_SESSION['HugePin']="36559852011684";
 	$_SESSION['MediumPin']="36559852044452";

@@ -109,9 +109,9 @@ merchiesApp.controller( "merchiesctrl" ,  function($scope, $window, $http, $comp
 							cookieString+="</a>";
 						cookieString+="</td></tr>";
 						cookieString+="<tr><td><div class='buyWrapper'>";
-							cookieString+='<p class="buy" ng-click=\'buyCookie("'+imageData[0]+'",'+$scope.HugePin+')\'>HUGE ('+$scope.HugePrice+')</p>';
-							cookieString+='<p class="buy" ng-click=\'buyCookie("'+imageData[0]+'",'+$scope.MediumPin+')\'>NORMAL ('+$scope.MediumPrice+')</p>';
-							cookieString+='<p class="buy" ng-click=\'buyCookie("'+imageData[0]+'",'+$scope.MediumPin+')\'>PARTY ('+$scope.SmallPrice+')</p>';
+							cookieString+='<p class="buy" ng-click=\'buyCookie("'+imageData[0]+'",'+$scope.HugePin+')\'>1 coookie('+$scope.HugePrice+')</p>';
+							cookieString+='<p class="buy" ng-click=\'buyCookie("'+imageData[0]+'",'+$scope.MediumPin+')\'>6 cookies('+$scope.MediumPrice+')</p>';
+							cookieString+='<p class="buy" ng-click=\'buyCookie("'+imageData[0]+'",'+$scope.MediumPin+')\'>12 cookies ('+$scope.SmallPrice+')</p>';
 						cookieString+='</div></td></tr></table>';
 
 				}
@@ -335,16 +335,25 @@ Refreshes index, called when asked for new tags
 	**/
 	var quickImages=[];
 	var canvascounter = 0;
-	addToQuick=function(img){
+	addToQuick=function(img, type){
 
 			var canvasElement = document.createElement("Canvas");
-
-			canvasElement.setAttribute("id","quickcookiecanvas"+canvascounter);
-				canvasElement.setAttribute("width","300");
-				canvasElement.setAttribute("height","450");
-			if(window.innerWidth<=750){
-				canvasElement.setAttribute("width","300");
-				canvasElement.setAttribute("height","450");
+			if(type==0)
+				canvasElement.setAttribute("id","quickcookiecanvas"+canvascounter);
+					canvasElement.setAttribute("width","300");
+					canvasElement.setAttribute("height","450");
+				if(window.innerWidth<=750){
+					canvasElement.setAttribute("width","300");
+					canvasElement.setAttribute("height","450");
+				}
+			else{
+				canvasElement.setAttribute("id","quickcookiecanvas"+canvascounter);
+				canvasElement.setAttribute("width","450");
+				canvasElement.setAttribute("height","300");
+				if(window.innerWidth<=750){
+					canvasElement.setAttribute("width","450");
+					canvasElement.setAttribute("height","300");
+				}
 			}
 
 			document.getElementById("addQuickCookies").appendChild(canvasElement);
@@ -375,9 +384,9 @@ Refreshes index, called when asked for new tags
 			}
 
 			var buyString = '<div class="buyWrapper">';
-			buyString+='<p class="buy" ng-click="buyCookiesQuick(\'quickcookiecanvas'+canvascounter+'\',\''+$scope.HugePin+'\')">HUGE ('+$scope.HugePrice+')</p>';
-			buyString+='<p class="buy" ng-click="buyCookiesQuick(\'quickcookiecanvas'+canvascounter+'\',\''+$scope.MediumPin+'\')">NORMAL ('+$scope.MediumPrice+')</p>';
-			buyString+='<p class="buy" ng-click="buyCookiesQuick(\'quickcookiecanvas'+canvascounter+'\',\''+$scope.MediumPin+'\')">PARTY ('+$scope.SmallPrice+')</p></div>';
+			buyString+='<p class="buy" ng-click="buyCookiesQuick(\'quickcookiecanvas'+canvascounter+'\',\''+$scope.HugePin+'\')">1 cookie ('+$scope.HugePrice+')</p>';
+			buyString+='<p class="buy" ng-click="buyCookiesQuick(\'quickcookiecanvas'+canvascounter+'\',\''+$scope.MediumPin+'\')">6 cookies ('+$scope.MediumPrice+')</p>';
+			buyString+='<p class="buy" ng-click="buyCookiesQuick(\'quickcookiecanvas'+canvascounter+'\',\''+$scope.MediumPin+'\')">12 cookies ('+$scope.SmallPrice+')</p></div>';
 
 			var compiledHtml = $compile(buyString)($scope);
 			angular.element( document.querySelector( '#addQuickCookies' ) ).append(compiledHtml);
